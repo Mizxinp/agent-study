@@ -1,0 +1,742 @@
+{
+  "id": "customer-2",
+  "seed": 20261115,
+  "slots": [
+    {
+      "name": "发货城市",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "厦门",
+          "aliases": [
+            "厦门"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "釉色",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "米黄色",
+          "aliases": [
+            "米黄色"
+          ]
+        },
+        {
+          "session": 1,
+          "value": "天青色",
+          "aliases": [
+            "天青色"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "数量",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "800件",
+          "aliases": [
+            "800件"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "单价预算",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "每件25元",
+          "aliases": [
+            "每件25元"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "发票抬头",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "德化春山商贸有限公司",
+          "aliases": [
+            "德化春山商贸有限公司"
+          ]
+        },
+        {
+          "session": 1,
+          "value": "福州青山商贸有限公司",
+          "aliases": [
+            "福州青山商贸有限公司"
+          ]
+        },
+        {
+          "session": 3,
+          "value": "厦门远山商贸有限公司",
+          "aliases": [
+            "厦门远山商贸有限公司"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "交期",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "2026年12月15日",
+          "aliases": [
+            "2026年12月15日"
+          ]
+        },
+        {
+          "session": 1,
+          "value": "2026年12月20日",
+          "aliases": [
+            "2026年12月20日"
+          ]
+        },
+        {
+          "session": 3,
+          "value": "2026年12月15日",
+          "aliases": [
+            "2026年12月15日"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logo工艺",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "釉下彩",
+          "aliases": [
+            "釉下彩"
+          ]
+        },
+        {
+          "session": 1,
+          "value": "激光雕刻",
+          "aliases": [
+            "激光雕刻"
+          ]
+        },
+        {
+          "session": 3,
+          "value": "贴花",
+          "aliases": [
+            "贴花"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "包装",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "礼盒",
+          "aliases": [
+            "礼盒"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "器型",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "花瓶",
+          "aliases": [
+            "花瓶"
+          ]
+        },
+        {
+          "session": 3,
+          "value": "茶杯",
+          "aliases": [
+            "茶杯"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "物流",
+      "timeline": [
+        {
+          "session": 0,
+          "value": "中通",
+          "aliases": [
+            "中通"
+          ]
+        },
+        {
+          "session": 1,
+          "value": "德邦",
+          "aliases": [
+            "德邦"
+          ]
+        }
+      ]
+    }
+  ],
+  "distractors": [
+    {
+      "slot": "发货城市",
+      "value": "杭州"
+    },
+    {
+      "slot": "釉色",
+      "value": "珊瑚红"
+    },
+    {
+      "slot": "数量",
+      "value": "1200件"
+    }
+  ],
+  "sessions": [
+    {
+      "created_at": "2026-11-02T09:00:00.000Z",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们店这次要的发货城市：厦门。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的发货城市要求。"
+        },
+        {
+          "role": "user",
+          "content": "釉色已经和同事核对好了，就按米黄色来。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到，按您确认的米黄色核对。"
+        },
+        {
+          "role": "user",
+          "content": "这批陶瓷的数量先定为800件，麻烦记一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到，按您确认的800件核对。"
+        },
+        {
+          "role": "user",
+          "content": "跟您确认一下，本单单价预算是每件25元。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到，按您确认的每件25元核对。"
+        },
+        {
+          "role": "user",
+          "content": "发票抬头已经和同事核对好了，就按德化春山商贸有限公司来。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的发票抬头要求。"
+        },
+        {
+          "role": "user",
+          "content": "我们店这次要的交期：2026年12月15日。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的交期要求。"
+        },
+        {
+          "role": "user",
+          "content": "这批陶瓷的Logo工艺先定为釉下彩，麻烦记一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到您的确认，出货单会再核对。"
+        },
+        {
+          "role": "user",
+          "content": "这批陶瓷的包装先定为礼盒，麻烦记一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到您的确认，出货单会再核对。"
+        },
+        {
+          "role": "user",
+          "content": "跟您确认一下，本单器型是花瓶。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，我把订单里的器型同步一下。"
+        },
+        {
+          "role": "user",
+          "content": "跟您确认一下，本单物流是中通。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到您的确认，出货单会再核对。"
+        }
+      ]
+    },
+    {
+      "created_at": "2026-11-05T09:00:00.000Z",
+      "messages": [
+        {
+          "role": "user",
+          "content": "釉色还是按天青色来，麻烦更新一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的釉色要求。"
+        },
+        {
+          "role": "user",
+          "content": "之前说的发票抬头德化春山商贸有限公司改成福州青山商贸有限公司吧。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，我把订单里的发票抬头同步一下。"
+        },
+        {
+          "role": "user",
+          "content": "这两天安排有变化，本单交期暂时换成2026年12月20日吧。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，我把订单里的交期同步一下。"
+        },
+        {
+          "role": "user",
+          "content": "刚跟采购确认了，这单Logo工艺改为激光雕刻。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到您的确认，出货单会再核对。"
+        },
+        {
+          "role": "user",
+          "content": "刚跟采购确认了，这单物流改为德邦。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到，按您确认的德邦核对。"
+        },
+        {
+          "role": "user",
+          "content": "我朋友订的是杭州（发货城市），跟我无关，别混进我的单子。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，这只是朋友那单的情况。"
+        },
+        {
+          "role": "user",
+          "content": "开模之前能不能看一下三维图？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以先核对图稿，细节确认后再进入下一步。"
+        },
+        {
+          "role": "user",
+          "content": "运输破损需要留哪些凭证？"
+        },
+        {
+          "role": "assistant",
+          "content": "请保留外箱和开箱照片，方便售后核查。"
+        },
+        {
+          "role": "user",
+          "content": "底足能拍个近照吗？怕放桌上不稳。"
+        },
+        {
+          "role": "assistant",
+          "content": "可以补拍底足和桌面摆放的视频。"
+        },
+        {
+          "role": "user",
+          "content": "釉面有小针孔的话，验货时怎么判断？"
+        },
+        {
+          "role": "assistant",
+          "content": "会按双方确认的样品标准检查，瑕疵拍照核对。"
+        }
+      ]
+    },
+    {
+      "created_at": "2026-11-08T09:00:00.000Z",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我朋友订的是珊瑚红（釉色），跟我无关，别混进我的单子。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，这只是朋友那单的情况。"
+        },
+        {
+          "role": "user",
+          "content": "外箱唛头能先出一版排版给我看吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以先出示意图，您确认之后再制作。"
+        },
+        {
+          "role": "user",
+          "content": "开模费和后面的货款是分开算的吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以分别列明，开模前会先给您费用说明。"
+        },
+        {
+          "role": "user",
+          "content": "釉面有小针孔的话，验货时怎么判断？"
+        },
+        {
+          "role": "assistant",
+          "content": "会按双方确认的样品标准检查，瑕疵拍照核对。"
+        },
+        {
+          "role": "user",
+          "content": "色差是不是要在自然光下看比较准？"
+        },
+        {
+          "role": "assistant",
+          "content": "建议自然光下对照实物，照片仅供参考。"
+        },
+        {
+          "role": "user",
+          "content": "底足能拍个近照吗？怕放桌上不稳。"
+        },
+        {
+          "role": "assistant",
+          "content": "可以补拍底足和桌面摆放的视频。"
+        },
+        {
+          "role": "user",
+          "content": "批发验货可以抽箱检查吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以沟通抽检流程，出货前提供验货资料。"
+        },
+        {
+          "role": "user",
+          "content": "样品能先寄一套看看吗？主要想摸一下手感。"
+        },
+        {
+          "role": "assistant",
+          "content": "可以先看样，确认手感后再安排大货。"
+        },
+        {
+          "role": "user",
+          "content": "样品和大货的收缩率会影响尺寸吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "烧制存在合理公差，可以先核对样品尺寸范围。"
+        },
+        {
+          "role": "user",
+          "content": "付款方式支持对公转账吗？财务想了解流程。"
+        },
+        {
+          "role": "assistant",
+          "content": "支持，付款前会提供对公资料和核对步骤。"
+        }
+      ]
+    },
+    {
+      "created_at": "2026-11-11T09:00:00.000Z",
+      "messages": [
+        {
+          "role": "user",
+          "content": "之前说的发票抬头福州青山商贸有限公司改成厦门远山商贸有限公司吧。"
+        },
+        {
+          "role": "assistant",
+          "content": "明白，我把订单里的发票抬头同步一下。"
+        },
+        {
+          "role": "user",
+          "content": "交期还是改回2026年12月15日，临时方案不用了。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的交期要求。"
+        },
+        {
+          "role": "user",
+          "content": "Logo工艺还是按贴花来，麻烦更新一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "收到，按您确认的贴花核对。"
+        },
+        {
+          "role": "user",
+          "content": "之前说的器型花瓶改成茶杯吧。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，已记下这次的器型要求。"
+        },
+        {
+          "role": "user",
+          "content": "群里提到1200件是朋友那单的数量，不是我的要求。"
+        },
+        {
+          "role": "assistant",
+          "content": "两份订单分开核对，您的要求仍按您自己的确认。"
+        },
+        {
+          "role": "user",
+          "content": "批发验货可以抽箱检查吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以沟通抽检流程，出货前提供验货资料。"
+        },
+        {
+          "role": "user",
+          "content": "开模费和后面的货款是分开算的吗？"
+        },
+        {
+          "role": "assistant",
+          "content": "可以分别列明，开模前会先给您费用说明。"
+        },
+        {
+          "role": "user",
+          "content": "色差是不是要在自然光下看比较准？"
+        },
+        {
+          "role": "assistant",
+          "content": "建议自然光下对照实物，照片仅供参考。"
+        },
+        {
+          "role": "user",
+          "content": "运输破损需要留哪些凭证？"
+        },
+        {
+          "role": "assistant",
+          "content": "请保留外箱和开箱照片，方便售后核查。"
+        },
+        {
+          "role": "user",
+          "content": "样品能先寄一套看看吗？主要想摸一下手感。"
+        },
+        {
+          "role": "assistant",
+          "content": "可以先看样，确认手感后再安排大货。"
+        },
+        {
+          "role": "user",
+          "content": "底足能拍个近照吗？怕放桌上不稳。"
+        },
+        {
+          "role": "assistant",
+          "content": "可以补拍底足和桌面摆放的视频。"
+        },
+        {
+          "role": "user",
+          "content": "付款方式支持对公转账吗？财务想了解流程。"
+        },
+        {
+          "role": "assistant",
+          "content": "支持，付款前会提供对公资料和核对步骤。"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "current-0",
+      "type": "current",
+      "text": "我的订单当前交期是什么？",
+      "gold": [
+        "2026年12月15日"
+      ],
+      "old": [
+        "2026年12月20日"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "current-1",
+      "type": "current",
+      "text": "我的订单当前器型是什么？",
+      "gold": [
+        "茶杯"
+      ],
+      "old": [
+        "花瓶"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "current-2",
+      "type": "current",
+      "text": "我的订单当前物流是什么？",
+      "gold": [
+        "德邦"
+      ],
+      "old": [
+        "中通"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "current-3",
+      "type": "current",
+      "text": "我的订单当前釉色是什么？",
+      "gold": [
+        "天青色"
+      ],
+      "old": [
+        "米黄色"
+      ],
+      "avoid": [
+        "珊瑚红"
+      ]
+    },
+    {
+      "id": "current-4",
+      "type": "current",
+      "text": "我的订单当前发票抬头是什么？",
+      "gold": [
+        "厦门远山商贸有限公司"
+      ],
+      "old": [
+        "德化春山商贸有限公司",
+        "福州青山商贸有限公司"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "current-5",
+      "type": "current",
+      "text": "我的订单当前Logo工艺是什么？",
+      "gold": [
+        "贴花"
+      ],
+      "old": [
+        "釉下彩",
+        "激光雕刻"
+      ],
+      "avoid": []
+    },
+    {
+      "id": "current-6",
+      "type": "current",
+      "text": "我的订单当前数量是什么？",
+      "gold": [
+        "800件"
+      ],
+      "old": [],
+      "avoid": [
+        "1200件"
+      ]
+    },
+    {
+      "id": "current-7",
+      "type": "current",
+      "text": "我的订单当前发货城市是什么？",
+      "gold": [
+        "厦门"
+      ],
+      "old": [],
+      "avoid": [
+        "杭州"
+      ]
+    },
+    {
+      "id": "history-0",
+      "type": "history",
+      "text": "我的交期从什么改成了什么？按顺序列出，包含改回。",
+      "gold": [
+        "2026年12月15日",
+        "2026年12月20日",
+        "2026年12月15日"
+      ],
+      "old": [],
+      "avoid": []
+    },
+    {
+      "id": "history-1",
+      "type": "history",
+      "text": "我的器型最初确认的值是什么？",
+      "gold": [
+        "花瓶"
+      ],
+      "old": [],
+      "avoid": []
+    },
+    {
+      "id": "history-2",
+      "type": "history",
+      "text": "我的物流从什么改成了什么？按顺序列出，包含改回。",
+      "gold": [
+        "中通",
+        "德邦"
+      ],
+      "old": [],
+      "avoid": []
+    },
+    {
+      "id": "history-3",
+      "type": "history",
+      "text": "我的釉色最初确认的值是什么？",
+      "gold": [
+        "米黄色"
+      ],
+      "old": [],
+      "avoid": []
+    },
+    {
+      "id": "distractor-0",
+      "type": "distractor",
+      "text": "朋友提到的发货城市会影响我的订单吗？请说明我的当前发货城市。",
+      "gold": [
+        "厦门"
+      ],
+      "old": [],
+      "avoid": [
+        "杭州"
+      ]
+    },
+    {
+      "id": "distractor-1",
+      "type": "distractor",
+      "text": "朋友提到的釉色会影响我的订单吗？请说明我的当前釉色。",
+      "gold": [
+        "天青色"
+      ],
+      "old": [],
+      "avoid": [
+        "珊瑚红"
+      ]
+    },
+    {
+      "id": "distractor-2",
+      "type": "distractor",
+      "text": "朋友提到的数量会影响我的订单吗？请说明我的当前数量。",
+      "gold": [
+        "800件"
+      ],
+      "old": [],
+      "avoid": [
+        "1200件"
+      ]
+    }
+  ]
+}
