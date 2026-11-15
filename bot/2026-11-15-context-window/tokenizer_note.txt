@@ -1,0 +1,2 @@
+o200k_base 16316 chars 12813 tokens 1.27 chars/token
+cl100k_base 16316 chars 17641 tokens 0.92 chars/token

@@ -1,0 +1,3848 @@
+{
+ "A. 模板化闲聊（易：闲聊重复、事实句词汇稀有）": [
+  {
+   "seed": 0,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 13570
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 764
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 762
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 782
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 784.0833333333334
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.0,
+   "avg_tokens": 776
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1428
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 954
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1464.6666666666667
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1468.5833333333333
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1441
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2869
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2125
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2932
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2932.1666666666665
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2881
+  },
+  {
+   "seed": 1,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 13333
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 761
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 647
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 780.0833333333334
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 785.75
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 773
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1425
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 1411
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 1467.5
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 1468.4166666666667
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1410
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2854
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 2089
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 2938.5833333333335
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 2940.5
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2853
+  },
+  {
+   "seed": 2,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 13284
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 750
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 646
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 784.4166666666666
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 783.8333333333334
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 763
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1406
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1238
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1473.5
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1467.25
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1444
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2865
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2122
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2936.5833333333335
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2939.25
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 2877
+  },
+  {
+   "seed": 3,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 13498
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.0,
+   "avg_tokens": 761
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 719
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 781.0833333333334
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 786
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.0,
+   "avg_tokens": 744
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.0,
+   "avg_tokens": 1435
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 981
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1471.3333333333333
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1467.5
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1432
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 2863
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2140
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2938.5
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2940.4166666666665
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2848
+  },
+  {
+   "seed": 4,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 13457
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 764
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 486
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 783.3333333333334
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 787.5
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 748
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1434
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 928
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1471.1666666666667
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1470.0833333333333
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1445
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 2876
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2189
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2935.6666666666665
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2937.9166666666665
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2882
+  },
+  {
+   "seed": 5,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 13360
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 760
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 620
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 780.5
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 782.1666666666666
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 766
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 1429
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 900
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1466
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1466.3333333333333
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1412
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 2876
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2172
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2940.5833333333335
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2940.9166666666665
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2893
+  },
+  {
+   "seed": 6,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 13467
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 767
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 513
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 782.6666666666666
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 786
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 767
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1439
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 901
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1466.4166666666667
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1465.5
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 1440
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 2862
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2138
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2934.1666666666665
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2935.25
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 2878
+  },
+  {
+   "seed": 7,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 13537
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.08333333333333333,
+   "conflict": 0.0,
+   "avg_tokens": 763
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 757
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 780.75
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 785.5833333333334
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 769
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1434
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 970
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1464.9166666666667
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1467.5
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1448
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2871
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2174
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2929.75
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2931.75
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2885
+  },
+  {
+   "seed": 8,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 13370
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 754
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 679
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 782.0833333333334
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 782.6666666666666
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 775
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1428
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1324
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1471.25
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1466.1666666666667
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1419
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2848
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2162
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2934.9166666666665
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2939
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2870
+  },
+  {
+   "seed": 9,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 13585
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.0,
+   "avg_tokens": 741
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 511
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 780.5833333333334
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 786.8333333333334
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 746
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 986
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1466.8333333333333
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1468.1666666666667
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2868
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2121
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2932.3333333333335
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2933.75
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2877
+  }
+ ],
+ "B. 多样化闲聊（难：闲聊里也有城市/价格/釉色/单号等稀有词）+ 原词提问": [
+  {
+   "seed": 0,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 12813
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.0,
+   "avg_tokens": 763
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 779.3333333333334
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 783
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 776
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1400
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 879
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1458.75
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1461.9166666666667
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1435
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2853
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 2139
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2923
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2928
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2877
+  },
+  {
+   "seed": 1,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 12370
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 743
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 766
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 783
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 784.8333333333334
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 767
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1410
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1165
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 1465.8333333333333
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 1466.5833333333333
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1437
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2859
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 2114
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 2928.3333333333335
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 2929.25
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2858
+  },
+  {
+   "seed": 2,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12393
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 762
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 510
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 779.4166666666666
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 784.5
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 771
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1428
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 1187
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1467.5
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1464
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1427
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2852
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2127
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2927.6666666666665
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2928.9166666666665
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2856
+  },
+  {
+   "seed": 3,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12411
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 749
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 495
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 777.6666666666666
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 782.3333333333334
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 771
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1135
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1462.8333333333333
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1461.0833333333333
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1445
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.75,
+   "conflict": 0.5,
+   "avg_tokens": 2846
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2186
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2928.25
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2927.5
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2869
+  },
+  {
+   "seed": 4,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12496
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.0,
+   "avg_tokens": 744
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 543
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 778.5833333333334
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 785.0833333333334
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 723
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.0,
+   "avg_tokens": 1401
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1306
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1463.1666666666667
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1464.4166666666667
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1436
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2857
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2117
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2928.6666666666665
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2931.5
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2883
+  },
+  {
+   "seed": 5,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12245
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.25,
+   "avg_tokens": 746
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 498
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 780.5
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 785.25
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 768
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1390
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 999
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1465.8333333333333
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1464.3333333333333
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1438
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 2868
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2114
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2929.8333333333335
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2931.5833333333335
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2870
+  },
+  {
+   "seed": 6,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12567
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 758
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 661
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 778.8333333333334
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 788.0833333333334
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 777
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1432
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1374
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1468.25
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1466.25
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1440
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 2860
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2148
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2928.4166666666665
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2930.25
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2856
+  },
+  {
+   "seed": 7,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 12411
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.25,
+   "avg_tokens": 487
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 778
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 785.6666666666666
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 744
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.25,
+   "avg_tokens": 1381
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1221
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1463
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1464.75
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1443
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2863
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2155
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2927.5833333333335
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2930.6666666666665
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2843
+  },
+  {
+   "seed": 8,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12549
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 752
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 643
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 780.5
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 785.4166666666666
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 777
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.25,
+   "avg_tokens": 1406
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 1331
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1468.6666666666667
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1467.75
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2857
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2181
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2931.0833333333335
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2935.25
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2883
+  },
+  {
+   "seed": 9,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12338
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 743
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 463
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 778.5
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 783.4166666666666
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1425
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 1087
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1465.1666666666667
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 1464.5
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1441
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2835
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2091
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2925
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2927.1666666666665
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2870
+  }
+ ],
+ "C. 多样化闲聊 + 改写提问（问题不含槽位原词）": [
+  {
+   "seed": 0,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 12813
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.0,
+   "avg_tokens": 763
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 717.5833333333334
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 718.75
+  },
+  {
+   "seed": 0,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 776
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1400
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 879
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.25,
+   "avg_tokens": 1279.6666666666667
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.25,
+   "avg_tokens": 1282.1666666666667
+  },
+  {
+   "seed": 0,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1435
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2853
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 2139
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2201.1666666666665
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2201.6666666666665
+  },
+  {
+   "seed": 0,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2877
+  },
+  {
+   "seed": 1,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.9166666666666666,
+   "avg_tokens": 12370
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 743
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 766
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 702.1666666666666
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 704.6666666666666
+  },
+  {
+   "seed": 1,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 767
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1410
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1165
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 1268.1666666666667
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1271.3333333333333
+  },
+  {
+   "seed": 1,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1437
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2859
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.8333333333333334,
+   "avg_tokens": 2114
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2233.5
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2235.9166666666665
+  },
+  {
+   "seed": 1,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2858
+  },
+  {
+   "seed": 2,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12393
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 762
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 510
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 700.75
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 702.75
+  },
+  {
+   "seed": 2,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 771
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1428
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 1187
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.25,
+   "avg_tokens": 1277.1666666666667
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.25,
+   "avg_tokens": 1277.5833333333333
+  },
+  {
+   "seed": 2,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1427
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2852
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2127
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2283.1666666666665
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.75,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2286.25
+  },
+  {
+   "seed": 2,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2856
+  },
+  {
+   "seed": 3,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12411
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 749
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 495
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 711.6666666666666
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.3333333333333333,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 712.4166666666666
+  },
+  {
+   "seed": 3,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 771
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1135
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1285.75
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.25,
+   "avg_tokens": 1285.1666666666667
+  },
+  {
+   "seed": 3,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1445
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.75,
+   "conflict": 0.5,
+   "avg_tokens": 2846
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2186
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2234.25
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2235.6666666666665
+  },
+  {
+   "seed": 3,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2869
+  },
+  {
+   "seed": 4,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12496
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.0,
+   "avg_tokens": 744
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 543
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 722.6666666666666
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 725.25
+  },
+  {
+   "seed": 4,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 723
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.0,
+   "avg_tokens": 1401
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 1306
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1309.5833333333333
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1312.4166666666667
+  },
+  {
+   "seed": 4,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1436
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2857
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2117
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 2308.4166666666665
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 2310.25
+  },
+  {
+   "seed": 4,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2883
+  },
+  {
+   "seed": 5,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12245
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.25,
+   "avg_tokens": 746
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 498
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 713.1666666666666
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 715.3333333333334
+  },
+  {
+   "seed": 5,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 768
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1390
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 999
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1296.0833333333333
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1297.75
+  },
+  {
+   "seed": 5,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1438
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 2868
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2114
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2252.5833333333335
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 2253.1666666666665
+  },
+  {
+   "seed": 5,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2870
+  },
+  {
+   "seed": 6,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12567
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 758
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 661
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 723.4166666666666
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 723.5
+  },
+  {
+   "seed": 6,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 777
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1432
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1374
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 1296.25
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 1296.0833333333333
+  },
+  {
+   "seed": 6,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1440
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 2860
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2148
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.25,
+   "avg_tokens": 2262
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.6666666666666666,
+   "conflict": 0.25,
+   "avg_tokens": 2262.25
+  },
+  {
+   "seed": 6,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2856
+  },
+  {
+   "seed": 7,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 12411
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.25,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.25,
+   "avg_tokens": 487
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.4166666666666667,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 700.25
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 701.5833333333334
+  },
+  {
+   "seed": 7,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 744
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.25,
+   "avg_tokens": 1381
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 1221
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1270.75
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 1274.5833333333333
+  },
+  {
+   "seed": 7,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.25,
+   "avg_tokens": 1443
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2863
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2155
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.25,
+   "avg_tokens": 2308.3333333333335
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.6666666666666666,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2310.3333333333335
+  },
+  {
+   "seed": 7,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2843
+  },
+  {
+   "seed": 8,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 12549
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 752
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.8333333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 643
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 709.0833333333334
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 711.4166666666666
+  },
+  {
+   "seed": 8,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 777
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.25,
+   "conflict": 0.25,
+   "avg_tokens": 1406
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 1331
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1297.8333333333333
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1301.0833333333333
+  },
+  {
+   "seed": 8,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1422
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 2857
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2181
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2386.9166666666665
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.5,
+   "avg_tokens": 2388.8333333333335
+  },
+  {
+   "seed": 8,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2883
+  },
+  {
+   "seed": 9,
+   "budget": "-",
+   "strategy": "full(全量)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 12338
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.16666666666666666,
+   "conflict": 0.08333333333333333,
+   "avg_tokens": 743
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.75,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 463
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 710.8333333333334
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "bm25+recency",
+   "recall": 0.25,
+   "conflict": 0.16666666666666666,
+   "avg_tokens": 711.1666666666666
+  },
+  {
+   "seed": 9,
+   "budget": 800,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5,
+   "avg_tokens": 755
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.5,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 1425
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 0.9166666666666666,
+   "conflict": 0.5,
+   "avg_tokens": 1087
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.3333333333333333,
+   "conflict": 0.25,
+   "avg_tokens": 1296
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "bm25+recency",
+   "recall": 0.4166666666666667,
+   "conflict": 0.3333333333333333,
+   "avg_tokens": 1296.3333333333333
+  },
+  {
+   "seed": 9,
+   "budget": 1500,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 1441
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "window(滑窗裁剪)",
+   "recall": 0.6666666666666666,
+   "conflict": 0.5833333333333334,
+   "avg_tokens": 2835
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "summary(抽取式滚动摘要)",
+   "recall": 1.0,
+   "conflict": 0.75,
+   "avg_tokens": 2091
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25(检索召回)",
+   "recall": 0.5833333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2252.6666666666665
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "bm25+recency",
+   "recall": 0.5833333333333334,
+   "conflict": 0.4166666666666667,
+   "avg_tokens": 2255
+  },
+  {
+   "seed": 9,
+   "budget": 3000,
+   "strategy": "notes(结构化笔记,上界)",
+   "recall": 1.0,
+   "conflict": 0.6666666666666666,
+   "avg_tokens": 2870
+  }
+ ]
+}
