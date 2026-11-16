@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# next
+.next/
+out/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+
+# test / logs
+coverage/
+*.log
+.vite/
+.turbo/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
