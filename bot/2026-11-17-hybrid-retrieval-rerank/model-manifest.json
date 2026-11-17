@@ -1,0 +1,42 @@
+[
+  {
+    "file": ".model-cache/Xenova/bge-reranker-base/config.json",
+    "bytes": 782,
+    "sha256": "b6575b9d5be20d6747417c8e20c5a0db1636356e0b6d422d7244c628423c4d4c"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-reranker-base/onnx/model_quantized.onnx",
+    "bytes": 279301077,
+    "sha256": "dd98f3e67837d23210a6b7550c08cced4f61845b940ac45be3565840a10f3244"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-reranker-base/tokenizer.json",
+    "bytes": 17098079,
+    "sha256": "48564c5c7d3fa64d85d95e65414a542385f88b0f128fd8d4163fd7a57f2be05c"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-reranker-base/tokenizer_config.json",
+    "bytes": 443,
+    "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/config.json",
+    "bytes": 716,
+    "sha256": "d4193ead3a810fd694fa8a31d7fc72fbaebc0668b603e398734bf2f6538ff42f"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/onnx/model_quantized.onnx",
+    "bytes": 24010842,
+    "sha256": "15b717c382bcb518ba457b93ea6850ede7f4f1cd8937454aa06972366cd19bcc"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/tokenizer.json",
+    "bytes": 439125,
+    "sha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/tokenizer_config.json",
+    "bytes": 367,
+    "sha256": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a"
+  }
+]

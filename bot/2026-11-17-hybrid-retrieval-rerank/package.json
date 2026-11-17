@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "eval": "tsx scripts/eval.ts",
     "chunks": "tsx scripts/build-chunks.ts",
-    "validate": "tsx scripts/validate-data.ts"
+    "validate": "tsx scripts/validate-data.ts",
+    "report": "tsx scripts/update-report.ts"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -31,5 +32,12 @@
     "@types/react-dom": "19.3.0",
     "vitest": "5.1.0",
     "tsx": "4.23.15"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "onnxruntime-node",
+      "sharp",
+      "protobufjs"
+    ]
   }
 }

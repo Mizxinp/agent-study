@@ -5,3 +5,11 @@ node_modules/
 .env*.local
 *.tsbuildinfo
 next-env.d.ts
+
+*.log
+eval-checkpoint.json
+eval-error.json
+first-run.json
+api-response.json
+!artifacts/
+!artifacts/**

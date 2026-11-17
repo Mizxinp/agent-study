@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-11-17T14:10:08.508Z",
+  "httpStatus": 200,
+  "missingQueryStatus": 400,
+  "longQueryStatus": 400,
+  "counts": {
+    "bm25": 5,
+    "vector": 5,
+    "rrf": 5,
+    "rerank": 5
+  },
+  "command": "curl --get --data-urlencode q=DH-TC-0915的标称容积是多少？ http://localhost:3123/api/search",
+  "exitCode": 0
+}
