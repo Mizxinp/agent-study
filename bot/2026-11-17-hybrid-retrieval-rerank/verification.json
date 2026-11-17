@@ -1,0 +1,27 @@
+[
+  {
+    "command": "pnpm install",
+    "exitCode": 0,
+    "seconds": 0.540146611
+  },
+  {
+    "command": "pnpm test",
+    "exitCode": 0,
+    "seconds": 0.995581409
+  },
+  {
+    "command": "pnpm typecheck",
+    "exitCode": 0,
+    "seconds": 0.6571546829999998
+  },
+  {
+    "command": "pnpm build",
+    "exitCode": 0,
+    "seconds": 2.807732689
+  },
+  {
+    "command": "pnpm eval",
+    "exitCode": 0,
+    "seconds": 126.006270954
+  }
+]

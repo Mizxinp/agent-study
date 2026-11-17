@@ -1,0 +1,37 @@
+{
+  "before": {
+    "data/queries.json": "22ea351bc45d992fb42e9f66853b359fa5f737e06b466b805f062c793d1c020c",
+    "data/docs.json": "895522fd6a813444e28b7ad00c9447ce4ab32b56f0c00098882a00c8e9914ee1",
+    "data/chunks.json": "431fc307534c3d76e58dd3fd403a242f3640bbd5be1818e4cedff68d21c16ea6",
+    "lib/chunk.ts": "040118ac3bb8b566d63e7e12e1ef3233f87e01bcfca0a351d5f632a3d7486eb3",
+    "scripts/build-chunks.ts": "3849286c398db2197818867c23d84eb3050c7d972f9f82c111437f32e463f3fa",
+    "scripts/validate-data.ts": "6fd0e34715c655d1f61fb565dcce0cf8ef5c3b994568940862f5676ae421ff23",
+    "artifacts/first-run.json": "8e8f504d4ac2b6040d480becb025e80428e31517a65957d8f85c7fc7321e2ec5",
+    "artifacts/initial-top5-only/results.md": "3110a6c2be229b365c7e45ecf53c46ebc161ef2f286d01580c248c999865e37f",
+    "artifacts/initial-top5-only/verification.json": "f437b8a6c4909d22ff218bd5d8a41e43c76219213d99f19c49c5c72c29bf95f3",
+    "artifacts/initial-top5-only/SHA256.json": "55f84e3d7470884cbf4162b0a957a5fe96a5be9749bfafdba46d1137c8c0a648",
+    "artifacts/initial-top5-only/results.json": "ed14d987fe2229d8d771d44c60860ca951b39559a18156cfe0260ee471e57ff2"
+  },
+  "after": {
+    "data/queries.json": "22ea351bc45d992fb42e9f66853b359fa5f737e06b466b805f062c793d1c020c",
+    "data/docs.json": "895522fd6a813444e28b7ad00c9447ce4ab32b56f0c00098882a00c8e9914ee1",
+    "data/chunks.json": "431fc307534c3d76e58dd3fd403a242f3640bbd5be1818e4cedff68d21c16ea6",
+    "lib/chunk.ts": "040118ac3bb8b566d63e7e12e1ef3233f87e01bcfca0a351d5f632a3d7486eb3",
+    "scripts/build-chunks.ts": "3849286c398db2197818867c23d84eb3050c7d972f9f82c111437f32e463f3fa",
+    "scripts/validate-data.ts": "6fd0e34715c655d1f61fb565dcce0cf8ef5c3b994568940862f5676ae421ff23",
+    "artifacts/first-run.json": "8e8f504d4ac2b6040d480becb025e80428e31517a65957d8f85c7fc7321e2ec5",
+    "artifacts/initial-top5-only/results.md": "3110a6c2be229b365c7e45ecf53c46ebc161ef2f286d01580c248c999865e37f",
+    "artifacts/initial-top5-only/verification.json": "f437b8a6c4909d22ff218bd5d8a41e43c76219213d99f19c49c5c72c29bf95f3",
+    "artifacts/initial-top5-only/SHA256.json": "55f84e3d7470884cbf4162b0a957a5fe96a5be9749bfafdba46d1137c8c0a648",
+    "artifacts/initial-top5-only/results.json": "ed14d987fe2229d8d771d44c60860ca951b39559a18156cfe0260ee471e57ff2"
+  },
+  "allUnchanged": true,
+  "top5ScoresAndIdsUnchanged": true,
+  "fullRankings": 48,
+  "latencyMeasurements": 144,
+  "reportIdempotence": {
+    "sha256Before": "48d1565b58ea814d29b5b20192bd2cb1d6bd2b9c2b6c2322ac911439ea400ba5",
+    "sha256After": "48d1565b58ea814d29b5b20192bd2cb1d6bd2b9c2b6c2322ac911439ea400ba5",
+    "identical": true
+  }
+}

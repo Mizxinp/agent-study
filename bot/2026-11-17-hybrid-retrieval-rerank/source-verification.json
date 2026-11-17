@@ -1,0 +1,18 @@
+{
+  "commit": "0e8e0543aeda7d4dd4ce6eade0d5b7d5a43644c1",
+  "package": "ai@7.0.173",
+  "files": [
+    {
+      "source": "../src/rerank/rerank.ts",
+      "installedSha256": "4d41cad959e476f959fd829a6e8909cf217c9314e359ea6e39bd7a6f974cd9dc",
+      "commitSha256": "4d41cad959e476f959fd829a6e8909cf217c9314e359ea6e39bd7a6f974cd9dc",
+      "byteIdentical": true
+    },
+    {
+      "source": "../src/embed/embed-many.ts",
+      "installedSha256": "fc7cf5844ce209566b9c6941a7b673cc841ecaf34226e9ef74f886faeebb767b",
+      "commitSha256": "fc7cf5844ce209566b9c6941a7b673cc841ecaf34226e9ef74f886faeebb767b",
+      "byteIdentical": true
+    }
+  ]
+}

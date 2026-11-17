@@ -1,0 +1,50 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f3f5f7;
+  color: #203044;
+  margin: 0;
+}
+main {
+  max-width: 1450px;
+  margin: 40px auto;
+  padding: 20px;
+}
+form {
+  display: flex;
+  gap: 12px;
+}
+input {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+}
+button {
+  padding: 12px 28px;
+  background: #235c8e;
+  color: white;
+  border: 0;
+  border-radius: 6px;
+}
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+article {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+small {
+  color: #53677d;
+}
+h3 {
+  font-size: 16px;
+}
+@media (max-width: 850px) {
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
