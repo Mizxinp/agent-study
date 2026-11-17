@@ -1,0 +1,409 @@
+{
+  "generatedAt": "2026-11-17T16:40:45.608Z",
+  "runs": [
+    {
+      "provider": "anthropic",
+      "modelId": "claude-sonnet-5-5",
+      "retrievalMode": "Anthropic explicit block-level cache_control (not top-level automatic caching)",
+      "prefixChars": 8624,
+      "estimatedPrefixTokens": 2156,
+      "minCacheableTokens": 512,
+      "enlargedPrefix": false,
+      "priceSource": {
+        "title": "Anthropic Claude API pricing (and the Prompt caching page table)",
+        "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "fetchedAt": "2026-11-17",
+        "unit": "USD per 1,000,000 tokens"
+      },
+      "priceRow": {
+        "input": 2,
+        "cacheWrite5m": 2.5,
+        "cacheWrite1h": 4,
+        "cacheRead": 0.1,
+        "output": 10
+      },
+      "calls": [
+        {
+          "label": "H1 request 1 (write expected)",
+          "modelId": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "scenario": "h1",
+          "question": "In the product manual, what is the rated continuous power of SKU-1000? Reply with only the number and the unit.",
+          "usage": {
+            "inputTokens": 3990,
+            "outputTokens": 5,
+            "noCacheTokens": 41,
+            "cacheReadTokens": 3949,
+            "cacheWriteTokens": 0,
+            "cacheCreation5m": 0,
+            "cacheCreation1h": 0,
+            "raw": {
+              "service_tier": "standard",
+              "input_tokens": 41,
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 3949,
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 0,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "output_tokens": 5,
+              "output_tokens_details": {
+                "thinking_tokens": 0
+              }
+            }
+          },
+          "inputCostUsd": 0.00047690000000000005,
+          "outputCostUsd": 0.00005,
+          "totalCostUsd": 0.0005269000000000001,
+          "ttftMs": 4708.987392,
+          "durationMs": 4714.177604,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H1 request 2 (read expected, question changed)",
+          "modelId": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "scenario": "h1",
+          "question": "In the product manual, what is the warranty period of SKU-1001? Reply with only the duration.",
+          "usage": {
+            "inputTokens": 3985,
+            "outputTokens": 5,
+            "noCacheTokens": 36,
+            "cacheReadTokens": 3949,
+            "cacheWriteTokens": 0,
+            "cacheCreation5m": 0,
+            "cacheCreation1h": 0,
+            "raw": {
+              "service_tier": "standard",
+              "input_tokens": 36,
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 3949,
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 0,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "output_tokens": 5,
+              "output_tokens_details": {
+                "thinking_tokens": 0
+              }
+            }
+          },
+          "inputCostUsd": 0.0004669000000000001,
+          "outputCostUsd": 0.00005,
+          "totalCostUsd": 0.0005169,
+          "ttftMs": 3725.7033979999987,
+          "durationMs": 3825.4836939999996,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H2 request 1 (breakpoint on changing question)",
+          "modelId": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "scenario": "h2",
+          "question": "In the product manual, what is the rated continuous power of SKU-1000? Reply with only the number and the unit. (request marker: 2026-11-17T16:40:29.920Z)",
+          "usage": {
+            "inputTokens": 4013,
+            "outputTokens": 5,
+            "noCacheTokens": 4,
+            "cacheReadTokens": 3949,
+            "cacheWriteTokens": 60,
+            "cacheCreation5m": 60,
+            "raw": {
+              "service_tier": "standard",
+              "input_tokens": 4,
+              "cache_creation_input_tokens": 60,
+              "cache_read_input_tokens": 3949,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 60
+              },
+              "output_tokens": 5,
+              "output_tokens_details": {
+                "thinking_tokens": 0
+              }
+            }
+          },
+          "inputCostUsd": 0.0005529,
+          "outputCostUsd": 0.00005,
+          "totalCostUsd": 0.0006029000000000001,
+          "ttftMs": 2810.6473650000007,
+          "durationMs": 2811.973024000001,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H2 request 2 (breakpoint on changing question)",
+          "modelId": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "scenario": "h2",
+          "question": "In the product manual, what is the warranty period of SKU-1001? Reply with only the duration. (request marker: 2026-11-17T16:40:32.732Z)",
+          "usage": {
+            "inputTokens": 4008,
+            "outputTokens": 5,
+            "noCacheTokens": 4,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 4004,
+            "cacheCreation5m": 4004,
+            "raw": {
+              "service_tier": "standard",
+              "input_tokens": 4,
+              "cache_creation_input_tokens": 4004,
+              "cache_read_input_tokens": 0,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 4004
+              },
+              "output_tokens": 5,
+              "output_tokens_details": {
+                "thinking_tokens": 0
+              }
+            }
+          },
+          "inputCostUsd": 0.010017999999999999,
+          "outputCostUsd": 0.00005,
+          "totalCostUsd": 0.010067999999999999,
+          "ttftMs": 3019.50022,
+          "durationMs": 3021.218468000001,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "H1",
+          "verdict": "不确定",
+          "detail": "字段不完整或不典型：第一次 write=0 read=3949；第二次 write=0 read=3949，noCache=36。如实记录，不改数字。"
+        },
+        {
+          "id": "H2",
+          "verdict": "不确定",
+          "detail": "可能出现提供商隐式断点或部分命中：第一次 write=60 read=3949；第二次 write=4004 read=0。如实记录字段，不改数字。"
+        },
+        {
+          "id": "H3",
+          "verdict": "支持",
+          "detail": "H1 两次请求输入成本 9.438000e-4 USD，低于对照 1.595000e-2 USD（对照为按未缓存输入单价计算的算术对照，不是第三次实测关缓存请求）。"
+        },
+        {
+          "id": "H4",
+          "verdict": "不确定",
+          "detail": "仅有一次配对样本：第一次 TTFT 4709 ms，第二次 3726 ms（第二次更快）。样本少、波动可能很大，不把单次差异写成确定结论。"
+        }
+      ],
+      "h3ControlKind": "calculated",
+      "h1InputCostUsd": 0.0009438000000000001,
+      "uncachedControlInputCostUsd": 0.01595,
+      "inputSavingsUsd": 0.015006199999999999
+    },
+    {
+      "provider": "openai",
+      "modelId": "gpt-5.6-sol",
+      "retrievalMode": "OpenAI Responses explicit prompt_cache_options + prompt_cache_breakpoint",
+      "prefixChars": 8624,
+      "estimatedPrefixTokens": 2156,
+      "minCacheableTokens": 1024,
+      "enlargedPrefix": false,
+      "priceSource": {
+        "title": "OpenAI API pricing (standard, short context) and the Prompt caching guide",
+        "url": "https://developers.openai.com/api/docs/pricing",
+        "fetchedAt": "2026-11-17",
+        "unit": "USD per 1,000,000 tokens (standard, short-context tier)"
+      },
+      "priceRow": {
+        "input": 4,
+        "cachedInput": 0.4,
+        "cacheWrite30m": 5,
+        "cacheWrite12h": 10,
+        "output": 20
+      },
+      "calls": [
+        {
+          "label": "H1 request 1 (write expected)",
+          "modelId": "gpt-5.6-sol",
+          "provider": "openai",
+          "scenario": "h1",
+          "question": "In the product manual, what is the rated continuous power of SKU-1000? Reply with only the number and the unit.",
+          "usage": {
+            "inputTokens": 2360,
+            "outputTokens": 6,
+            "noCacheTokens": 33,
+            "cacheReadTokens": 2327,
+            "cacheWriteTokens": 0,
+            "cacheWrite30m": 0,
+            "cacheWrite12h": 0,
+            "raw": {
+              "cost": 0.0011828,
+              "input_tokens": 2360,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cache_write_tokens_details": {
+                  "ttl_12h_tokens": 0,
+                  "ttl_30m_tokens": 0
+                },
+                "cached_tokens": 2327
+              },
+              "output_tokens": 6,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 2366
+            }
+          },
+          "inputCostUsd": 0.0010628,
+          "outputCostUsd": 0.00012,
+          "totalCostUsd": 0.0011828000000000001,
+          "ttftMs": 2126.1530829999992,
+          "durationMs": 2417.1951299999982,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H1 request 2 (read expected, question changed)",
+          "modelId": "gpt-5.6-sol",
+          "provider": "openai",
+          "scenario": "h1",
+          "question": "In the product manual, what is the warranty period of SKU-1001? Reply with only the duration.",
+          "usage": {
+            "inputTokens": 2356,
+            "outputTokens": 6,
+            "noCacheTokens": 29,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 2327,
+            "cacheWrite30m": 2327,
+            "cacheWrite12h": 0,
+            "raw": {
+              "cost": 0.011871,
+              "input_tokens": 2356,
+              "input_tokens_details": {
+                "cache_write_tokens": 2327,
+                "cache_write_tokens_details": {
+                  "ttl_12h_tokens": 0,
+                  "ttl_30m_tokens": 2327
+                },
+                "cached_tokens": 0
+              },
+              "output_tokens": 6,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 2362
+            }
+          },
+          "inputCostUsd": 0.011751,
+          "outputCostUsd": 0.00012,
+          "totalCostUsd": 0.011871,
+          "ttftMs": 2125.4803969999994,
+          "durationMs": 2340.2250829999975,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H2 request 1 (breakpoint on changing question)",
+          "modelId": "gpt-5.6-sol",
+          "provider": "openai",
+          "scenario": "h2",
+          "question": "In the product manual, what is the rated continuous power of SKU-1000? Reply with only the number and the unit. (request marker: 2026-11-17T16:40:40.512Z)",
+          "usage": {
+            "inputTokens": 2381,
+            "outputTokens": 6,
+            "noCacheTokens": 3,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 2378,
+            "cacheWrite30m": 2378,
+            "cacheWrite12h": 0,
+            "raw": {
+              "cost": 0.012022,
+              "input_tokens": 2381,
+              "input_tokens_details": {
+                "cache_write_tokens": 2378,
+                "cache_write_tokens_details": {
+                  "ttl_12h_tokens": 0,
+                  "ttl_30m_tokens": 2378
+                },
+                "cached_tokens": 0
+              },
+              "output_tokens": 6,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 2387
+            }
+          },
+          "inputCostUsd": 0.011902,
+          "outputCostUsd": 0.00012,
+          "totalCostUsd": 0.012022,
+          "ttftMs": 2724.7266230000023,
+          "durationMs": 2886.616750000001,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        },
+        {
+          "label": "H2 request 2 (breakpoint on changing question)",
+          "modelId": "gpt-5.6-sol",
+          "provider": "openai",
+          "scenario": "h2",
+          "question": "In the product manual, what is the warranty period of SKU-1001? Reply with only the duration. (request marker: 2026-11-17T16:40:43.399Z)",
+          "usage": {
+            "inputTokens": 2377,
+            "outputTokens": 6,
+            "noCacheTokens": 3,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 2374,
+            "cacheWrite30m": 2374,
+            "cacheWrite12h": 0,
+            "raw": {
+              "cost": 0.012002,
+              "input_tokens": 2377,
+              "input_tokens_details": {
+                "cache_write_tokens": 2374,
+                "cache_write_tokens_details": {
+                  "ttl_12h_tokens": 0,
+                  "ttl_30m_tokens": 2374
+                },
+                "cached_tokens": 0
+              },
+              "output_tokens": 6,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 2383
+            }
+          },
+          "inputCostUsd": 0.011882,
+          "outputCostUsd": 0.00012,
+          "totalCostUsd": 0.012002,
+          "ttftMs": 1804.5635220000004,
+          "durationMs": 2209.0997239999997,
+          "warnings": [],
+          "estimatedPrefixTokens": 2156
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "H1",
+          "verdict": "不支持",
+          "detail": "两次都没有写入或命中（第一次 write=0 read=2327；第二次 write=2327 read=0）。若两次 input 都低于最低可缓存长度，应先加长稳定前缀再判定。"
+        },
+        {
+          "id": "H2",
+          "verdict": "支持",
+          "detail": "两次主要是写入或缓存字段接近 0（第一次 write=2378 read=0；第二次 write=2374 read=0），不像 H1 那样的前缀命中。"
+        },
+        {
+          "id": "H3",
+          "verdict": "支持",
+          "detail": "H1 两次请求输入成本 1.281380e-2 USD，低于对照 1.886400e-2 USD（对照为按未缓存输入单价计算的算术对照，不是第三次实测关缓存请求）。"
+        },
+        {
+          "id": "H4",
+          "verdict": "不确定",
+          "detail": "仅有一次配对样本：第一次 TTFT 2126 ms，第二次 2125 ms（第二次更快）。样本少、波动可能很大，不把单次差异写成确定结论。"
+        }
+      ],
+      "h3ControlKind": "calculated",
+      "h1InputCostUsd": 0.0128138,
+      "uncachedControlInputCostUsd": 0.018864,
+      "inputSavingsUsd": 0.006050199999999999
+    }
+  ]
+}

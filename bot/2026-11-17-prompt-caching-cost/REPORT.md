@@ -25,6 +25,9 @@
 - `lib/experiment.ts` + `scripts/eval.ts`：有密钥时连续调用（H1 两次、H2 两次），记录 usage、估算成本与 TTFT；若第一次看起来短于最低可缓存长度，会把前缀加长到 4096 / 8192 再试，不把过短提示当成失败。没有密钥时打印清楚的缺变量信息并以非 0 退出，不写伪造的 `results.json`。
 - `tests/h5-cache-control.test.ts`：用自定义 `fetch` 拦截发出的 Anthropic 请求 JSON，覆盖 H5。`tests/cost-usage.test.ts` 用夹具对象测解析和算术，不用 mock 的实况 usage。
 - `app/page.tsx`：最小说明页。无密钥时可打开，解释 H1–H4 需要密钥、H5 由测试覆盖。若之后设置了密钥，可通过 `pnpm eval` 或页面按钮跑真实评测。
+- `lib/base-url.ts`：读取 `OPENAI_BASE_URL` / `ANTHROPIC_BASE_URL`（若未设则回退 `CR_OPENAI_BASE_URL` / `CR_ANTHROPIC_BASE_URL`），去掉尾部斜杠后传给 `createOpenAI` / `createAnthropic`。已核对 `@ai-sdk/openai@4.0.118` 会把 path 拼到 base 上（`/responses`、`/chat/completions`、`/embeddings`），`@ai-sdk/anthropic@4.0.105` 会拼 `/messages`，且只在 base 恰好为 `https://api.anthropic.com` 时自动补 `/v1`。因此自定义 base 必须已含 `/v1`，最终请求落到 `/v1/responses` 或 `/v1/messages`，不会出现重复的 `/v1`。自定义 Anthropic base 时额外带上 `Authorization: Bearer …`，与 SDK 默认的 `x-api-key`、`anthropic-version: 2023-06-01` 一起发送。
+- `lib/call.ts`：`streamText` 增加 `allowSystemInMessages: true`。`ai@7.0.173` 默认禁止 `messages` 里的 system 角色；缓存断点写在稳定前缀这条 system 消息的 `providerOptions` 上，改用 `instructions` 会丢掉这些标记。
+- 可选 `EVAL_SKIP_OPENAI=1`：当兼容接口不支持 Responses 时跳过 OpenAI 路径。本次 CR 的 `POST /v1/responses` 可用，未跳过。
 
 默认模型（可用 `ANTHROPIC_MODEL` / `OPENAI_MODEL` / `GATEWAY_MODEL` 覆盖）：
 
@@ -46,33 +49,56 @@ H3 对照默认是**算术对照**：把 H1 两次请求的全部 input tokens �
 
 ## 结果
 
-本环境在实现时确认：`OPENAI_API_KEY`、`ANTHROPIC_API_KEY`、`AI_GATEWAY_API_KEY` 都未设置。因此没有调用真实模型，也没有生成 `results.json` / `results.md`，更没有编造 usage 数字。
+本轮在共享云电脑上于 2026-11-18 00:40:45（Asia/Shanghai）跑通 `pnpm eval`（退出码 0，墙钟约 25 秒）。密钥只通过 `source` 注入进程环境，没有写入仓库 `.env`，也没有编造 usage。数字来自 `results.json` / `results.md` 中的真实 `usage`（含 `usage.raw`）。成本按官方单价估算，不是 CR 账单。OpenAI Responses 的 `usage.raw` 里还有一个 `cost` 字段，本报告不采用该字段作为账单。
 
-评测命令：`pnpm test`（Vitest 5.1.0）。本环境实测 **11 passed**（3 条 H5 请求拦截断言 + 成本/解析/前缀夹具测试）。退出码见下方「怎么跑」。
+实际模型与路径：
 
-### H1：未运行，缺 OPENAI_API_KEY / ANTHROPIC_API_KEY / AI_GATEWAY_API_KEY
+| 提供商 | 模型 id | 请求路径（SDK 拼接） | 断点方式 |
+| --- | --- | --- | --- |
+| Anthropic 兼容 | `claude-sonnet-5-5` | `{ANTHROPIC_BASE_URL}/messages` → `/v1/messages` | 块级 `cache_control`（非顶层自动缓存） |
+| OpenAI 兼容 | `gpt-5.6-sol` | `{OPENAI_BASE_URL}/responses` → `/v1/responses` | Responses `prompt_cache_options.mode: "explicit"` + `prompt_cache_breakpoint` |
 
-预期（有密钥后由 `pnpm eval` 填写真实字段）：第一次出现写入（Anthropic：`cache_creation_input_tokens > 0`；OpenAI：`cache_write_tokens > 0`，或第一次 `cached_tokens` 为 0 且第二次 `> 0`）；第二次出现命中（Anthropic：`cache_read_input_tokens` 接近第一次写入量，`input_tokens` 明显更小；OpenAI：`cached_tokens > 0`）。
+稳定前缀约 2156 tokens（8624 字符，chars/4 估算），未因过短而加长。预热默认关闭，本轮未启用。H3 对照是**算术对照**（把 H1 两次全部 input tokens 按未缓存输入单价计费），不是第三次关闭缓存的实测请求。
 
-当前没有模型 id、usage、估算成本或 TTFT。
+Anthropic usage 原始字段：`input_tokens`、`cache_creation_input_tokens`、`cache_read_input_tokens`、`cache_creation.ephemeral_5m_input_tokens` / `ephemeral_1h_input_tokens`、`output_tokens`。OpenAI Responses usage 原始字段：`input_tokens`、`input_tokens_details.cached_tokens`、`input_tokens_details.cache_write_tokens`（及 `cache_write_tokens_details.ttl_30m_tokens` / `ttl_12h_tokens`）、`output_tokens`、`total_tokens`。
 
-### H2：未运行，缺 OPENAI_API_KEY / ANTHROPIC_API_KEY / AI_GATEWAY_API_KEY
+样本很小（每个提供商 H1/H2 各两问、H4 仅一对 TTFT），结论只对这次运行有效。
 
-预期：同一套前缀，但缓存标记只放在带时间戳的问题上；两次主要是写入 / `cached_tokens` 接近 0，不能当成 H1 那样的命中。若提供商隐式断点造成部分命中，评测脚本会如实记录字段，不改数字。
+### Anthropic / `claude-sonnet-5-5`
 
-### H3：未运行，缺 OPENAI_API_KEY / ANTHROPIC_API_KEY / AI_GATEWAY_API_KEY
+| 请求 | input | noCache | cacheWrite（5m） | cacheRead | output | 估算输入成本 USD | 总耗时 / TTFT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| H1-1（预期写入） | 3990 | 41 | 0 | 3949 | 5 | 4.769e-4 | 4714 / 4709 ms |
+| H1-2（预期命中，换问题） | 3985 | 36 | 0 | 3949 | 5 | 4.669e-4 | 3825 / 3726 ms |
+| H2-1（断点在变化问题上） | 4013 | 4 | 60 | 3949 | 5 | 5.529e-4 | 2812 / 2811 ms |
+| H2-2（断点在变化问题上） | 4008 | 4 | 4004 | 0 | 5 | 1.0018e-2 | 3021 / 3020 ms |
 
-预期：用官方单价计算 H1 两次请求的输入成本，对比「两次都按未缓存输入价」的算术对照。有密钥跑通后，报告会写明对照是计算值。
+- **H1：不确定。** 假设是第一次 `cache_creation_input_tokens > 0`、第二次出现接近写入量的 `cache_read_input_tokens`。实测两次都是 `cache_creation_input_tokens = 0`、`cache_read_input_tokens = 3949`（`usage.raw.input_tokens` 分别为 41 和 36）。第一次就已经是命中而不是写入。本轮没有预热；连通性探测只用了极短 prompt，不应写入这段手册前缀。更像兼容层或上游的隐式前缀缓存，不能当成「显式断点第一次写入、第二次命中」的干净证据。如实记录，不改数字。
+- **H2：不确定。** 假设把断点只放在带时间戳的问题上时，不应出现类似 H1 的前缀命中。第一次仍是 write=60、read=3949；第二次是 write=4004（`ephemeral_5m_input_tokens=4004`）、read=0。两次模式不一致，可能有隐式断点或部分命中，不能支持或否定该假设。
+- **H3：支持。** H1 两次输入成本 9.438e-4 USD，低于算术对照 1.595e-2 USD（差额 1.5006e-2 USD）。对照是按未缓存输入单价计算的，不是第三次实测关缓存请求。
+- **H4：不确定。** 仅一对样本：TTFT 4709 ms → 3726 ms（第二次更快）。样本少，不把单次差异写成确定结论。
 
-### H4：未运行，缺 OPENAI_API_KEY / ANTHROPIC_API_KEY / AI_GATEWAY_API_KEY
+### OpenAI Responses / `gpt-5.6-sol`
 
-可选。评测脚本会记录 TTFT（`streamText` 到第一条文本增量的时间）。即使跑通，单次配对样本也应标「不确定」，不挑一次好看的结果当结论。
+CR 官方兼容说明以 Chat Completions 为主，但本次先实测了 Responses：`POST /v1/responses` 对 `gpt-5.6-sol` 返回 HTTP 200，完整评测按原 demo 的 Responses + `promptCacheOptions` 路径跑通，没有改走 Chat Completions，也没有 mock usage。
+
+| 请求 | input | noCache | cacheWrite（30m） | cacheRead | output | 估算输入成本 USD | 总耗时 / TTFT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| H1-1（预期写入） | 2360 | 33 | 0 | 2327 | 6 | 1.0628e-3 | 2417 / 2126 ms |
+| H1-2（预期命中，换问题） | 2356 | 29 | 2327 | 0 | 6 | 1.1751e-2 | 2340 / 2125 ms |
+| H2-1（断点在变化问题上） | 2381 | 3 | 2378 | 0 | 6 | 1.1902e-2 | 2887 / 2725 ms |
+| H2-2（断点在变化问题上） | 2377 | 3 | 2374 | 0 | 6 | 1.1882e-2 | 2209 / 1805 ms |
+
+- **H1：不支持。** 假设仍是第一次写入、第二次命中。实测顺序相反：第一次 `cached_tokens=2327`、`cache_write_tokens=0`；第二次 `cache_write_tokens=2327`（`ttl_30m_tokens=2327`）、`cached_tokens=0`。前缀长度已高于 1024，不是因为过短。脚本判定为不支持；字段如实保留。
+- **H2：支持。** 两次主要是写入、没有前缀命中（write=2378 / 2374，read=0），不像一次典型的稳定前缀命中。
+- **H3：支持。** H1 两次输入成本 1.28138e-2 USD，低于算术对照 1.8864e-2 USD（差额 6.050e-3 USD）。第一次命中按缓存读单价计入后，算术对照仍能看到输入成本更低。对照同样不是第三次实测关缓存请求。
+- **H4：不确定。** 仅一对样本：TTFT 2126 ms → 2125 ms，几乎没有差别，不能下结论。
 
 ### H5：支持
 
-不依赖计费，也不需要密钥。测试文件：`tests/h5-cache-control.test.ts`。方法：`createAnthropic({ apiKey: "test-key-not-a-secret", fetch })` 拦截即将发出的 JSON，并返回夹具响应，不访问 `api.anthropic.com`。
+不依赖计费，也不需要密钥。测试文件：`tests/h5-cache-control.test.ts`。方法：`createAnthropic({ apiKey: "test-key-not-a-secret", fetch })` 拦截即将发出的 JSON，并返回夹具响应，不访问官方或兼容端点。
 
-实测（`pnpm test`）断言如下。
+本轮 `pnpm test` 为 **16 passed**（原 11 条加上 base URL 拼接夹具）。H5 三条断言与首次提交时相同：
 
 1. `H5: message-level providerOptions.anthropic.cacheControl appears only on that message's last content part`
 
@@ -91,7 +117,7 @@ H3 对照默认是**算术对照**：把 H1 两次请求的全部 input tokens �
 
    中间块带 part 级 `ttl: "1h"`，消息级仍是 `5m`。发出的 JSON 为：第一块无标记，第二块 `ttl: "1h"`，最后一块拿到消息级的 `ttl: "5m"`。也就是说「优先」指同一块上 part 级覆盖消息级；消息级不会抹掉其他块上的 part 级标记，仍会落到最后一个未单独标记的块上。
 
-同文件之外，`tests/cost-usage.test.ts` 用官方文档中的夹具对象验证了 usage 解析与成本算术（包括 Anthropic 的 `cache_creation` 5m/1h 拆分，以及 OpenAI 文档中 `cached_tokens` + `cache_write_tokens_details` 的例子），不是实况评测结果。
+同文件之外，`tests/cost-usage.test.ts` 用官方文档中的夹具对象验证了 usage 解析与成本算术（包括 Anthropic 的 `cache_creation` 5m/1h 拆分，以及 OpenAI 文档中 `cached_tokens` + `cache_write_tokens_details` 的例子），不是实况评测结果。`tests/base-url.test.ts` 只用虚构主机验证 URL 拼接，不发起网络请求。
 
 ## SDK 映射要点（对照 `ai@7.0.173` / 提供商包源码）
 
@@ -113,13 +139,13 @@ H3 对照默认是**算术对照**：把 H1 两次请求的全部 input tokens �
 - pnpm `10.34.6`
 - 工作目录：`bot/2026-11-17-prompt-caching-cost/`
 
-本环境实测退出码（2026-11-17，Asia/Shanghai）：
+本环境实测退出码（2026-11-18，Asia/Shanghai）：
 
 - `pnpm install`：0
-- `pnpm test`：0（11 passed）
+- `pnpm test`：0（16 passed）
 - `pnpm typecheck`：0
 - `pnpm build`：0
-- `pnpm eval`：1（无密钥，预期失败；打印了上面三条缺失变量，未写 `results.json`）
+- `pnpm eval`：0（真实调用 CR 兼容接口，写出 `results.json` 与 `results.md`，墙钟约 25 秒）
 
 ```bash
 pnpm install
@@ -130,7 +156,7 @@ pnpm dev          # 浏览器打开说明页；无密钥时页面可用，评测
 pnpm eval         # 无密钥时以非 0 退出，并打印缺少的变量名
 ```
 
-需要的环境变量见 `.env.example`。不要把真实密钥提交进仓库。有密钥后，`pnpm eval` 会真实调用模型并写出 `results.json` 与 `results.md`（二者已被 gitignore）。然后用这些真实数字更新本报告的 H1–H4，不要把预算估算写成实测。
+需要的环境变量见 `.env.example`。可设置 `OPENAI_BASE_URL` / `ANTHROPIC_BASE_URL`（或 `CR_*` 别名），base 需已包含 `/v1`。不要把真实密钥提交进仓库。`pnpm eval` 会真实调用模型并写出 `results.json` 与 `results.md`（二者已被 gitignore）。本报告的 H1–H4 已按这次真实数字更新；成本是官方单价估算，不是账单。
 
 无密钥时 `pnpm eval` 的预期输出类似：
 
@@ -143,7 +169,9 @@ pnpm eval         # 无密钥时以非 0 退出，并打印缺少的变量名
 
 ## 未解决的问题
 
-- H1–H4 尚未用真实 API 跑过。本环境没有可用密钥，且出口区域限制下直接访问 `api.openai.com` 也可能失败；有密钥后应在可访问对应 API 的环境重跑 `pnpm eval`，再用真实结果更新本报告。
-- 默认 OpenAI 型号写成 `gpt-5.6-sol`（官方定价表中的 id）。若账号实际要用别的 GPT-5.6 别名，设置 `OPENAI_MODEL`。若定价表没有该 id，脚本会拒绝编造单价。
+- Anthropic 与 OpenAI 的 H1 第一次请求都已经出现大量 cache read、几乎没有 cache write，不符合「第一次写入、第二次命中」的典型顺序。可能是兼容层或上游的隐式前缀缓存，本轮无法分离。若要验证显式断点本身，需要可关闭隐式缓存的对照，或一次确定的冷缓存窗口；本次没有做第三次关缓存的实测。
+- OpenAI H1 甚至是先命中、后写入，假设被判定为不支持。Responses 路径可用，但这次不能证明 explicit breakpoint 按预期工作。
+- H4 只有一对 TTFT，结论保持不确定。
+- 默认 OpenAI 型号仍是 `gpt-5.6-sol`（官方定价表中的 id）。若账号实际要用别的 GPT-5.6 别名，设置 `OPENAI_MODEL`。若定价表没有该 id，脚本会拒绝编造单价。
 - Anthropic 文档里有一处 usage 示例 `input_tokens: 2048` 同时列出 `cache_read_input_tokens` / `cache_creation_input_tokens`，与后文「`input_tokens` 只表示最后一个断点之后的 token，总量为三者之和」的公式并置时容易读混。本 demo 按公式和 SDK 映射处理，并把原始 `usage.raw` 留在结果里。
-- 预热默认未跑。启用后若第一次正式请求已经是命中，H1 的「第一次写入、第二次命中」叙述需要按真实字段改写。
+- 预热默认未跑。本轮即使未预热，第一次正式请求也已经是命中，H1 叙述已按真实字段改写为不确定 / 不支持。

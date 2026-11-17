@@ -31,6 +31,10 @@ export async function runModelCall(options: RunCallOptions): Promise<CallRecord>
     messages: options.messages,
     maxOutputTokens: options.maxOutputTokens,
     providerOptions: options.providerOptions,
+    // Cache breakpoints are attached to the system (prefix) message via
+    // providerOptions. ai@7.0.173 rejects system roles in `messages`
+    // unless this opt-in is set; `instructions` would drop those marks.
+    allowSystemInMessages: true,
   });
 
   for await (const part of result.fullStream) {

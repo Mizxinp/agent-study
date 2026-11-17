@@ -1,6 +1,7 @@
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { createOpenAI } from "@ai-sdk/openai";
 import { gateway, type LanguageModel } from "ai";
+import { resolveAnthropicBaseURL, resolveOpenAIBaseURL } from "./base-url";
 import { detectKeys, type AvailableKeys } from "./keys";
 import {
   DEFAULT_ANTHROPIC_MODEL,
@@ -21,6 +22,37 @@ export type RunnableProvider = {
   priceKind: "anthropic" | "openai";
 };
 
+function skipOpenAI(env: NodeJS.ProcessEnv): boolean {
+  const raw = env.EVAL_SKIP_OPENAI?.trim().toLowerCase();
+  return raw === "1" || raw === "true" || raw === "yes";
+}
+
+/** Extra Authorization header for CR-compatible Anthropic bases. Official Anthropic stays x-api-key only. */
+export function anthropicProviderHeaders(
+  env: NodeJS.ProcessEnv = process.env,
+): Record<string, string> | undefined {
+  const baseURL = resolveAnthropicBaseURL(env);
+  const key = env.ANTHROPIC_API_KEY?.trim();
+  if (!baseURL || !key) return undefined;
+  return { Authorization: `Bearer ${key}` };
+}
+
+export function createAnthropicProvider(env: NodeJS.ProcessEnv = process.env) {
+  const baseURL = resolveAnthropicBaseURL(env);
+  const headers = anthropicProviderHeaders(env);
+  return createAnthropic({
+    ...(baseURL ? { baseURL } : {}),
+    ...(headers ? { headers } : {}),
+  });
+}
+
+export function createOpenAIProvider(env: NodeJS.ProcessEnv = process.env) {
+  const baseURL = resolveOpenAIBaseURL(env);
+  return createOpenAI({
+    ...(baseURL ? { baseURL } : {}),
+  });
+}
+
 export function selectProviders(env: NodeJS.ProcessEnv = process.env): RunnableProvider[] {
   const keys: AvailableKeys = detectKeys(env);
   const selected: RunnableProvider[] = [];
@@ -36,14 +68,14 @@ export function selectProviders(env: NodeJS.ProcessEnv = process.env): RunnableP
     selected.push({
       provider: "anthropic",
       modelId,
-      model: createAnthropic()(modelId),
+      model: createAnthropicProvider(env)(modelId),
       prices,
       minCacheableTokens: minCacheableTokensFor("anthropic", modelId),
       priceKind: "anthropic",
     });
   }
 
-  if (keys.openai) {
+  if (keys.openai && !skipOpenAI(env)) {
     const modelId = env.OPENAI_MODEL?.trim() || DEFAULT_OPENAI_MODEL;
     const prices = openaiPriceFor(modelId);
     if (!prices) {
@@ -54,7 +86,8 @@ export function selectProviders(env: NodeJS.ProcessEnv = process.env): RunnableP
     selected.push({
       provider: "openai",
       modelId,
-      model: createOpenAI()(modelId), // defaults to the Responses API in @ai-sdk/openai@4.0.118
+      // defaults to the Responses API in @ai-sdk/openai@4.0.118
+      model: createOpenAIProvider(env)(modelId),
       prices,
       minCacheableTokens: minCacheableTokensFor("openai", modelId),
       priceKind: "openai",
