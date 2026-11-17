@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next
+.next/
+out/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+
+# eval outputs (written only when real keys exist)
+results.json
+results.md
+
+# test / logs
+coverage/
+*.log
+.vite/
+.turbo/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
