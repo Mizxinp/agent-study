@@ -1,0 +1,35 @@
+{
+  "name": "hybrid-retrieval-rerank",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "eval": "tsx scripts/eval.ts",
+    "chunks": "tsx scripts/build-chunks.ts",
+    "validate": "tsx scripts/validate-data.ts"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "ai": "7.0.173",
+    "@ai-sdk/provider": "4.0.38",
+    "@huggingface/transformers": "4.3.2"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vitest": "5.1.0",
+    "tsx": "4.23.15"
+  }
+}
