@@ -1,5 +1,10 @@
 import { loadCatalog } from "../../../lib/catalog";
 import { searchImage, searchImageBySku, searchText } from "../../../lib/index";
+import {
+  normalizeSearchInput,
+  parseJsonBody,
+  validateSearchInput,
+} from "../../../lib/search-input";
 import type { Hit } from "../../../lib/types";
 
 export const runtime = "nodejs";
@@ -21,31 +26,24 @@ function enrich(hits: Hit[]) {
 export async function POST(request: Request) {
   try {
     const contentType = request.headers.get("content-type") || "";
-    let q = "";
+    let raw: Record<string, unknown> = {};
     let image: Buffer | undefined;
-    let querySkuId = "";
     if (contentType.includes("multipart/form-data")) {
       const form = await request.formData();
-      q = String(form.get("q") ?? "").trim();
-      querySkuId = String(form.get("querySkuId") ?? "").trim();
+      raw = { q: form.get("q") ?? "", querySkuId: form.get("querySkuId") ?? "" };
       const file = form.get("image");
       if (file instanceof File && file.size > 0) {
         image = Buffer.from(await file.arrayBuffer());
       }
     } else {
-      const body = (await request.json()) as {
-        q?: string;
-        image?: string;
-        querySkuId?: string;
-      };
-      q = body.q?.trim() ?? "";
-      querySkuId = body.querySkuId?.trim() ?? "";
-      if (body.image) image = Buffer.from(body.image, "base64");
+      raw = parseJsonBody(await request.text());
+      if (typeof raw.image === "string" && raw.image)
+        image = Buffer.from(raw.image, "base64");
     }
-    if (q.length > 512)
-      return Response.json({ error: "查询最多512字符" }, { status: 400 });
-    if (!q && !image && !querySkuId)
-      return Response.json({ error: "请输入查询或上传查询图" }, { status: 400 });
+    const { q, querySkuId } = normalizeSearchInput(raw);
+    const invalid = validateSearchInput({ q, querySkuId, hasImage: !!image });
+    if (invalid)
+      return Response.json({ error: invalid.error }, { status: invalid.status });
 
     if (querySkuId) {
       const result = await searchImageBySku(querySkuId);

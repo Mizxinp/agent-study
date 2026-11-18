@@ -40,7 +40,7 @@
 | `Xenova/bge-small-zh-v1.5` | 中文文本对照路 | q8（`model_quantized.onnx`，24,010,842 字节） | 查询使用上述检索前缀；文档不用 | 无 | Hugging Face；本机若已有 2.1 demo 的 `.model-cache` 会只读复制到本目录，不写回 2.1 |
 | `Xenova/chinese-clip-vit-base-patch16` | 视觉路与融合（图/文同一空间） | q8（`model_quantized.onnx`，190,842,404 字节） | 无 | `AutoProcessor`，resize/center-crop 到 224，CLIP 均值方差 | 本次从 https://huggingface.co/Xenova/chinese-clip-vit-base-patch16 下载 |
 
-- 缓存目录：本 demo 下的 `.model-cache/`（不提交）。本次缓存合计约 207MB（217,052,975 字节），其中两个 ONNX 权重约占 215MB。文件 SHA256 见 `model-manifest.json`。
+- 缓存目录：本 demo 下的 `.model-cache/`（不提交）。本次缓存合计 217,052,975 字节（约 217.1 MB / 207.0 MiB），其中两个 ONNX 权重共 214,853,246 字节（约 214.9 MB / 204.9 MiB）。文件 SHA256 见 `model-manifest.json`。
 - 该中文 CLIP 的 q8 ONNX 是单会话联合图，一次 forward 必须同时提供文本输入和 `pixel_values`。编码单一模态时，未用到的塔会传入占位输入（文本为 `"."`，图像为 8×8 空白图）。探测确认：同一段文本换占位图后 `text_embeds` 不变，同一张图换占位文本后 `image_embeds` 不变；向量已近似 L2 归一化。
 - 允许设置 `HF_ENDPOINT`。若官方源返回 403，不得换镜像绕过；本次 huggingface.co 可访问，未设置镜像。
 - 推理线程限制为 `intraOpNumThreads=2, interOpNumThreads=1`，避免占满 CPU。
@@ -121,13 +121,14 @@ BGE 文本路 recall@5=1.0000，不低于视觉 0.5000，假设成立。型号�
 pnpm install && pnpm test && pnpm typecheck && pnpm build && pnpm eval
 ```
 
-- `pnpm test`：5 个文件、9 个用例通过，不下载视觉模型。
+- `pnpm test`：6 个文件、11 个用例通过（含空请求 400 的输入校验单测），不下载视觉模型。
 - `pnpm typecheck`：`tsc --noEmit` 无报错。
 - `pnpm build`：Next.js 16.4.6 生产构建成功；`POST /api/search` 为动态路由。构建阶段不下载/加载模型。
 - `pnpm images`：若 `public/images/` 缺失则重建 16 张合成图。
 - `pnpm eval`：真实跑 H1–H4，写出 `results.json` 与 `results.md`。本地复核若模型已在 `.model-cache/`，可设 `MODELS_OFFLINE=1` 禁止远程下载。
 - 页面：`pnpm start --port 3124` 后打开首页，或 `curl -X POST -F 'q=有没有粉青色的瓷器' http://localhost:3124/api/search`。
+- 空请求（既无 `q` 也无 `image`/`querySkuId`，含空 body 或非法 JSON）返回 **400** 和明确错误信息，例如 `curl -X POST http://localhost:3124/api/search` 得到 `{"error":"请求为空：…"}`，不会加载模型。
 
-本次 `pnpm eval` 在模型文件与嵌入缓存都已就绪时耗时 **7.365s**。首次在空缓存上还需要从 Hugging Face 下载上述两个量化模型（合计约 215MB），下载时间取决于网络。按同一提交的合成图和同一量化权重重跑，应得到同样的 recall@5 数字。
+本次 `pnpm eval` 在模型文件与嵌入缓存都已就绪时耗时 **7.365s**。首次在空缓存上还需要从 Hugging Face 下载上述两个量化模型（合计约 214.9 MB / 204.9 MiB），下载时间取决于网络。按同一提交的合成图和同一量化权重重跑，应得到同样的 recall@5 数字。
 
 不提交 `node_modules/`、`.next/`、`.model-cache/`、`.env`。不要把密钥写进仓库。本任务也不需要密钥。
