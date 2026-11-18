@@ -11,6 +11,7 @@ import { exactMatch, mean, percentile, setF1, signTestP } from "../lib/metrics";
 import { AGENTIC_MAX_STEPS, AGENTIC_SEARCH_TOP_K, FIXED_TOP_K, runAgentic, runFixed, type RunResult } from "../lib/pipelines";
 import { createLlm, resolveLlmConfig } from "../lib/providers";
 import { retrievalConfig } from "../lib/retrieval";
+import { netLatency, requestLog, timingFetch, type RequestRecord } from "../lib/request-timing";
 import { embeddingConfig } from "../lib/embed";
 
 const cfg = resolveLlmConfig();
@@ -25,11 +26,11 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 let errorAttempts = 0;
 const LIMIT = process.env.EVAL_LIMIT ? Number(process.env.EVAL_LIMIT) : undefined;
 const CHECKPOINT = "eval-checkpoint.jsonl";
-const { model, modelId, provider, baseHost } = createLlm();
+const { model, modelId, provider, baseHost } = createLlm(process.env, timingFetch);
 const qs: Question[] = LIMIT ? questions.slice(0, LIMIT) : questions;
 const pipelines = ["fixed", "agentic"] as const;
 
-type Row = RunResult & { qid: string; type: QuestionType; run: number; gold: string[]; correct: boolean; f1: number; error?: string };
+type Row = RunResult & { qid: string; type: QuestionType; run: number; gold: string[]; correct: boolean; f1: number; error?: string; netLatencyMs: number; httpRequests: number; failedRequests: number; retryOverheadMs: number };
 
 const done = new Map<string, Row>();
 if (existsSync(CHECKPOINT) && process.env.EVAL_RESUME !== "0") {
@@ -53,9 +54,12 @@ async function worker() {
     const { q, pipeline, run } = job;
     let r: RunResult | undefined;
     let error: string | undefined;
+    let timing = { netMs: 0, failedRequests: 0, retryOverheadMs: 0, httpRequests: 0 };
     for (let attempt = 1; attempt <= JOB_ATTEMPTS; attempt++) {
       try {
-        r = await (pipeline === "fixed" ? runFixed : runAgentic)(model, q.question);
+        const recs: RequestRecord[] = [];
+        r = await requestLog.run(recs, () => (pipeline === "fixed" ? runFixed : runAgentic)(model, q.question));
+        timing = { ...netLatency(r.latencyMs, recs), httpRequests: recs.length };
         error = undefined;
         break;
       } catch (e) {
@@ -67,11 +71,11 @@ async function worker() {
       }
     }
     if (!r) r = { pipeline, answer: null, rationale: "", steps: [], inputTokens: 0, outputTokens: 0, totalTokens: 0, latencyMs: 0, finishReason: "error", warnings: [] };
-    const row: Row = { ...r, qid: q.id, type: q.type, run, gold: q.gold, correct: exactMatch(r.answer, q.gold), f1: setF1(r.answer, q.gold), ...(error ? { error } : {}) };
+    const row: Row = { ...r, qid: q.id, type: q.type, run, gold: q.gold, correct: exactMatch(r.answer, q.gold), f1: setF1(r.answer, q.gold), netLatencyMs: timing.netMs, httpRequests: timing.httpRequests, failedRequests: timing.failedRequests, retryOverheadMs: timing.retryOverheadMs, ...(error ? { error } : {}) };
     done.set(`${q.id}|${pipeline}|${run}`, row);
     appendFileSync(CHECKPOINT, JSON.stringify({ ...row, modelId }) + "\n");
     finished++;
-    console.log(`[${finished}] run${run} ${q.id} ${pipeline} ${row.correct ? "OK" : "XX"} pred=${JSON.stringify(r.answer)} ${r.latencyMs}ms ${r.totalTokens}tok ${r.steps.length}steps${error ? " ERROR " + error.slice(0, 120) : ""}`);
+    console.log(`[${finished}] run${run} ${q.id} ${pipeline} ${row.correct ? "OK" : "XX"} pred=${JSON.stringify(r.answer)} ${r.latencyMs}ms(net ${timing.netMs}ms, ${timing.failedRequests} failed req) ${r.totalTokens}tok ${r.steps.length}steps${error ? " ERROR " + error.slice(0, 120) : ""}`);
   }
 }
 await Promise.all(Array.from({ length: CONCURRENCY }, worker));
@@ -95,6 +99,10 @@ function agg(sel: Row[]) {
     latencyP50Ms: Math.round(percentile(ok.map((r) => r.latencyMs), 0.5)),
     latencyP95Ms: Math.round(percentile(ok.map((r) => r.latencyMs), 0.95)),
     meanLatencyMs: Math.round(mean(ok.map((r) => r.latencyMs))),
+    netLatencyP50Ms: Math.round(percentile(ok.map((r) => r.netLatencyMs), 0.5)),
+    netLatencyP95Ms: Math.round(percentile(ok.map((r) => r.netLatencyMs), 0.95)),
+    meanNetLatencyMs: Math.round(mean(ok.map((r) => r.netLatencyMs))),
+    failedRequests: ok.reduce((a, r) => a + r.failedRequests, 0),
     meanSteps: r4(mean(ok.map((r) => r.steps.length))),
     perRunAccuracy: Array.from({ length: RUNS }, (_, i) => r4(mean(sel.filter((r) => r.run === i + 1).map((r) => (r.correct ? 1 : 0))))),
   };
@@ -135,7 +143,7 @@ const meta = {
   llmMaxRetries: Number(process.env.LLM_MAX_RETRIES ?? 6),
   jobAttempts: JOB_ATTEMPTS,
   failedAttemptsRetried: errorAttempts,
-  note: "延迟按单题端到端墙钟（含本地检索与 SDK 内部 429 退避重试）计；出错后整题重跑的失败尝试不计入延迟和 token。",
+  note: "墙钟延迟=单题端到端（含本地检索、SDK 内部 429 退避重试）；净延迟=墙钟扣除失败/429 请求及其后退避等待（见 lib/request-timing.ts netLatency）。整题重跑前的失败尝试不计入延迟和 token。",
   questions: qs.length,
   questionsFinalizedAt,
   fixed: { topK: FIXED_TOP_K, generations: 1, toolChoice: "answer（强制，结构化输出）" },
@@ -151,21 +159,21 @@ writeFileSync("results.json", JSON.stringify({ meta, summary, paired, rows: sort
 
 const md: string[] = [];
 md.push(`# Agentic RAG 循环 vs 固定单次 RAG：评测结果`, "", `- 模型：${provider} / ${modelId}（host ${baseHost}），temperature 未设置，重复 ${RUNS} 次，并发 ${CONCURRENCY}`, `- 问题集：${qs.length} 条，冻结于 ${questionsFinalizedAt}`, `- 开始 ${meta.startedAt}，结束 ${meta.endedAt}，耗时 ${meta.durationSec}s`, "");
-md.push(`## 汇总`, "", `| 题型 | 路线 | n | 精确匹配准确率 | 平均 F1 | 拒答率(答空集) | 未作答率 | 平均 token(入/出/总) | 延迟 p50/p95 ms | 平均步数 | 每轮准确率 | 错误 |`, `|---|---|---|---|---|---|---|---|---|---|---|---|`);
+md.push(`## 汇总`, "", `| 题型 | 路线 | n | 精确匹配准确率 | 平均 F1 | 拒答率(答空集) | 未作答率 | 平均 token(入/出/总) | 净延迟 p50/p95 ms | 墙钟延迟 p50/p95 ms | 平均步数 | 每轮准确率 | 错误 |`, `|---|---|---|---|---|---|---|---|---|---|---|---|---|`);
 for (const t of [...types, "all"] as const)
   for (const p of pipelines) {
     const s = summary[t][p];
-    md.push(`| ${t === "all" ? "全部" : typeName[t]} | ${p} | ${s.n} | ${s.accuracy} | ${s.meanF1} | ${s.refusalRate} | ${s.noAnswerRate} | ${s.meanInputTokens}/${s.meanOutputTokens}/${s.meanTotalTokens} | ${s.latencyP50Ms}/${s.latencyP95Ms} | ${s.meanSteps} | ${s.perRunAccuracy.join(" / ")} | ${s.errors} |`);
+    md.push(`| ${t === "all" ? "全部" : typeName[t]} | ${p} | ${s.n} | ${s.accuracy} | ${s.meanF1} | ${s.refusalRate} | ${s.noAnswerRate} | ${s.meanInputTokens}/${s.meanOutputTokens}/${s.meanTotalTokens} | ${s.netLatencyP50Ms}/${s.netLatencyP95Ms} | ${s.latencyP50Ms}/${s.latencyP95Ms} | ${s.meanSteps} | ${s.perRunAccuracy.join(" / ")} | ${s.errors} |`);
   }
 md.push("", `## 配对比较（同题同轮，agentic 对 fixed）`, "", `| 题型 | agentic 赢 | fixed 赢 | 平 | 符号检验 p（双侧） |`, `|---|---|---|---|---|`);
 for (const t of [...types, "all"] as const) md.push(`| ${t === "all" ? "全部" : typeName[t]} | ${paired[t].agenticWins} | ${paired[t].fixedWins} | ${paired[t].ties} | ${paired[t].signTestP} |`);
 md.push("", `agentic 工具调用次数：${JSON.stringify(toolUsage)}；第 1 步除 search 外还并行调用了其他工具的次数：${firstStepNonSearch}；第 1 步多工具并行次数：${firstStepParallel}`, "");
-md.push(`## 逐题明细`, "", `| 题 | 类型 | 轮 | 路线 | 标准答案 | 预测 | 对 | F1 | token | 延迟 ms | 步数 | 工具轨迹 |`, `|---|---|---|---|---|---|---|---|---|---|---|---|`);
+md.push(`## 逐题明细`, "", `| 题 | 类型 | 轮 | 路线 | 标准答案 | 预测 | 对 | F1 | token | 净延迟 ms | 墙钟 ms | 失败请求 | 步数 | 工具轨迹 |`, `|---|---|---|---|---|---|---|---|---|---|---|---|---|---|`);
 const fmt = (x: string[] | null) => (x == null ? "（未作答）" : x.length ? x.join(",") : "无");
 for (const r of sortedRows) {
   const trace = r.error ? `ERROR ${r.error.slice(0, 80).replace(/\|/g, "/")}` : r.steps.map((s) => s.toolCalls.map((c) => c.toolName).join("+") || "text").join(" → ");
-  md.push(`| ${r.qid} | ${typeName[r.type]} | ${r.run} | ${r.pipeline} | ${fmt(r.gold)} | ${fmt(r.answer)} | ${r.correct ? "✓" : "✗"} | ${r4(r.f1)} | ${r.totalTokens} | ${r.latencyMs} | ${r.steps.length} | ${trace} |`);
+  md.push(`| ${r.qid} | ${typeName[r.type]} | ${r.run} | ${r.pipeline} | ${fmt(r.gold)} | ${fmt(r.answer)} | ${r.correct ? "✓" : "✗"} | ${r4(r.f1)} | ${r.totalTokens} | ${r.netLatencyMs} | ${r.latencyMs} | ${r.failedRequests} | ${r.steps.length} | ${trace} |`);
 }
 writeFileSync("results.md", md.join("\n") + "\n");
-console.log(JSON.stringify({ summary: Object.fromEntries(Object.entries(summary).map(([t, v]) => [t, Object.fromEntries(Object.entries(v).map(([p, s]) => [p, { acc: s.accuracy, f1: s.meanF1, refusal: s.refusalRate, tok: s.meanTotalTokens, p50: s.latencyP50Ms, p95: s.latencyP95Ms, steps: s.meanSteps, err: s.errors }]))])), paired }, null, 1));
+console.log(JSON.stringify({ summary: Object.fromEntries(Object.entries(summary).map(([t, v]) => [t, Object.fromEntries(Object.entries(v).map(([p, s]) => [p, { acc: s.accuracy, f1: s.meanF1, refusal: s.refusalRate, tok: s.meanTotalTokens, p50: s.latencyP50Ms, p95: s.latencyP95Ms, netP50: s.netLatencyP50Ms, netP95: s.netLatencyP95Ms, steps: s.meanSteps, err: s.errors }]))])), paired }, null, 1));
 console.log(`eval done ${ended.toISOString()} duration ${meta.durationSec}s`);

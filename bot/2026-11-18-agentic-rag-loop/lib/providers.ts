@@ -33,7 +33,7 @@ export function resolveLlmConfig(env: EnvMap = process.env):
   return { ok: true, provider, modelId, baseURL };
 }
 
-export function createLlm(env: EnvMap = process.env): {
+export function createLlm(env: EnvMap = process.env, fetchImpl?: typeof fetch): {
   model: LanguageModel;
   provider: ProviderKind;
   modelId: string;
@@ -48,10 +48,11 @@ export function createLlm(env: EnvMap = process.env): {
       baseURL: cfg.baseURL,
       apiKey,
       headers: { Authorization: `Bearer ${apiKey}` },
+      ...(fetchImpl ? { fetch: fetchImpl } : {}),
     });
     return { model: anthropic(cfg.modelId), provider: cfg.provider, modelId: cfg.modelId, baseHost };
   }
-  const openai = createOpenAI({ baseURL: cfg.baseURL, apiKey: env.OPENAI_API_KEY!.trim() });
+  const openai = createOpenAI({ baseURL: cfg.baseURL, apiKey: env.OPENAI_API_KEY!.trim(), ...(fetchImpl ? { fetch: fetchImpl } : {}) });
   // CR 文档列出的是 /v1/chat/completions，所以用 chat 而不是默认的 responses。
   return { model: openai.chat(cfg.modelId), provider: cfg.provider, modelId: cfg.modelId, baseHost };
 }

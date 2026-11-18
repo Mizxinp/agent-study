@@ -76,3 +76,16 @@ describe("LLM 配置（不发请求、不读真实密钥）", () => {
     });
   });
 });
+
+describe("净延迟（扣除 429/失败重试）", () => {
+  it("失败请求从其开始到下一请求开始的时间被扣除", async () => {
+    const { netLatency } = await import("../lib/request-timing");
+    const recs = [
+      { start: 0, end: 100, status: 429 },
+      { start: 2100, end: 2600, status: 200 },
+      { start: 2700, end: 3000, status: 200 },
+    ];
+    expect(netLatency(3100, recs)).toEqual({ netMs: 1000, failedRequests: 1, retryOverheadMs: 2100 });
+    expect(netLatency(500, [{ start: 0, end: 400, status: 200 }])).toEqual({ netMs: 500, failedRequests: 0, retryOverheadMs: 0 });
+  });
+});
