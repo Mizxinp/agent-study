@@ -142,6 +142,7 @@ const meta = {
   concurrency: CONCURRENCY,
   llmMaxRetries: Number(process.env.LLM_MAX_RETRIES ?? 6),
   jobAttempts: JOB_ATTEMPTS,
+  stepTimeoutMs: Number(process.env.STEP_TIMEOUT_MS ?? 90_000),
   failedAttemptsRetried: errorAttempts,
   note: "墙钟延迟=单题端到端（含本地检索、SDK 内部 429 退避重试）；净延迟=墙钟扣除失败/429 请求及其后退避等待（见 lib/request-timing.ts netLatency）。整题重跑前的失败尝试不计入延迟和 token。",
   questions: qs.length,

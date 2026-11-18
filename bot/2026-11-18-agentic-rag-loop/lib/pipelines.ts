@@ -17,6 +17,8 @@ export const FIXED_TOP_K = 8;
 export const AGENTIC_SEARCH_TOP_K = 5;
 export const AGENTIC_MAX_STEPS = 6;
 /** SDK 内部重试次数（指数退避 2s 起）；CR 端偶发 429。 */
+/** 单步超时：CR 端曾出现请求挂起 8 分钟无响应。超时会抛错，由 eval 整题重跑。 */
+export const STEP_TIMEOUT_MS = Number(process.env.STEP_TIMEOUT_MS ?? 90_000);
 export const LLM_MAX_RETRIES = Number(process.env.LLM_MAX_RETRIES ?? 6);
 
 export const SYSTEM_PROMPT = [
@@ -191,14 +193,14 @@ const warningText = (steps: StepResult<ToolSet>[]) =>
 export async function runFixed(model: LanguageModel, question: string): Promise<RunResult> {
   const t0 = Date.now();
   const { prompt } = await fixedPrompt(question);
-  const r = await generateText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES });
+  const r = await generateText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES, timeout: { stepMs: STEP_TIMEOUT_MS } });
   const steps = r.steps as unknown as StepResult<ToolSet>[];
   return finish("fixed", steps, t0, r.totalUsage, warningText(steps));
 }
 
 export async function runAgentic(model: LanguageModel, question: string): Promise<RunResult> {
   const t0 = Date.now();
-  const r = await generateText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES });
+  const r = await generateText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES, timeout: { stepMs: STEP_TIMEOUT_MS } });
   const steps = r.steps as unknown as StepResult<ToolSet>[];
   return finish("agentic", steps, t0, r.totalUsage, warningText(steps));
 }
@@ -207,7 +209,7 @@ export async function runAgentic(model: LanguageModel, question: string): Promis
 export async function streamPipeline(model: LanguageModel, pipeline: "fixed" | "agentic", question: string) {
   if (pipeline === "fixed") {
     const { prompt, chunks } = await fixedPrompt(question);
-    return { retrieved: chunks.map((c) => c.id), result: streamText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES }) };
+    return { retrieved: chunks.map((c) => c.id), result: streamText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES, timeout: { stepMs: STEP_TIMEOUT_MS } }) };
   }
-  return { retrieved: [] as string[], result: streamText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES }) };
+  return { retrieved: [] as string[], result: streamText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES, timeout: { stepMs: STEP_TIMEOUT_MS } }) };
 }
