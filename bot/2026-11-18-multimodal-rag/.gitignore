@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.model-cache/
+.env
+.env*.local
+*.tsbuildinfo
+*.log
+eval-checkpoint.json
+eval-error.json
