@@ -19,7 +19,10 @@ if (!cfg.ok) {
   process.exit(2);
 }
 const RUNS = Number(process.env.RUNS ?? 3);
-const CONCURRENCY = Number(process.env.CONCURRENCY ?? 2);
+const CONCURRENCY = Number(process.env.CONCURRENCY ?? 1);
+const JOB_ATTEMPTS = Number(process.env.JOB_ATTEMPTS ?? 4);
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+let errorAttempts = 0;
 const LIMIT = process.env.EVAL_LIMIT ? Number(process.env.EVAL_LIMIT) : undefined;
 const CHECKPOINT = "eval-checkpoint.jsonl";
 const { model, modelId, provider, baseHost } = createLlm();
@@ -32,7 +35,8 @@ const done = new Map<string, Row>();
 if (existsSync(CHECKPOINT) && process.env.EVAL_RESUME !== "0") {
   for (const line of readFileSync(CHECKPOINT, "utf8").split("\n").filter(Boolean)) {
     const r = JSON.parse(line) as Row & { modelId?: string };
-    if (r.modelId === modelId) done.set(`${r.qid}|${r.pipeline}|${r.run}`, r);
+    // 出错的行（如 429 重试耗尽）不算完成，续跑时重新排队。
+    if (r.modelId === modelId && !r.error) done.set(`${r.qid}|${r.pipeline}|${r.run}`, r);
   }
 }
 const jobs: { q: Question; pipeline: (typeof pipelines)[number]; run: number }[] = [];
@@ -47,14 +51,22 @@ async function worker() {
     const job = jobs.shift();
     if (!job) return;
     const { q, pipeline, run } = job;
-    let r: RunResult;
+    let r: RunResult | undefined;
     let error: string | undefined;
-    try {
-      r = await (pipeline === "fixed" ? runFixed : runAgentic)(model, q.question);
-    } catch (e) {
-      error = String(e).slice(0, 500);
-      r = { pipeline, answer: null, rationale: "", steps: [], inputTokens: 0, outputTokens: 0, totalTokens: 0, latencyMs: 0, finishReason: "error", warnings: [] };
+    for (let attempt = 1; attempt <= JOB_ATTEMPTS; attempt++) {
+      try {
+        r = await (pipeline === "fixed" ? runFixed : runAgentic)(model, q.question);
+        error = undefined;
+        break;
+      } catch (e) {
+        error = String(e).slice(0, 500);
+        errorAttempts++;
+        console.log(`  retry ${q.id} ${pipeline} run${run} attempt ${attempt}/${JOB_ATTEMPTS}: ${error.slice(0, 120)}`);
+        // 整题重跑前退避（SDK 自身已按 maxRetries 做指数退避）。
+        if (attempt < JOB_ATTEMPTS) await sleep(30_000 * attempt);
+      }
     }
+    if (!r) r = { pipeline, answer: null, rationale: "", steps: [], inputTokens: 0, outputTokens: 0, totalTokens: 0, latencyMs: 0, finishReason: "error", warnings: [] };
     const row: Row = { ...r, qid: q.id, type: q.type, run, gold: q.gold, correct: exactMatch(r.answer, q.gold), f1: setF1(r.answer, q.gold), ...(error ? { error } : {}) };
     done.set(`${q.id}|${pipeline}|${run}`, row);
     appendFileSync(CHECKPOINT, JSON.stringify({ ...row, modelId }) + "\n");
@@ -120,6 +132,10 @@ const meta = {
   temperature: "未设置（使用模型端默认值；claude-haiku-5-5 / claude-sonnet-5-5 会忽略 temperature）",
   runs: RUNS,
   concurrency: CONCURRENCY,
+  llmMaxRetries: Number(process.env.LLM_MAX_RETRIES ?? 6),
+  jobAttempts: JOB_ATTEMPTS,
+  failedAttemptsRetried: errorAttempts,
+  note: "延迟按单题端到端墙钟（含本地检索与 SDK 内部 429 退避重试）计；出错后整题重跑的失败尝试不计入延迟和 token。",
   questions: qs.length,
   questionsFinalizedAt,
   fixed: { topK: FIXED_TOP_K, generations: 1, toolChoice: "answer（强制，结构化输出）" },

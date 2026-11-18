@@ -16,6 +16,8 @@ import { formatChunks, hybridSearch } from "./retrieval";
 export const FIXED_TOP_K = 8;
 export const AGENTIC_SEARCH_TOP_K = 5;
 export const AGENTIC_MAX_STEPS = 6;
+/** SDK 内部重试次数（指数退避 2s 起）；CR 端偶发 429。 */
+export const LLM_MAX_RETRIES = Number(process.env.LLM_MAX_RETRIES ?? 6);
 
 export const SYSTEM_PROMPT = [
   "你是德化陶瓷合成商品库的检索问答助手。所有商品、型号、价格、上架日期都是合成虚构数据。",
@@ -189,14 +191,14 @@ const warningText = (steps: StepResult<ToolSet>[]) =>
 export async function runFixed(model: LanguageModel, question: string): Promise<RunResult> {
   const t0 = Date.now();
   const { prompt } = await fixedPrompt(question);
-  const r = await generateText({ model, prompt, ...fixedSettings(), maxRetries: 2 });
+  const r = await generateText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES });
   const steps = r.steps as unknown as StepResult<ToolSet>[];
   return finish("fixed", steps, t0, r.totalUsage, warningText(steps));
 }
 
 export async function runAgentic(model: LanguageModel, question: string): Promise<RunResult> {
   const t0 = Date.now();
-  const r = await generateText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: 2 });
+  const r = await generateText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES });
   const steps = r.steps as unknown as StepResult<ToolSet>[];
   return finish("agentic", steps, t0, r.totalUsage, warningText(steps));
 }
@@ -205,7 +207,7 @@ export async function runAgentic(model: LanguageModel, question: string): Promis
 export async function streamPipeline(model: LanguageModel, pipeline: "fixed" | "agentic", question: string) {
   if (pipeline === "fixed") {
     const { prompt, chunks } = await fixedPrompt(question);
-    return { retrieved: chunks.map((c) => c.id), result: streamText({ model, prompt, ...fixedSettings(), maxRetries: 2 }) };
+    return { retrieved: chunks.map((c) => c.id), result: streamText({ model, prompt, ...fixedSettings(), maxRetries: LLM_MAX_RETRIES }) };
   }
-  return { retrieved: [] as string[], result: streamText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: 2 }) };
+  return { retrieved: [] as string[], result: streamText({ model, prompt: `问题：${question}`, ...agenticSettings(), maxRetries: LLM_MAX_RETRIES }) };
 }
