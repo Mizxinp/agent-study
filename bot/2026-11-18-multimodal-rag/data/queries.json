@@ -1,0 +1,443 @@
+{
+  "frozenAt": "2026-11-18T09:09:12+08:00",
+  "timezone": "Asia/Shanghai",
+  "note": "查询集与相关 SKU 标注在首次评测前冻结。看到结果后不得改标注；若发现错误，保留原结果并在 REPORT 单列「标注修正」。",
+  "counts": {
+    "total": 40,
+    "appearance": 14,
+    "attribute": 14,
+    "image": 12
+  },
+  "queries": [
+    {
+      "id": "q-app-01",
+      "type": "appearance",
+      "text": "有没有粉青色的瓷器",
+      "relevant": [
+        "DH-HP-1152",
+        "DH-XP-0716",
+        "DH-BP-1049",
+        "DH-BW-0654"
+      ]
+    },
+    {
+      "id": "q-app-02",
+      "type": "appearance",
+      "text": "想看霁红釉那种深红的",
+      "relevant": [
+        "DH-BP-0938",
+        "DH-TC-1026",
+        "DH-TC-1137",
+        "DH-BW-0432"
+      ]
+    },
+    {
+      "id": "q-app-03",
+      "type": "appearance",
+      "text": "天青色带开片的",
+      "relevant": [
+        "DH-HP-1263",
+        "DH-TC-0915",
+        "DH-BW-0543",
+        "DH-CP-1374"
+      ]
+    },
+    {
+      "id": "q-app-04",
+      "type": "appearance",
+      "text": "米色开片那种米白带裂纹的",
+      "relevant": [
+        "DH-TC-1248",
+        "DH-XP-0827",
+        "DH-BW-0321",
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-app-05",
+      "type": "appearance",
+      "text": "梅瓶这种收口溜肩的",
+      "relevant": [
+        "DH-HP-1152",
+        "DH-BP-0938",
+        "DH-HP-1263",
+        "DH-TC-1248"
+      ]
+    },
+    {
+      "id": "q-app-06",
+      "type": "appearance",
+      "text": "玉壶春瓶，梨形肚子的",
+      "relevant": [
+        "DH-XP-0716",
+        "DH-TC-1026",
+        "DH-TC-0915",
+        "DH-XP-0827"
+      ]
+    },
+    {
+      "id": "q-app-07",
+      "type": "appearance",
+      "text": "斗笠盏，敞口浅腹的茶碗",
+      "relevant": [
+        "DH-BW-0654",
+        "DH-BW-0432",
+        "DH-CP-1374",
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-app-08",
+      "type": "appearance",
+      "text": "天球瓶，长颈圆肚",
+      "relevant": [
+        "DH-BP-1049",
+        "DH-TC-1137",
+        "DH-BW-0543",
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-app-09",
+      "type": "appearance",
+      "text": "带开片纹理的釉面",
+      "relevant": [
+        "DH-HP-1263",
+        "DH-TC-1248",
+        "DH-TC-0915",
+        "DH-XP-0827",
+        "DH-BW-0543",
+        "DH-BW-0321",
+        "DH-CP-1374",
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-app-10",
+      "type": "appearance",
+      "text": "釉面光洁没有开片的",
+      "relevant": [
+        "DH-HP-1152",
+        "DH-BP-0938",
+        "DH-XP-0716",
+        "DH-TC-1026",
+        "DH-BP-1049",
+        "DH-TC-1137",
+        "DH-BW-0654",
+        "DH-BW-0432"
+      ]
+    },
+    {
+      "id": "q-app-11",
+      "type": "appearance",
+      "text": "粉青梅瓶",
+      "relevant": [
+        "DH-HP-1152"
+      ]
+    },
+    {
+      "id": "q-app-12",
+      "type": "appearance",
+      "text": "霁红的斗笠盏",
+      "relevant": [
+        "DH-BW-0432"
+      ]
+    },
+    {
+      "id": "q-app-13",
+      "type": "appearance",
+      "text": "天青开片的玉壶春",
+      "relevant": [
+        "DH-TC-0915"
+      ]
+    },
+    {
+      "id": "q-app-14",
+      "type": "appearance",
+      "text": "米色开片天球瓶",
+      "relevant": [
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-attr-01",
+      "type": "attribute",
+      "text": "DH-TC-0915",
+      "relevant": [
+        "DH-TC-0915"
+      ]
+    },
+    {
+      "id": "q-attr-02",
+      "type": "attribute",
+      "text": "型号 DH-BW-0432",
+      "relevant": [
+        "DH-BW-0432"
+      ]
+    },
+    {
+      "id": "q-attr-03",
+      "type": "attribute",
+      "text": "容量 180ml 的那件",
+      "relevant": [
+        "DH-TC-0915"
+      ]
+    },
+    {
+      "id": "q-attr-04",
+      "type": "attribute",
+      "text": "1200毫升的瓷器",
+      "relevant": [
+        "DH-HP-1263"
+      ]
+    },
+    {
+      "id": "q-attr-05",
+      "type": "attribute",
+      "text": "口径 8.2cm",
+      "relevant": [
+        "DH-TC-0915"
+      ]
+    },
+    {
+      "id": "q-attr-06",
+      "type": "attribute",
+      "text": "口径 21.6 厘米",
+      "relevant": [
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-attr-07",
+      "type": "attribute",
+      "text": "DH-CP-1374 这只型号",
+      "relevant": [
+        "DH-CP-1374"
+      ]
+    },
+    {
+      "id": "q-attr-08",
+      "type": "attribute",
+      "text": "65ml 的",
+      "relevant": [
+        "DH-BP-0938"
+      ]
+    },
+    {
+      "id": "q-attr-09",
+      "type": "attribute",
+      "text": "型号 DH-XP-0716",
+      "relevant": [
+        "DH-XP-0716"
+      ]
+    },
+    {
+      "id": "q-attr-10",
+      "type": "attribute",
+      "text": "容量850ml 口径5.2cm",
+      "relevant": [
+        "DH-HP-1152"
+      ]
+    },
+    {
+      "id": "q-attr-11",
+      "type": "attribute",
+      "text": "DH-BW-0654",
+      "relevant": [
+        "DH-BW-0654"
+      ]
+    },
+    {
+      "id": "q-attr-12",
+      "type": "attribute",
+      "text": "320ml 那只",
+      "relevant": [
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-attr-13",
+      "type": "attribute",
+      "text": "口径11.2cm",
+      "relevant": [
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-attr-14",
+      "type": "attribute",
+      "text": "型号 DH-BP-1049 容量360ml",
+      "relevant": [
+        "DH-BP-1049"
+      ]
+    },
+    {
+      "id": "q-i2i-01",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-HP-1152",
+      "targetAttribute": "glaze",
+      "targetValue": "粉青",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-XP-0716",
+        "DH-BP-1049",
+        "DH-BW-0654"
+      ]
+    },
+    {
+      "id": "q-i2i-02",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-TC-1026",
+      "targetAttribute": "glaze",
+      "targetValue": "霁红",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-BP-0938",
+        "DH-TC-1137",
+        "DH-BW-0432"
+      ]
+    },
+    {
+      "id": "q-i2i-03",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-TC-0915",
+      "targetAttribute": "glaze",
+      "targetValue": "天青开片",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-HP-1263",
+        "DH-BW-0543",
+        "DH-CP-1374"
+      ]
+    },
+    {
+      "id": "q-i2i-04",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-CP-1485",
+      "targetAttribute": "glaze",
+      "targetValue": "米色开片",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-TC-1248",
+        "DH-XP-0827",
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-i2i-05",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-HP-1152",
+      "targetAttribute": "shape",
+      "targetValue": "梅瓶",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-BP-0938",
+        "DH-HP-1263",
+        "DH-TC-1248"
+      ]
+    },
+    {
+      "id": "q-i2i-06",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-TC-0915",
+      "targetAttribute": "shape",
+      "targetValue": "玉壶春瓶",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-XP-0716",
+        "DH-TC-1026",
+        "DH-XP-0827"
+      ]
+    },
+    {
+      "id": "q-i2i-07",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-BW-0654",
+      "targetAttribute": "shape",
+      "targetValue": "斗笠盏",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-BW-0432",
+        "DH-CP-1374",
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-i2i-08",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-BP-1049",
+      "targetAttribute": "shape",
+      "targetValue": "天球瓶",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-TC-1137",
+        "DH-BW-0543",
+        "DH-BW-0321"
+      ]
+    },
+    {
+      "id": "q-i2i-09",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-BW-0654",
+      "targetAttribute": "glaze",
+      "targetValue": "粉青",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-HP-1152",
+        "DH-XP-0716",
+        "DH-BP-1049"
+      ]
+    },
+    {
+      "id": "q-i2i-10",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-TC-1248",
+      "targetAttribute": "glaze",
+      "targetValue": "米色开片",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-XP-0827",
+        "DH-BW-0321",
+        "DH-CP-1485"
+      ]
+    },
+    {
+      "id": "q-i2i-11",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-XP-0827",
+      "targetAttribute": "shape",
+      "targetValue": "玉壶春瓶",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-XP-0716",
+        "DH-TC-1026",
+        "DH-TC-0915"
+      ]
+    },
+    {
+      "id": "q-i2i-12",
+      "type": "image",
+      "text": null,
+      "querySkuId": "DH-BW-0321",
+      "targetAttribute": "shape",
+      "targetValue": "天球瓶",
+      "excludeSelf": true,
+      "relevant": [
+        "DH-BP-1049",
+        "DH-TC-1137",
+        "DH-BW-0543"
+      ]
+    }
+  ]
+}

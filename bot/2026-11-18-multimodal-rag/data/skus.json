@@ -1,0 +1,291 @@
+{
+  "synthetic": true,
+  "note": "全部商品图由程序合成（色块表示釉色、几何轮廓表示器型、图上印刷型号与容量），不是爬取的实物商品图。字幕/标题故意省略釉色与器型口语描述，只写品类、型号、容量和口径，以便 H1 区分文本失败与视觉成功。容量与口径与 2.1 混合检索 demo 中同型号的虚构规格对齐；釉色与器型是本实验为对照检索新设计的视觉属性。",
+  "category": "日用瓷器",
+  "glazes": [
+    {
+      "id": "fenqing",
+      "label": "粉青",
+      "color": "#6F9E7A",
+      "crackle": false
+    },
+    {
+      "id": "jihong",
+      "label": "霁红",
+      "color": "#8A151C",
+      "crackle": false
+    },
+    {
+      "id": "tianqing",
+      "label": "天青开片",
+      "color": "#6A8B99",
+      "crackle": true
+    },
+    {
+      "id": "beige",
+      "label": "米色开片",
+      "color": "#E3D0A4",
+      "crackle": true
+    }
+  ],
+  "shapes": [
+    {
+      "id": "meiping",
+      "label": "梅瓶"
+    },
+    {
+      "id": "yuhuchun",
+      "label": "玉壶春瓶"
+    },
+    {
+      "id": "tianqiu",
+      "label": "天球瓶"
+    },
+    {
+      "id": "douli",
+      "label": "斗笠盏"
+    }
+  ],
+  "skus": [
+    {
+      "id": "DH-HP-1152",
+      "model": "DH-HP-1152",
+      "capacityMl": 850,
+      "mouthCm": 5.2,
+      "glazeId": "fenqing",
+      "shapeId": "meiping",
+      "glazeLabel": "粉青",
+      "shapeLabel": "梅瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-HP-1152 容量850ml 口径5.2cm",
+      "description": "日用瓷器，型号DH-HP-1152，标称容量850ml，口径5.2cm。",
+      "image": "images/DH-HP-1152.png"
+    },
+    {
+      "id": "DH-BP-0938",
+      "model": "DH-BP-0938",
+      "capacityMl": 65,
+      "mouthCm": 5.8,
+      "glazeId": "jihong",
+      "shapeId": "meiping",
+      "glazeLabel": "霁红",
+      "shapeLabel": "梅瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BP-0938 容量65ml 口径5.8cm",
+      "description": "日用瓷器，型号DH-BP-0938，标称容量65ml，口径5.8cm。",
+      "image": "images/DH-BP-0938.png"
+    },
+    {
+      "id": "DH-HP-1263",
+      "model": "DH-HP-1263",
+      "capacityMl": 1200,
+      "mouthCm": 6.4,
+      "glazeId": "tianqing",
+      "shapeId": "meiping",
+      "glazeLabel": "天青开片",
+      "shapeLabel": "梅瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-HP-1263 容量1200ml 口径6.4cm",
+      "description": "日用瓷器，型号DH-HP-1263，标称容量1200ml，口径6.4cm。",
+      "image": "images/DH-HP-1263.png"
+    },
+    {
+      "id": "DH-TC-1248",
+      "model": "DH-TC-1248",
+      "capacityMl": 220,
+      "mouthCm": 6.8,
+      "glazeId": "beige",
+      "shapeId": "meiping",
+      "glazeLabel": "米色开片",
+      "shapeLabel": "梅瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-TC-1248 容量220ml 口径6.8cm",
+      "description": "日用瓷器，型号DH-TC-1248，标称容量220ml，口径6.8cm。",
+      "image": "images/DH-TC-1248.png"
+    },
+    {
+      "id": "DH-XP-0716",
+      "model": "DH-XP-0716",
+      "capacityMl": 90,
+      "mouthCm": 7.2,
+      "glazeId": "fenqing",
+      "shapeId": "yuhuchun",
+      "glazeLabel": "粉青",
+      "shapeLabel": "玉壶春瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-XP-0716 容量90ml 口径7.2cm",
+      "description": "日用瓷器，型号DH-XP-0716，标称容量90ml，口径7.2cm。",
+      "image": "images/DH-XP-0716.png"
+    },
+    {
+      "id": "DH-TC-1026",
+      "model": "DH-TC-1026",
+      "capacityMl": 160,
+      "mouthCm": 7.6,
+      "glazeId": "jihong",
+      "shapeId": "yuhuchun",
+      "glazeLabel": "霁红",
+      "shapeLabel": "玉壶春瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-TC-1026 容量160ml 口径7.6cm",
+      "description": "日用瓷器，型号DH-TC-1026，标称容量160ml，口径7.6cm。",
+      "image": "images/DH-TC-1026.png"
+    },
+    {
+      "id": "DH-TC-0915",
+      "model": "DH-TC-0915",
+      "capacityMl": 180,
+      "mouthCm": 8.2,
+      "glazeId": "tianqing",
+      "shapeId": "yuhuchun",
+      "glazeLabel": "天青开片",
+      "shapeLabel": "玉壶春瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-TC-0915 容量180ml 口径8.2cm",
+      "description": "日用瓷器，型号DH-TC-0915，标称容量180ml，口径8.2cm。",
+      "image": "images/DH-TC-0915.png"
+    },
+    {
+      "id": "DH-XP-0827",
+      "model": "DH-XP-0827",
+      "capacityMl": 110,
+      "mouthCm": 8.6,
+      "glazeId": "beige",
+      "shapeId": "yuhuchun",
+      "glazeLabel": "米色开片",
+      "shapeLabel": "玉壶春瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-XP-0827 容量110ml 口径8.6cm",
+      "description": "日用瓷器，型号DH-XP-0827，标称容量110ml，口径8.6cm。",
+      "image": "images/DH-XP-0827.png"
+    },
+    {
+      "id": "DH-BP-1049",
+      "model": "DH-BP-1049",
+      "capacityMl": 360,
+      "mouthCm": 8.8,
+      "glazeId": "fenqing",
+      "shapeId": "tianqiu",
+      "glazeLabel": "粉青",
+      "shapeLabel": "天球瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BP-1049 容量360ml 口径8.8cm",
+      "description": "日用瓷器，型号DH-BP-1049，标称容量360ml，口径8.8cm。",
+      "image": "images/DH-BP-1049.png"
+    },
+    {
+      "id": "DH-TC-1137",
+      "model": "DH-TC-1137",
+      "capacityMl": 150,
+      "mouthCm": 9.4,
+      "glazeId": "jihong",
+      "shapeId": "tianqiu",
+      "glazeLabel": "霁红",
+      "shapeLabel": "天球瓶",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-TC-1137 容量150ml 口径9.4cm",
+      "description": "日用瓷器，型号DH-TC-1137，标称容量150ml，口径9.4cm。",
+      "image": "images/DH-TC-1137.png"
+    },
+    {
+      "id": "DH-BW-0543",
+      "model": "DH-BW-0543",
+      "capacityMl": 240,
+      "mouthCm": 10.4,
+      "glazeId": "tianqing",
+      "shapeId": "tianqiu",
+      "glazeLabel": "天青开片",
+      "shapeLabel": "天球瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BW-0543 容量240ml 口径10.4cm",
+      "description": "日用瓷器，型号DH-BW-0543，标称容量240ml，口径10.4cm。",
+      "image": "images/DH-BW-0543.png"
+    },
+    {
+      "id": "DH-BW-0321",
+      "model": "DH-BW-0321",
+      "capacityMl": 320,
+      "mouthCm": 11.2,
+      "glazeId": "beige",
+      "shapeId": "tianqiu",
+      "glazeLabel": "米色开片",
+      "shapeLabel": "天球瓶",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BW-0321 容量320ml 口径11.2cm",
+      "description": "日用瓷器，型号DH-BW-0321，标称容量320ml，口径11.2cm。",
+      "image": "images/DH-BW-0321.png"
+    },
+    {
+      "id": "DH-BW-0654",
+      "model": "DH-BW-0654",
+      "capacityMl": 280,
+      "mouthCm": 12.8,
+      "glazeId": "fenqing",
+      "shapeId": "douli",
+      "glazeLabel": "粉青",
+      "shapeLabel": "斗笠盏",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BW-0654 容量280ml 口径12.8cm",
+      "description": "日用瓷器，型号DH-BW-0654，标称容量280ml，口径12.8cm。",
+      "image": "images/DH-BW-0654.png"
+    },
+    {
+      "id": "DH-BW-0432",
+      "model": "DH-BW-0432",
+      "capacityMl": 680,
+      "mouthCm": 15.6,
+      "glazeId": "jihong",
+      "shapeId": "douli",
+      "glazeLabel": "霁红",
+      "shapeLabel": "斗笠盏",
+      "crackle": false,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-BW-0432 容量680ml 口径15.6cm",
+      "description": "日用瓷器，型号DH-BW-0432，标称容量680ml，口径15.6cm。",
+      "image": "images/DH-BW-0432.png"
+    },
+    {
+      "id": "DH-CP-1374",
+      "model": "DH-CP-1374",
+      "capacityMl": 420,
+      "mouthCm": 18.4,
+      "glazeId": "tianqing",
+      "shapeId": "douli",
+      "glazeLabel": "天青开片",
+      "shapeLabel": "斗笠盏",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-CP-1374 容量420ml 口径18.4cm",
+      "description": "日用瓷器，型号DH-CP-1374，标称容量420ml，口径18.4cm。",
+      "image": "images/DH-CP-1374.png"
+    },
+    {
+      "id": "DH-CP-1485",
+      "model": "DH-CP-1485",
+      "capacityMl": 520,
+      "mouthCm": 21.6,
+      "glazeId": "beige",
+      "shapeId": "douli",
+      "glazeLabel": "米色开片",
+      "shapeLabel": "斗笠盏",
+      "crackle": true,
+      "category": "日用瓷器",
+      "caption": "日用瓷器 DH-CP-1485 容量520ml 口径21.6cm",
+      "description": "日用瓷器，型号DH-CP-1485，标称容量520ml，口径21.6cm。",
+      "image": "images/DH-CP-1485.png"
+    }
+  ]
+}
