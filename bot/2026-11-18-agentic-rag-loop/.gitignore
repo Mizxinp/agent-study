@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.model-cache/
+.env
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+
+*.log
+eval-checkpoint.json
+eval-error.json
+first-run.json
+api-response.json
+!artifacts/
+!artifacts/**
+eval-checkpoint.jsonl
