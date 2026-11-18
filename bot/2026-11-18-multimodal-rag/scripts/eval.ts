@@ -83,7 +83,10 @@ for (const q of querySet.queries) {
   );
 }
 
-function summarize(subset: Row[]) {
+type LaneMetrics = { recallAt5: number; mrrAt5: number; ndcgAt5: number };
+type GroupSummary = { n: number } & Record<Lane, LaneMetrics>;
+
+function summarize(subset: Row[]): Record<Lane, LaneMetrics> {
   return Object.fromEntries(
     LANES.map((lane) => [
       lane,
@@ -93,10 +96,10 @@ function summarize(subset: Row[]) {
         ndcgAt5: mean(subset.map((r) => r.lanes[lane].ndcgAt5)),
       },
     ]),
-  );
+  ) as Record<Lane, LaneMetrics>;
 }
 
-const groups = {
+const groups: Record<"all" | "appearance" | "attribute" | "image", Row[]> = {
   all: rows,
   appearance: rows.filter((r) => r.type === "appearance"),
   attribute: rows.filter((r) => r.type === "attribute"),
@@ -105,7 +108,7 @@ const groups = {
 
 const summary = Object.fromEntries(
   Object.entries(groups).map(([k, v]) => [k, { n: v.length, ...summarize(v) }]),
-);
+) as Record<keyof typeof groups, GroupSummary>;
 
 function verdicts() {
   const h1v = summary.appearance["vision"].recallAt5;

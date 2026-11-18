@@ -7,3 +7,4 @@ node_modules/
 *.log
 eval-checkpoint.json
 eval-error.json
+data/images/

@@ -1,0 +1,47 @@
+[
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/config.json",
+    "bytes": 716,
+    "sha256": "d4193ead3a810fd694fa8a31d7fc72fbaebc0668b603e398734bf2f6538ff42f"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/onnx/model_quantized.onnx",
+    "bytes": 24010842,
+    "sha256": "15b717c382bcb518ba457b93ea6850ede7f4f1cd8937454aa06972366cd19bcc"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/tokenizer.json",
+    "bytes": 439125,
+    "sha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26"
+  },
+  {
+    "file": ".model-cache/Xenova/bge-small-zh-v1.5/tokenizer_config.json",
+    "bytes": 367,
+    "sha256": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a"
+  },
+  {
+    "file": ".model-cache/Xenova/chinese-clip-vit-base-patch16/config.json",
+    "bytes": 844,
+    "sha256": "19447ad8c20d274f0644a6663af56286be98bd2d0e5f9472fcb318e04fcd6961"
+  },
+  {
+    "file": ".model-cache/Xenova/chinese-clip-vit-base-patch16/onnx/model_quantized.onnx",
+    "bytes": 190842404,
+    "sha256": "a2c2849329eafb24100acec5a9421a39f8cb445296444c5c98855b69e5e7a751"
+  },
+  {
+    "file": ".model-cache/Xenova/chinese-clip-vit-base-patch16/preprocessor_config.json",
+    "bytes": 546,
+    "sha256": "61a78fdd2c7ac17b54b6190c0f4cb23423192c535003d52528d01e318a47608b"
+  },
+  {
+    "file": ".model-cache/Xenova/chinese-clip-vit-base-patch16/tokenizer.json",
+    "bytes": 439124,
+    "sha256": "7dfbf1966ebf99d471c3796e9b457329d2b2182b817e144f1e904b957745c839"
+  },
+  {
+    "file": ".model-cache/Xenova/chinese-clip-vit-base-patch16/tokenizer_config.json",
+    "bytes": 1315,
+    "sha256": "38fbc894183595cc1168e36150251b2fb658197b3a49f6908cce88ae22acd52a"
+  }
+]
