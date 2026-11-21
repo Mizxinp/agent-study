@@ -101,7 +101,7 @@ Null 题上 agentic 略差（**0.8974 vs 0.9744**），p=0.375，不能下「循
 - **n04 第 2、3 轮**：都调用了 `answer`，但把 `skus` 写成非法字符串（夹了 XML 残片，例如 `"[]</individual>\n"`、`"[]</names>\n<parameter name=\"rationale\">…"`），参数校验失败后循环在第 3 步结束，没有成功提交空数组。
 - **n11 第 1、2 轮**：在 6 步预算里只反复调用 `search`，打满 6 步仍未调用 `answer`。
 
-fixed 只错 1 次： **n09 第 2 轮幻觉出 SKU `DH-TC-0915`**（标准答案为空集）。也就是说，循环在「信息不足」时更容易卡在工具里或交坏参数，而不是更会编答案。配对上这 4 次是 fixed 赢，n09 第 2 轮是 agentic 赢。
+fixed 只错 1 次： **n09 第 2 轮错误返回商品表中已有的SKU `DH-TC-0915`**（标准答案为空集）。也就是说，循环在「信息不足」时更容易卡在工具里或交坏参数，而不是更会编答案。配对上这 4 次是 fixed 赢，n09 第 2 轮是 agentic 赢。
 
 工程含义：循环必须处理「到顶仍未调用 answer」和「answer 参数校验失败」。可以把非法 `answer` 当成可重试的工具错误，而不是直接记未作答。
 
@@ -141,13 +141,13 @@ fixed 只错 1 次： **n09 第 2 轮幻觉出 SKU `DH-TC-0915`**（标准答案
 
 只写环境变量名，不写值。密钥不要放进仓库、终端回显或本报告。
 
-评测 / 页面问答需要 CR 兼容接口（默认 Anthropic Messages 路径）：
+评测 / 页面问答需要 CR 兼容接口，所选接口的密钥和 base URL 均为必填。
 
-- `ANTHROPIC_API_KEY`
+- `ANTHROPIC_API_KEY`（Anthropic Messages 兼容接口的密钥）
 - `ANTHROPIC_BASE_URL`（必须显式给出，且以 `/v1` 结尾；SDK 只追加 `/messages`。自定义兼容 base 还会发 `Authorization: Bearer`）
-- 可选：`LLM_MODEL`（默认 `claude-haiku-5-5`）、`LLM_PROVIDER`（`anthropic` 或 `openai`；选 `openai` 时改用 `OPENAI_API_KEY` 与 `OPENAI_BASE_URL`，同样必须带 `/v1`）
+- 使用 OpenAI 兼容接口时，`OPENAI_API_KEY` 为接口密钥，`OPENAI_BASE_URL` 必须显式给出且以 `/v1` 结尾。选填变量为 `LLM_MODEL`（模型）和 `LLM_PROVIDER`（接口提供商）。
 
-评测可选控制：`RUNS`（默认 3）、`CONCURRENCY`（默认 1）、`JOB_ATTEMPTS`（默认 4）、`LLM_MAX_RETRIES`（默认 6）、`STEP_TIMEOUT_MS`（默认 90000）、`EVAL_LIMIT`（调试用，只跑前 N 题）、`EVAL_RESUME`（设为 `0` 则不读检查点）。本地向量缓存相关：`HF_ENDPOINT`、`MODELS_OFFLINE`。
+评测可选控制包括 `RUNS`（每题运行轮次）、`CONCURRENCY`（并发数）、`JOB_ATTEMPTS`（单个任务的最大尝试次数）、`LLM_MAX_RETRIES`（模型请求的最大重试次数）、`STEP_TIMEOUT_MS`（单步超时，单位为毫秒）、`EVAL_LIMIT`（调试时限制评测题数）和 `EVAL_RESUME`（控制是否从检查点恢复）。本地向量缓存相关的选填变量包括 `HF_ENDPOINT`（模型下载端点）和 `MODELS_OFFLINE`（模型离线模式）。
 
 在本目录执行：
 
