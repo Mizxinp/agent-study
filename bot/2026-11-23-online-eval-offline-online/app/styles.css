@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background: #f6f8fa;
+  color: #202935;
+  font: 16px/1.55 system-ui, sans-serif;
+}
+main {
+  max-width: 76rem;
+  margin: auto;
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+}
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: .9rem; }
+th, td { text-align: left; vertical-align: top; padding: .65rem; border-bottom: 1px solid #dce2ea; }
+th { white-space: nowrap; background: #e6edf4; }
