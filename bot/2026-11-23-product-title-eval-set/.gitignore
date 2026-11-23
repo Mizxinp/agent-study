@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.model-cache/
+.promptfoo/
+.env*
+*.tsbuildinfo
+
+next-env.d.ts
+*.log
