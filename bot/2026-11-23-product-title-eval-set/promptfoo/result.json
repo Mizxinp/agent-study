@@ -1,0 +1,48 @@
+{
+  "conclusion": "支持",
+  "typescript": {
+    "datasetSha256": "dd9e83d6f143bfdce297cd74e386064e4585341ad0aa5a30a9cd6c2dc12c1359",
+    "id": "PT-02",
+    "title": "德化手拉坯白瓷茶杯 350ml",
+    "faithfulness": false,
+    "coverage": true,
+    "length": true,
+    "chars": 15,
+    "unsupported": [
+      "350ml"
+    ],
+    "missing": [],
+    "flag_absolute_terms": false,
+    "compliance_should_fail": false,
+    "pass": false
+  },
+  "promptfoo": {
+    "version": "0.126.0",
+    "provider": "echo",
+    "output": "德化手拉坯白瓷茶杯 350ml",
+    "threshold": 0.75,
+    "success": true,
+    "score": 0.8,
+    "reason": "Aggregate score 0.80 ≥ 0.75 threshold",
+    "assertions": [
+      {
+        "metric": "faithfulness",
+        "pass": false,
+        "score": 0,
+        "weight": 1
+      },
+      {
+        "metric": "coverage",
+        "pass": true,
+        "score": 1,
+        "weight": 2
+      },
+      {
+        "metric": "length",
+        "pass": true,
+        "score": 1,
+        "weight": 2
+      }
+    ]
+  }
+}
