@@ -1,0 +1,13 @@
+.env*
+node_modules/
+.next/
+.model-cache/
+.promptfoo/
+.cli-*/
+out/
+*.db
+*.db-*
+*.sqlite*
+*.log
+*.tsbuildinfo
+next-env.d.ts
