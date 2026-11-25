@@ -4,16 +4,16 @@
 
 ## 夹具与源码
 
-上游只读克隆根目录为 `/home/box/personal/sourceCode/promptfoo`，源码提交为 `aa4e2c6baa89f616bb361459a0410f330e16f7c7`。以下文件逐字节复制到本目录的 `fixtures/`，原件与副本的 SHA-256 相同。
+上游源码固定在 [`aa4e2c6baa89f616bb361459a0410f330e16f7c7`](https://github.com/promptfoo/promptfoo/tree/aa4e2c6baa89f616bb361459a0410f330e16f7c7)。以下文件逐字节复制到本目录的 `fixtures/`，原件与副本的 SHA-256 相同。
 
 | 上游相对路径 | SHA-256 |
 | --- | --- |
-| `test/__fixtures__/openai-evals-items.jsonl` | `4aa07a80b19f0a04b1a65675fd84b8b215686e25a16064b6377d794a9d2c892e` |
-| `test/__fixtures__/openai-evals-multi-run-items.jsonl` | `5918775cd1533d58c2ce084740402ccde07d76a6fdccc604e91849022de7061c` |
+| [`test/__fixtures__/openai-evals-items.jsonl`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/test/__fixtures__/openai-evals-items.jsonl) | `4aa07a80b19f0a04b1a65675fd84b8b215686e25a16064b6377d794a9d2c892e` |
+| [`test/__fixtures__/openai-evals-multi-run-items.jsonl`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/test/__fixtures__/openai-evals-multi-run-items.jsonl) | `5918775cd1533d58c2ce084740402ccde07d76a6fdccc604e91849022de7061c` |
 
-另外构造了 score-only、对齐、非法行和模拟 API 列表四份夹具。独立实现对照仓库的 `src/importers/openaiEvals/{validation,convert}.ts`、`src/importers/parse.ts` 和 `src/types/results.ts`。行通过取所有 `passes` 的 AND，有判定时行评分为通过组件数除以组件总数。组件分为 0 或 1，原始 grade 作为评分数值存入 `namedScores`，原始行也保留该值。对齐键由 `data_source_idx` 和递归排序对象键后序列化所得的 SHA-256 组成，保留数组元素顺序。单 run 的 ID 后缀替换非法字符为下划线，多 run 将唯一 run ID 排序、用换行连接，再截取 SHA-256 前 24 位。
+另外构造了 score-only、对齐、非法行和模拟 API 列表四份夹具。独立实现对照仓库的 [`src/importers/openaiEvals/validation.ts`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/validation.ts)、[`src/importers/openaiEvals/convert.ts`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts)、[`src/importers/parse.ts`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/parse.ts) 和 [`src/types/results.ts`](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/types/results.ts)。行通过取所有 `passes` 的 AND，有判定时行评分为通过组件数除以组件总数。[评分与理由](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L170-L196)组件分为 0 或 1，原始 grade 作为评分数值存入 `namedScores`，原始行也保留该值。对齐键由 `data_source_idx` 和递归排序对象键后序列化所得的 SHA-256 组成，保留数组元素顺序。[item 哈希](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L276)单 run 的 ID 后缀替换非法字符为下划线，多 run 将唯一 run ID 排序、用换行连接，再截取 SHA-256 前 24 位。[非法字符替换](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L281)、[多 run 的 ID 哈希](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L372)
 
-对照覆盖 eval ID、描述、配置测试及导入元数据、列的 prompt/provider 和测试及断言计数，以及行索引、状态、分数、原因、错误文本、组件和完整的原始行。比较时按列和测试索引排列结果。时间戳、令牌计数、成本和完整 provider response 不在比较范围内。独立脚本专门验证仪表盘 JSONL，CLI 另有整文件 JSON 格式分流。
+对照覆盖 eval ID、描述、配置测试及导入元数据、列的 prompt/provider 和测试及断言计数，以及行索引、状态、分数、原因、错误文本、组件和完整的原始行。比较时按列和测试索引排列结果。时间戳、令牌计数、成本和完整 provider response 不在比较范围内。独立脚本专门验证仪表盘 JSONL，CLI 另有整文件 JSON 格式分流。[OpenAI Evals 行校验与转换](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/parse.ts#L9-L14)
 
 ## H1–H6
 
@@ -21,9 +21,9 @@
 
 | 假设 | 实测与结论 |
 | --- | --- |
-| H1 | 证实。ID 为 `openai-evals-evalrun_import_fixture`，描述为 `Imported from OpenAI Evals run evalrun_import_fixture`，`config.metadata.openaiEvalsImport.format` 为 `dashboard-output-items-jsonl`。计数 **1 / 1 / 0 / 5 / 1**。通过行的 `namedScores.Relevance=6`，对应组件分 **1**。失败行的 `failureReason=ASSERT (1)`，理由为 `Imported OpenAI eval graders failed: Relevance.`，行分 **2/3**。两行的 `metadata.openai.outputItem` 均与输入对象深度相等。 |
-| H2 | 证实。仅有 `grades.Quality=0.5`，无 `passes`。行 `success=true`，`gradingResult.pass=true`，两级 score 均为 **1**，`componentResults=[]`，理由含 `did not include grader pass results`。计数 **1 / 0 / 0 / 0 / 0**。按 `src/node/doEval.ts` 的口径，这条记录会计入 successes，分母为 successes + failures + errors。单独送入该口径时为 **1/1 = 100%**，达到 95% 与默认 100% 的阈值。本轮用源码与计数推导，未重跑闸门 demo。 |
-| H3 | 证实。索引 **0**、相同 item 的两行均为 `testIdx=0`。错误列 `promptIdx=0`，`failureReason=ERROR (2)`，行分 **0**，从 `sample.error.message` 取出 `Response input item missing role`。错误列计数 **0 / 0 / 1 / 0 / 0**，成功列 `promptIdx=1`，计数 **1 / 0 / 0 / 1 / 0**。两列标签分别为 `Imported OpenAI eval item (evalrun_error_fixture)` 与 `Imported OpenAI eval item (evalrun_pass_fixture)`，provider 分别为 `openai-evals:evalrun_error_fixture` 与 `openai-evals:evalrun_pass_fixture`。独立单测也覆盖字符串形式的 sample error。 |
+| H1 | 证实。ID 为 `openai-evals-evalrun_import_fixture`，描述为 `Imported from OpenAI Evals run evalrun_import_fixture`，`config.metadata.openaiEvalsImport.format` 为 `dashboard-output-items-jsonl`。计数 **1 / 1 / 0 / 5 / 1**。通过行的 `namedScores.Relevance=6`，对应组件分 **1**。失败行的 `failureReason=ASSERT (1)`，理由为 `Imported OpenAI eval graders failed: Relevance.`，行分 **2/3**。两行的 `metadata.openai.outputItem` 均与输入对象深度相等。[失败类型判定](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L45-L49) |
+| H2 | 证实。仅有 `grades.Quality=0.5`，无 `passes`。行 `success=true`，`gradingResult.pass=true`，两级 score 均为 **1**，`componentResults=[]`，理由含 `did not include grader pass results`。计数 **1 / 0 / 0 / 0 / 0**。按 `doEval.ts` 的口径，这条记录会计入 successes，分母为 successes + failures + errors。单独送入该口径时为 **1/1 = 100%**，达到 95% 与默认 100% 的阈值。本轮用源码与计数推导，未重跑闸门 demo。[通过率计算](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/node/doEval.ts#L1048-L1050)、[阈值与退出码](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/node/doEval.ts#L1274-L1289) |
+| H3 | 证实。索引 **0**、相同 item 的两行均为 `testIdx=0`。错误列 `promptIdx=0`，`failureReason=ERROR (2)`，行分 **0**，从 `sample.error.message` 取出 `Response input item missing role`。出错行的 `gradingResult.pass=true`、`gradingResult.score=1`，但行级 `success=false`、`score=0`，两级语义不一致。错误列计数 **0 / 0 / 1 / 0 / 0**，成功列 `promptIdx=1`，计数 **1 / 0 / 0 / 1 / 0**。两列标签分别为 `Imported OpenAI eval item (evalrun_error_fixture)` 与 `Imported OpenAI eval item (evalrun_pass_fixture)`，provider 分别为 `openai-evals:evalrun_error_fixture` 与 `openai-evals:evalrun_pass_fixture`。独立单测也覆盖字符串形式的 sample error。[行级状态与分数](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/openaiEvals/convert.ts#L213-L241) |
 | H4 | 证实。按夹具行序，`data_source_idx` 为 **7、7、7、8**，`testIdx` 为 **0、0、1、2**，共 **3** 个测试。前两行递归对象键顺序不同但内容相同，第三行内容变化，第四行只有索引变化。 |
 | H5 | 证实。四份有效夹具的导出 `config.tests[*]` 只含 `description`、`vars` 和 `metadata`，无 `assert`，顶层 `config.assert` 和 `config.defaultTest` 也未出现。H2 夹具还显式提供一条 `testing_criteria`，导出原始行保留该字段，生成的断言仍为 **0**。**导入不是可运行评测集的迁移。** |
 | H6 | 模拟 API 列表被拒绝。整文件 JSON 解析成功，外层列表对象未通过仪表盘行检测，落入 Promptfoo JSON 导出校验并报 `Unsupported eval export results format`。夹具为本地手写，未使用真实 API 响应。 |
@@ -48,7 +48,7 @@
 | `promptfoo import …/invalid-row.jsonl` | 1 | `line 2 is not a valid OpenAI Evals row`，后接隔离环境中的日志位置。 |
 | `promptfoo import …/api-like.json` | 1 | `Unsupported eval export results format`。 |
 
-非法行夹具第二行的 `data_source_idx=-1`，JSON 语法合法但行 schema 不符。它与 H6 分别走 JSONL schema 拒绝和 Promptfoo JSON 格式拒绝两条路径。
+非法行夹具第二行的 `data_source_idx=-1`，JSON 语法合法但行 schema 不符。它与 H6 分别走 JSONL schema 拒绝和 Promptfoo JSON 格式拒绝两条路径。[JSONL 分流与非法行定位](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/parse.ts#L47-L54)、[非法行报错](https://github.com/promptfoo/promptfoo/blob/aa4e2c6baa89f616bb361459a0410f330e16f7c7/src/importers/parse.ts#L55-L58)
 
 ## 复现
 
