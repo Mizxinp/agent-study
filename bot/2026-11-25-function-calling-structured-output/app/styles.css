@@ -1,0 +1,16 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  background: #f5f4ef;
+  color: #1d302d;
+}
+
+body { margin: 0; }
+main { max-width: 52rem; margin: auto; padding: 3rem 1.25rem; }
+h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.6rem); }
+table { width: 100%; border-collapse: collapse; margin-top: 2rem; background: #fff; }
+th, td { padding: .7rem .8rem; border-bottom: 1px solid #dce3df; text-align: left; }
+thead { background: #e2ede8; }
+details { padding: .65rem 0; border-bottom: 1px solid #d6dfdb; }
+summary { cursor: pointer; }
+pre { overflow: auto; max-height: 32rem; background: #fff; padding: 1rem; }

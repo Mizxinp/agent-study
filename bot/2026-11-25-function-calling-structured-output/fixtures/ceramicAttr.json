@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "form": {
+      "type": "string",
+      "description": "德化陶瓷器型"
+    },
+    "glaze": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capacityMl": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 5000,
+      "description": "容量（毫升）"
+    },
+    "uses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "茶饮",
+          "陈设",
+          "餐饮"
+        ]
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "heightMm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "heightMm"
+      ],
+      "additionalProperties": false
+    },
+    "painted": {
+      "type": "boolean"
+    },
+    "quantity": {
+      "default": 1,
+      "type": "integer",
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "form",
+    "glaze",
+    "capacityMl",
+    "uses",
+    "dimensions"
+  ],
+  "additionalProperties": false
+}

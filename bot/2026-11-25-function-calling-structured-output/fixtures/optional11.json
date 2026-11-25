@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "attribute1": {
+      "type": "string"
+    },
+    "attribute2": {
+      "type": "string"
+    },
+    "attribute3": {
+      "type": "string"
+    },
+    "attribute4": {
+      "type": "string"
+    },
+    "attribute5": {
+      "type": "string"
+    },
+    "attribute6": {
+      "type": "string"
+    },
+    "attribute7": {
+      "type": "string"
+    },
+    "attribute8": {
+      "type": "string"
+    },
+    "attribute9": {
+      "type": "string"
+    },
+    "attribute10": {
+      "type": "string"
+    },
+    "attribute11": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
