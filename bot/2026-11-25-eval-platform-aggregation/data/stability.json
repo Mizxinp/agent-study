@@ -1,0 +1,26 @@
+{
+  "threshold": 0.85,
+  "k": 3,
+  "questions": [
+    {"qid": "q01", "scores": [1, 1, 1]},
+    {"qid": "q02", "scores": [1, 1, 1]},
+    {"qid": "q03", "scores": [1, 1, 1]},
+    {"qid": "q04", "scores": [1, 1, 1]},
+    {"qid": "q05", "scores": [1, 1, 1]},
+    {"qid": "q06", "scores": [1, 1, 1]},
+    {"qid": "q07", "scores": [1, 1, 1]},
+    {"qid": "q08", "scores": [1, 1, 1]},
+    {"qid": "q09", "scores": [1, 1, 1]},
+    {"qid": "q10", "scores": [1, 1, 1]},
+    {"qid": "q11", "scores": [1, 1, 1]},
+    {"qid": "q12", "scores": [1, 1, 1]},
+    {"qid": "q13", "scores": [1, 1, 1]},
+    {"qid": "q14", "scores": [1, 1, 1]},
+    {"qid": "q15", "scores": [1, 1, 1]},
+    {"qid": "q16", "scores": [1, 1, 1]},
+    {"qid": "q17", "scores": [1, 1, 0]},
+    {"qid": "q18", "scores": [1, 1, 0]},
+    {"qid": "q19", "scores": [1, 1, 0]},
+    {"qid": "q20", "scores": [1, 1, 0]}
+  ]
+}

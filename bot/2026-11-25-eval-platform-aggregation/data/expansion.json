@@ -1,0 +1,10 @@
+{
+  "langSmith": [
+    {"numRepetitions": 5, "examples": [{"id": "e1"}, {"id": "e2"}, {"id": "e3"}, {"id": "e4"}, {"id": "e5"}]},
+    {"numRepetitions": 3, "examples": [{"id": "e1"}, {"id": "e2"}]}
+  ],
+  "braintrust": {
+    "trialCount": 2,
+    "cases": [{"id": "default"}, {"id": "override-five", "trialCount": 5}, {"id": "override-one", "trialCount": 1}]
+  }
+}

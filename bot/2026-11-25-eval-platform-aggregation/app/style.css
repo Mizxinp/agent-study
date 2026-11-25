@@ -1,0 +1,16 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  color: #182826;
+  background: #f2f6f3;
+}
+body { margin: 0; line-height: 1.65; }
+main { max-width: 56rem; margin: auto; padding: 3rem 1rem; }
+header { margin-bottom: 2rem; }
+h1 { font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.15; margin: 0; }
+h2 { font-size: 1.25rem; margin: 0; }
+section { border-top: 1px solid #b8cbc2; padding: 1.25rem 0; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; }
+.metrics div { padding: 0.85rem 1rem; background: white; border: 1px solid #d0ddd7; border-radius: 0.5rem; }
+dd { margin: 0; font-size: 2rem; font-weight: 700; color: #186047; font-variant-numeric: tabular-nums; }
+.metrics span { font-size: 0.9rem; }
