@@ -1,0 +1,1977 @@
+{
+  "models": {
+    "openai": "gpt-4.1-mini",
+    "anthropic": "claude-sonnet-4-6",
+    "anthropicForcedChoiceRejected": "claude-opus-5-5",
+    "google": "gemini-2.5-flash"
+  },
+  "fixtureHashes": {
+    "fixtures/ceramicAttr.json": "3912fcfd877a7e82ef1f4e0ac785095a9089c1c83a3c9a00789b389b495d529f",
+    "fixtures/ceramicAttrStrictSafe.json": "b1d2b9178eb5ff6300382dded05cb55c3a157c061d00842eb41a6b460a436720",
+    "fixtures/ceramicAttrLocalRange.json": "42ecd0d35d07f241a5f773e6637c3c375a3306f27b3673f2661bac70514e14f1",
+    "fixtures/museTagUnion.json": "af5029ba904258f595cf475b8384168829d2dd85920be916f8cb5a017743462e",
+    "fixtures/optional10.json": "4caa8c2e5e6955a9101b7fadadf757b37f34bd1a566a62035f66dd6c88afbf35",
+    "fixtures/optional11.json": "5c952386cbfbbe1bbc6079173a12da7a2b5e9a0d2ec06280cf7317d0068af8bf"
+  },
+  "results": [
+    {
+      "id": "H1",
+      "verdict": "支持",
+      "requestCount": 3,
+      "assertions": 4,
+      "passed": 4,
+      "checks": [
+        {
+          "label": "默认 URL 以 /responses 结尾",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "Responses 默认工具 strict",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "Responses 显式工具 strict",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "Chat function 存在且省略 strict",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": false
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        },
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": true
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        },
+        {
+          "url": "https://api.openai.com/v1/chat/completions",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "messages": [
+              {
+                "role": "user",
+                "content": "抽取德化陶瓷商品属性。"
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "inspect",
+                  "parameters": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "type": "object",
+                    "properties": {
+                      "capacityMl": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      }
+                    },
+                    "required": [
+                      "capacityMl"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "H2",
+      "verdict": "支持",
+      "requestCount": 3,
+      "assertions": 12,
+      "passed": 12,
+      "checks": [
+        {
+          "label": "输出类型",
+          "actual": "json_schema",
+          "expected": "json_schema",
+          "pass": true
+        },
+        {
+          "label": "默认输出 strict",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "默认输出名称",
+          "actual": "response",
+          "expected": "response",
+          "pass": true
+        },
+        {
+          "label": "同一请求的工具 strict",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "关闭输出 strict",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "required",
+          "actual": [
+            "form",
+            "glaze",
+            "capacityMl",
+            "uses",
+            "dimensions"
+          ],
+          "expected": [
+            "form",
+            "glaze",
+            "capacityMl",
+            "uses",
+            "dimensions"
+          ],
+          "pass": true
+        },
+        {
+          "label": "additionalProperties",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "整数 maximum",
+          "actual": 9007199254740991,
+          "expected": 9007199254740991,
+          "pass": true
+        },
+        {
+          "label": "本地默认数量",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        },
+        {
+          "label": "本地范围变体发出的容量 schema",
+          "actual": {
+            "type": "integer",
+            "description": "容量（毫升）"
+          },
+          "expected": {
+            "type": "integer",
+            "description": "容量（毫升）"
+          },
+          "pass": true
+        },
+        {
+          "label": "本地范围变体发出的数量 schema",
+          "actual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expected": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pass": true
+        },
+        {
+          "label": "本地范围变体拒绝 20",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "text": {
+              "format": {
+                "type": "json_schema",
+                "strict": true,
+                "name": "response",
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string",
+                      "description": "德化陶瓷器型"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": 50,
+                      "maximum": 5000,
+                      "description": "容量（毫升）"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ]
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "heightMm"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "painted": {
+                      "type": "boolean"
+                    },
+                    "quantity": {
+                      "default": 1,
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": false
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        },
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "text": {
+              "format": {
+                "type": "json_schema",
+                "strict": false,
+                "name": "response",
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string",
+                      "description": "德化陶瓷器型"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": 50,
+                      "maximum": 5000,
+                      "description": "容量（毫升）"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ]
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "heightMm"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "painted": {
+                      "type": "boolean"
+                    },
+                    "quantity": {
+                      "default": 1,
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": false
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        },
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "text": {
+              "format": {
+                "type": "json_schema",
+                "strict": true,
+                "name": "response",
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string",
+                      "description": "德化陶瓷器型"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "type": "integer",
+                      "description": "容量（毫升）"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ]
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "heightMm"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "painted": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "quantity": {
+                      "anyOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions",
+                    "painted",
+                    "quantity"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "H3",
+      "verdict": "支持",
+      "requestCount": 1,
+      "assertions": 5,
+      "passed": 5,
+      "checks": [
+        {
+          "label": "lookaround 删除",
+          "actual": {
+            "type": "string"
+          },
+          "expected": {
+            "type": "string"
+          },
+          "pass": true
+        },
+        {
+          "label": "propertyNames 删除",
+          "actual": "（缺省）",
+          "expected": "（缺省）",
+          "pass": true
+        },
+        {
+          "label": "警告类型",
+          "actual": [
+            "compatibility",
+            "compatibility"
+          ],
+          "expected": [
+            "compatibility",
+            "compatibility"
+          ],
+          "pass": true
+        },
+        {
+          "label": "非字符串 propertyNames 抛 UnsupportedFunctionalityError",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "截获请求数",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "tag": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "strict": false
+              }
+            ],
+            "tool_choice": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "H4",
+      "verdict": "支持",
+      "requestCount": 4,
+      "assertions": 14,
+      "passed": 14,
+      "checks": [
+        {
+          "label": "工具 strict",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "工具 minimum",
+          "actual": 50,
+          "expected": 50,
+          "pass": true
+        },
+        {
+          "label": "工具 maximum",
+          "actual": 5000,
+          "expected": 5000,
+          "pass": true
+        },
+        {
+          "label": "required 映射",
+          "actual": "any",
+          "expected": "any",
+          "pass": true
+        },
+        {
+          "label": "指定工具映射",
+          "actual": {
+            "type": "tool",
+            "name": "inspect"
+          },
+          "expected": {
+            "type": "tool",
+            "name": "inspect"
+          },
+          "pass": true
+        },
+        {
+          "label": "原生输出类型",
+          "actual": "json_schema",
+          "expected": "json_schema",
+          "pass": true
+        },
+        {
+          "label": "原生输出无 minimum",
+          "actual": "（缺省）",
+          "expected": "（缺省）",
+          "pass": true
+        },
+        {
+          "label": "原生输出无 maximum",
+          "actual": "（缺省）",
+          "expected": "（缺省）",
+          "pass": true
+        },
+        {
+          "label": "描述包含两个边界",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "根对象关闭额外属性",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "嵌套对象关闭额外属性",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "原生输出解析",
+          "actual": {
+            "form": "盖碗",
+            "glaze": null,
+            "capacityMl": 120,
+            "uses": [
+              "茶饮"
+            ],
+            "dimensions": {
+              "heightMm": null
+            },
+            "painted": null,
+            "quantity": null
+          },
+          "expected": {
+            "form": "盖碗",
+            "glaze": null,
+            "capacityMl": 120,
+            "uses": [
+              "茶饮"
+            ],
+            "dimensions": {
+              "heightMm": null
+            },
+            "painted": null,
+            "quantity": null
+          },
+          "pass": true
+        },
+        {
+          "label": "拒绝强制时降级",
+          "actual": "auto",
+          "expected": "auto",
+          "pass": true
+        },
+        {
+          "label": "toolChoice 警告数",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 128000,
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "name": "inspect",
+                "input_schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string",
+                      "description": "德化陶瓷器型"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": 50,
+                      "maximum": 5000,
+                      "description": "容量（毫升）"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ]
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "heightMm"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "painted": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "quantity": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions",
+                    "painted",
+                    "quantity"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": true
+              }
+            ],
+            "tool_choice": {
+              "type": "any"
+            }
+          }
+        },
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 128000,
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "name": "inspect",
+                "input_schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string",
+                      "description": "德化陶瓷器型"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": 50,
+                      "maximum": 5000,
+                      "description": "容量（毫升）"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ]
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "heightMm"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "painted": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "quantity": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions",
+                    "painted",
+                    "quantity"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": true
+              }
+            ],
+            "tool_choice": {
+              "type": "tool",
+              "name": "inspect"
+            }
+          }
+        },
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 128000,
+            "output_config": {
+              "format": {
+                "type": "json_schema",
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "description": "德化陶瓷器型",
+                      "type": "string"
+                    },
+                    "glaze": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "capacityMl": {
+                      "description": "容量（毫升）\nminimum: 50; maximum: 5000.",
+                      "type": "integer"
+                    },
+                    "uses": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "茶饮",
+                          "陈设",
+                          "餐饮"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "heightMm": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "heightMm"
+                      ]
+                    },
+                    "painted": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "quantity": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "description": "minimum: -9007199254740991; maximum: 9007199254740991."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "form",
+                    "glaze",
+                    "capacityMl",
+                    "uses",
+                    "dimensions",
+                    "painted",
+                    "quantity"
+                  ]
+                }
+              }
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-opus-5-5",
+            "max_tokens": 128000,
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "name": "inspect",
+                "input_schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            ],
+            "tool_choice": {
+              "type": "auto"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "H5",
+      "verdict": "支持",
+      "requestCount": 2,
+      "assertions": 8,
+      "passed": 8,
+      "checks": [
+        {
+          "label": "10 项走原生",
+          "actual": "json_schema",
+          "expected": "json_schema",
+          "pass": true
+        },
+        {
+          "label": "10 项无 json 工具",
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        {
+          "label": "10 项输出",
+          "actual": {
+            "attribute1": "盖碗"
+          },
+          "expected": {
+            "attribute1": "盖碗"
+          },
+          "pass": true
+        },
+        {
+          "label": "11 项无原生 format",
+          "actual": "（缺省）",
+          "expected": "（缺省）",
+          "pass": true
+        },
+        {
+          "label": "11 项 json 工具",
+          "actual": "json",
+          "expected": "json",
+          "pass": true
+        },
+        {
+          "label": "11 项强制调用",
+          "actual": "any",
+          "expected": "any",
+          "pass": true
+        },
+        {
+          "label": "11 项关闭并行",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "11 项工具响应解析",
+          "actual": {
+            "attribute1": "盖碗"
+          },
+          "expected": {
+            "attribute1": "盖碗"
+          },
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 128000,
+            "output_config": {
+              "format": {
+                "type": "json_schema",
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "attribute1": {
+                      "type": "string"
+                    },
+                    "attribute2": {
+                      "type": "string"
+                    },
+                    "attribute3": {
+                      "type": "string"
+                    },
+                    "attribute4": {
+                      "type": "string"
+                    },
+                    "attribute5": {
+                      "type": "string"
+                    },
+                    "attribute6": {
+                      "type": "string"
+                    },
+                    "attribute7": {
+                      "type": "string"
+                    },
+                    "attribute8": {
+                      "type": "string"
+                    },
+                    "attribute9": {
+                      "type": "string"
+                    },
+                    "attribute10": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "url": "https://api.anthropic.com/v1/messages",
+          "body": {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 128000,
+            "messages": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "name": "json",
+                "description": "Respond with a JSON object.",
+                "input_schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "attribute1": {
+                      "type": "string"
+                    },
+                    "attribute2": {
+                      "type": "string"
+                    },
+                    "attribute3": {
+                      "type": "string"
+                    },
+                    "attribute4": {
+                      "type": "string"
+                    },
+                    "attribute5": {
+                      "type": "string"
+                    },
+                    "attribute6": {
+                      "type": "string"
+                    },
+                    "attribute7": {
+                      "type": "string"
+                    },
+                    "attribute8": {
+                      "type": "string"
+                    },
+                    "attribute9": {
+                      "type": "string"
+                    },
+                    "attribute10": {
+                      "type": "string"
+                    },
+                    "attribute11": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            ],
+            "tool_choice": {
+              "type": "any",
+              "disable_parallel_tool_use": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "H6",
+      "verdict": "支持",
+      "requestCount": 6,
+      "assertions": 10,
+      "passed": 10,
+      "checks": [
+        {
+          "label": "工具选择 1",
+          "actual": {
+            "mode": "VALIDATED"
+          },
+          "expected": {
+            "mode": "VALIDATED"
+          },
+          "pass": true
+        },
+        {
+          "label": "工具选择 2",
+          "actual": {
+            "mode": "AUTO"
+          },
+          "expected": {
+            "mode": "AUTO"
+          },
+          "pass": true
+        },
+        {
+          "label": "工具选择 3",
+          "actual": {
+            "mode": "ANY"
+          },
+          "expected": {
+            "mode": "ANY"
+          },
+          "pass": true
+        },
+        {
+          "label": "工具选择 4",
+          "actual": {
+            "mode": "ANY",
+            "allowedFunctionNames": [
+              "inspect"
+            ]
+          },
+          "expected": {
+            "mode": "ANY",
+            "allowedFunctionNames": [
+              "inspect"
+            ]
+          },
+          "pass": true
+        },
+        {
+          "label": "工具选择 5",
+          "actual": {
+            "mode": "NONE"
+          },
+          "expected": {
+            "mode": "NONE"
+          },
+          "pass": true
+        },
+        {
+          "label": "原始 const",
+          "actual": "釉色",
+          "expected": "釉色",
+          "pass": true
+        },
+        {
+          "label": "输出 MIME",
+          "actual": "application/json",
+          "expected": "application/json",
+          "pass": true
+        },
+        {
+          "label": "发送的 const",
+          "actual": "（缺省）",
+          "expected": "（缺省）",
+          "pass": true
+        },
+        {
+          "label": "发送的单值 enum",
+          "actual": [
+            "釉色"
+          ],
+          "expected": [
+            "釉色"
+          ],
+          "pass": true
+        },
+        {
+          "label": "Google 结构化输出解析",
+          "actual": {
+            "kind": "釉色"
+          },
+          "expected": {
+            "kind": "釉色"
+          },
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {},
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "functionDeclarations": [
+                  {
+                    "name": "inspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  {
+                    "name": "strictInspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              }
+            ],
+            "toolConfig": {
+              "functionCallingConfig": {
+                "mode": "VALIDATED"
+              }
+            }
+          }
+        },
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {},
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "functionDeclarations": [
+                  {
+                    "name": "inspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              }
+            ],
+            "toolConfig": {
+              "functionCallingConfig": {
+                "mode": "AUTO"
+              }
+            }
+          }
+        },
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {},
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "functionDeclarations": [
+                  {
+                    "name": "inspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              }
+            ],
+            "toolConfig": {
+              "functionCallingConfig": {
+                "mode": "ANY"
+              }
+            }
+          }
+        },
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {},
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "functionDeclarations": [
+                  {
+                    "name": "inspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              }
+            ],
+            "toolConfig": {
+              "functionCallingConfig": {
+                "mode": "ANY",
+                "allowedFunctionNames": [
+                  "inspect"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {},
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "functionDeclarations": [
+                  {
+                    "name": "inspect",
+                    "description": "",
+                    "parametersJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "type": "object",
+                      "properties": {
+                        "capacityMl": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "capacityMl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              }
+            ],
+            "toolConfig": {
+              "functionCallingConfig": {
+                "mode": "NONE"
+              }
+            }
+          }
+        },
+        {
+          "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          "body": {
+            "generationConfig": {
+              "responseMimeType": "application/json",
+              "responseJsonSchema": {
+                "$schema": "http://json-schema.org/draft-07/schema#",
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "釉色"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "contents": [
+              {
+                "role": "user",
+                "parts": [
+                  {
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "H7",
+      "verdict": "支持",
+      "requestCount": 0,
+      "assertions": 15,
+      "passed": 15,
+      "checks": [
+        {
+          "label": "generateText 工具选择错误",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "流式步骤 finishReason",
+          "actual": "error",
+          "expected": "error",
+          "pass": true
+        },
+        {
+          "label": "流式工具选择错误 part",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        },
+        {
+          "label": "非 JSON 错误类型",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "非 JSON 错误消息",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "非 JSON 原文本",
+          "actual": "普通文本",
+          "expected": "普通文本",
+          "pass": true
+        },
+        {
+          "label": "容量越界 错误类型",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "容量越界 错误消息",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "容量越界 原文本",
+          "actual": "{\"form\":\"盖碗\",\"glaze\":null,\"capacityMl\":20,\"uses\":[\"茶饮\"],\"dimensions\":{\"heightMm\":null}}",
+          "expected": "{\"form\":\"盖碗\",\"glaze\":null,\"capacityMl\":20,\"uses\":[\"茶饮\"],\"dimensions\":{\"heightMm\":null}}",
+          "pass": true
+        },
+        {
+          "label": "无修复 invalid 工具调用",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "无修复 tool-error",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        },
+        {
+          "label": "无修复执行次数",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "label": "修复调用次数",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        },
+        {
+          "label": "修复后工具结果数",
+          "actual": 1,
+          "expected": 1,
+          "pass": true
+        },
+        {
+          "label": "修复后执行参数及次数",
+          "actual": [
+            {
+              "capacityMl": 120
+            }
+          ],
+          "expected": [
+            {
+              "capacityMl": 120
+            }
+          ],
+          "pass": true
+        }
+      ],
+      "requests": []
+    },
+    {
+      "id": "H8",
+      "verdict": "支持",
+      "requestCount": 1,
+      "assertions": 7,
+      "passed": 7,
+      "checks": [
+        {
+          "label": "请求 stream 标志",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "错误 part 数",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "label": "增量数",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "label": "增量值",
+          "actual": [
+            "{\"capacityMl\":",
+            "80",
+            "}"
+          ],
+          "expected": [
+            "{\"capacityMl\":",
+            "80",
+            "}"
+          ],
+          "pass": true
+        },
+        {
+          "label": "最终工具输入",
+          "actual": {
+            "capacityMl": 120
+          },
+          "expected": {
+            "capacityMl": 120
+          },
+          "pass": true
+        },
+        {
+          "label": "最终输入与拼接增量有差异",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        {
+          "label": "工具执行参数及次数",
+          "actual": [
+            {
+              "capacityMl": 120
+            }
+          ],
+          "expected": [
+            {
+              "capacityMl": 120
+            }
+          ],
+          "pass": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://api.openai.com/v1/responses",
+          "body": {
+            "model": "gpt-4.1-mini",
+            "input": [
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "input_text",
+                    "text": "抽取德化陶瓷商品属性。"
+                  }
+                ]
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "name": "inspect",
+                "parameters": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "capacityMl": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "capacityMl"
+                  ],
+                  "additionalProperties": false
+                },
+                "strict": false
+              }
+            ],
+            "tool_choice": "auto",
+            "stream": true
+          }
+        }
+      ]
+    }
+  ],
+  "typecheck": {
+    "H7": "repairText 由 lib/repair-text.typecheck.ts 的 @ts-expect-error 执行类型回归检查"
+  },
+  "live": {
+    "id": "H9",
+    "verdict": "跳过",
+    "reason": "本轮缺少模型 API 密钥，真实服务端验证关闭"
+  }
+}
