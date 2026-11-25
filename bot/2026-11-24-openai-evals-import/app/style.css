@@ -1,0 +1,17 @@
+:root {
+  color-scheme: light;
+  background: #f3f5f0;
+  color: #172820;
+  font-family: system-ui, sans-serif;
+}
+body { margin: 0; }
+main { max-width: 52rem; margin: auto; padding: clamp(1.25rem, 5vw, 4rem); }
+header { border-bottom: 2px solid #306450; padding-bottom: 1.5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin: 0.5rem 0 1rem; }
+p, dd { line-height: 1.65; }
+.version, small, .note { color: #38574b; }
+.observation { border-bottom: 1px solid #c9d6ce; padding: 1.1rem 0; }
+dt { font-weight: 700; }
+dt span { display: inline-block; min-width: 2rem; color: #326450; }
+dd { margin: 0.3rem 0 0 2.25rem; }
+small { display: block; margin-top: 0.25rem; }

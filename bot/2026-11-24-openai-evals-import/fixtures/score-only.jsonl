@@ -1,0 +1,1 @@
+{"run_id":"score/only","data_source_idx":0,"item":{"input":"Frozen example"},"grades":{"Quality":0.5},"testing_criteria":[{"type":"string_check","name":"Quality","input":"{{sample.output_text}}","reference":"expected","operation":"eq"}]}

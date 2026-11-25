@@ -1,0 +1,4 @@
+{"run_id":"align_b","data_source_idx":7,"item":{"input":"same","details":{"a":1,"b":2}},"grades":{}}
+{"run_id":"align_a","data_source_idx":7,"item":{"details":{"b":2,"a":1},"input":"same"},"grades":{}}
+{"run_id":"align_a","data_source_idx":7,"item":{"input":"different","details":{"a":1,"b":2}},"grades":{}}
+{"run_id":"align_b","data_source_idx":8,"item":{"input":"same","details":{"a":1,"b":2}},"grades":{}}
