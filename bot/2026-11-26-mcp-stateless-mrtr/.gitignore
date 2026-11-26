@@ -1,0 +1,11 @@
+.env*
+node_modules/
+.next/
+*.log
+*.tsbuildinfo
+next-env.d.ts
+*.pem
+*.key
+results/wire-log.jsonl
+results/run.json
+results/export-*.json

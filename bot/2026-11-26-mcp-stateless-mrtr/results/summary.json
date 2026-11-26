@@ -1,0 +1,830 @@
+{
+  "protocol": "2026-07-28",
+  "hypotheses": {
+    "H1": {
+      "conclusion": "支持",
+      "evidence": {
+        "successes": 10,
+        "ports": [
+          3102,
+          3101,
+          3102,
+          3101,
+          3102,
+          3101,
+          3102,
+          3101,
+          3102,
+          3101
+        ],
+        "sessions": 0,
+        "initializes": 0,
+        "wire": [
+          {
+            "proxy": 3100,
+            "sequence": 0,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "server/discover",
+            "nameHeader": null,
+            "requestSession": false,
+            "responseSession": false,
+            "method": "server/discover",
+            "id": "server-discover-probe-1",
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 1,
+            "instance": 3102,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "get_sku",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 0,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 2,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "get_sku",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 1,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          }
+        ]
+      }
+    },
+    "H2": {
+      "conclusion": "支持",
+      "evidence": {
+        "method": {
+          "status": 400,
+          "allow": null,
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32020,
+              "message": "Bad Request: the request headers and body disagree: the body names method tools/call but the Mcp-Method header names tools/list",
+              "data": {
+                "mismatch": {
+                  "header": "tools/list",
+                  "body": "the body names method tools/call but the Mcp-Method header names tools/list"
+                }
+              }
+            },
+            "id": 101
+          }
+        },
+        "name": {
+          "status": 400,
+          "allow": null,
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32020,
+              "message": "Bad Request: the request headers and body disagree: the body carries params.name=\"get_sku\" but the Mcp-Name header names \"update_price\"",
+              "data": {
+                "mismatch": {
+                  "header": "update_price",
+                  "body": "the body carries params.name=\"get_sku\" but the Mcp-Name header names \"update_price\""
+                }
+              }
+            },
+            "id": 102
+          }
+        },
+        "version": {
+          "status": 400,
+          "allow": null,
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32022,
+              "message": "Unsupported protocol version: 1900-01-01",
+              "data": {
+                "supported": [
+                  "2026-07-28"
+                ],
+                "requested": "1900-01-01"
+              }
+            },
+            "id": 103
+          }
+        },
+        "get": {
+          "status": 405,
+          "allow": "POST",
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32000,
+              "message": "Method not allowed."
+            },
+            "id": null
+          }
+        },
+        "delete": {
+          "status": 405,
+          "allow": "POST",
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32000,
+              "message": "Method not allowed."
+            },
+            "id": null
+          }
+        },
+        "notification": {
+          "status": 202,
+          "allow": null,
+          "body": null
+        }
+      }
+    },
+    "H3": {
+      "conclusion": "支持",
+      "evidence": {
+        "legacy": {
+          "data": {
+            "sku": "CUP-001",
+            "title": "德化白瓷杯",
+            "price": 88,
+            "port": 3101
+          },
+          "wire": [
+            {
+              "proxy": 3100,
+              "sequence": 11,
+              "instance": 3102,
+              "http": "POST",
+              "protocol": null,
+              "methodHeader": null,
+              "nameHeader": null,
+              "requestSession": false,
+              "responseSession": false,
+              "method": "initialize",
+              "id": 0,
+              "hasMeta": false,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 200
+            },
+            {
+              "proxy": 3100,
+              "sequence": 12,
+              "instance": 3101,
+              "http": "POST",
+              "protocol": "2025-11-25",
+              "methodHeader": null,
+              "nameHeader": null,
+              "requestSession": false,
+              "responseSession": false,
+              "method": "notifications/initialized",
+              "id": null,
+              "hasMeta": false,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 202
+            },
+            {
+              "proxy": 3100,
+              "sequence": 13,
+              "instance": 3102,
+              "http": "GET",
+              "protocol": "2025-11-25",
+              "methodHeader": null,
+              "nameHeader": null,
+              "requestSession": false,
+              "responseSession": false,
+              "method": null,
+              "id": null,
+              "hasMeta": false,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 405
+            },
+            {
+              "proxy": 3100,
+              "sequence": 14,
+              "instance": 3101,
+              "http": "POST",
+              "protocol": "2025-11-25",
+              "methodHeader": null,
+              "nameHeader": null,
+              "requestSession": false,
+              "responseSession": false,
+              "method": "tools/call",
+              "id": 1,
+              "hasMeta": false,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 200
+            }
+          ]
+        },
+        "auto": {
+          "data": {
+            "sku": "CUP-001",
+            "title": "德化白瓷杯",
+            "price": 88,
+            "port": 3101
+          },
+          "wire": [
+            {
+              "proxy": 3100,
+              "sequence": 15,
+              "instance": 3102,
+              "http": "POST",
+              "protocol": "2026-07-28",
+              "methodHeader": "server/discover",
+              "nameHeader": null,
+              "requestSession": false,
+              "responseSession": false,
+              "method": "server/discover",
+              "id": "server-discover-probe-1",
+              "hasMeta": true,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 200
+            },
+            {
+              "proxy": 3100,
+              "sequence": 16,
+              "instance": 3101,
+              "http": "POST",
+              "protocol": "2026-07-28",
+              "methodHeader": "tools/call",
+              "nameHeader": "get_sku",
+              "requestSession": false,
+              "responseSession": false,
+              "method": "tools/call",
+              "id": 0,
+              "hasMeta": true,
+              "hasResponses": false,
+              "hasState": false,
+              "status": 200
+            }
+          ]
+        },
+        "aiWire": [
+          {
+            "proxy": 3100,
+            "sequence": 17,
+            "instance": 3102,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "server/discover",
+            "nameHeader": null,
+            "requestSession": false,
+            "responseSession": false,
+            "method": "server/discover",
+            "id": 0,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          }
+        ],
+        "reject": [
+          {
+            "proxy": 3110,
+            "sequence": 0,
+            "instance": 3111,
+            "http": "POST",
+            "protocol": null,
+            "methodHeader": null,
+            "nameHeader": null,
+            "requestSession": false,
+            "responseSession": false,
+            "method": "initialize",
+            "id": 0,
+            "hasMeta": false,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 400
+          }
+        ],
+        "failure": {
+          "type": "SdkHttpError",
+          "message": "Error POSTing to endpoint: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32022,\"message\":\"Unsupported protocol version: 2025-11-25\",\"data\":{\"supported\":[\"2026-07-28\"],\"requested\":\"2025-11-25\"}},\"id\":0}",
+          "code": "CLIENT_HTTP_NOT_IMPLEMENTED"
+        },
+        "raw": {
+          "status": 400,
+          "allow": null,
+          "body": {
+            "jsonrpc": "2.0",
+            "error": {
+              "code": -32022,
+              "message": "Unsupported protocol version: 2025-11-25",
+              "data": {
+                "supported": [
+                  "2026-07-28"
+                ],
+                "requested": "2025-11-25"
+              }
+            },
+            "id": 200
+          }
+        }
+      }
+    },
+    "H4": {
+      "conclusion": "支持",
+      "evidence": {
+        "automatic": {
+          "applied": true,
+          "duplicate": false,
+          "sku": "CUP-AUTO",
+          "newPrice": 90,
+          "port": 3101
+        },
+        "rounds": [
+          {
+            "proxy": 3100,
+            "sequence": 19,
+            "instance": 3102,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 0,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 20,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 1,
+            "hasMeta": true,
+            "hasResponses": true,
+            "hasState": true,
+            "status": 200
+          }
+        ],
+        "decoded": {
+          "sku": "CUP-WIRE",
+          "newPrice": 91
+        },
+        "tampered": {
+          "status": 200,
+          "error": {
+            "code": -32602,
+            "message": "Invalid or expired requestState",
+            "data": {
+              "reason": "invalid_request_state"
+            }
+          }
+        },
+        "principal": {
+          "status": 200,
+          "error": {
+            "code": -32602,
+            "message": "Invalid or expired requestState",
+            "data": {
+              "reason": "invalid_request_state"
+            }
+          }
+        },
+        "argumentsChanged": {
+          "status": 200,
+          "toolError": "Price arguments differ from signed state"
+        },
+        "ttlSeconds": 1,
+        "waitMs": 2000,
+        "expired": {
+          "status": 200,
+          "error": {
+            "code": -32602,
+            "message": "Invalid or expired requestState",
+            "data": {
+              "reason": "invalid_request_state"
+            }
+          }
+        },
+        "differentInstance": {
+          "status": 200,
+          "error": {
+            "code": -32602,
+            "message": "Invalid or expired requestState",
+            "data": {
+              "reason": "invalid_request_state"
+            }
+          }
+        },
+        "sameInstance": {
+          "status": 200,
+          "value": {
+            "applied": true,
+            "duplicate": false,
+            "sku": "CUP-LOCAL-SAME",
+            "newPrice": 91,
+            "port": 3112
+          }
+        },
+        "localWire": [
+          {
+            "proxy": 3110,
+            "sequence": 1,
+            "instance": 3112,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 110,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3110,
+            "sequence": 2,
+            "instance": 3111,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 111,
+            "hasMeta": true,
+            "hasResponses": true,
+            "hasState": true,
+            "status": 200
+          },
+          {
+            "proxy": 3110,
+            "sequence": 3,
+            "instance": 3112,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 112,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3110,
+            "sequence": 5,
+            "instance": 3112,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 114,
+            "hasMeta": true,
+            "hasResponses": true,
+            "hasState": true,
+            "status": 200
+          }
+        ],
+        "firstApply": {
+          "status": 200,
+          "value": {
+            "applied": true,
+            "duplicate": false,
+            "sku": "CUP-REPLAY",
+            "newPrice": 91,
+            "port": 3101
+          }
+        },
+        "secondApply": {
+          "status": 200,
+          "value": {
+            "applied": false,
+            "duplicate": true,
+            "sku": "CUP-REPLAY",
+            "newPrice": 91,
+            "port": 3101
+          }
+        },
+        "replayWire": [
+          {
+            "proxy": 3100,
+            "sequence": 27,
+            "instance": 3102,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 115,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 28,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 116,
+            "hasMeta": true,
+            "hasResponses": true,
+            "hasState": true,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 30,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "update_price",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 118,
+            "hasMeta": true,
+            "hasResponses": true,
+            "hasState": true,
+            "status": 200
+          }
+        ]
+      }
+    },
+    "H5": {
+      "conclusion": "支持",
+      "evidence": {
+        "price": {
+          "applied": true,
+          "duplicate": false,
+          "sku": "CUP-AI",
+          "newPrice": 93,
+          "port": 3102
+        },
+        "elicitationCount": 1,
+        "withoutSamplingCapability": {
+          "type": "MCPClientError",
+          "message": "Cannot request input 'sample' (sampling/createMessage): the request's client capabilities do not declare the required capability"
+        },
+        "sampling": {
+          "type": "MCPClientError",
+          "message": "Unsupported input request: sampling/createMessage. Only form elicitation is supported."
+        },
+        "samplingWire": [
+          {
+            "proxy": 3100,
+            "sequence": 34,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "ask_model",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 3,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 400
+          },
+          {
+            "proxy": 3100,
+            "sequence": 36,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "ask_model",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 1,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          }
+        ],
+        "steps": 2,
+        "output": {
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "dehua-ceramics",
+              "version": "1.0.0"
+            }
+          },
+          "resultType": "complete",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"sku\":\"CUP-001\",\"title\":\"德化白瓷杯\",\"price\":88,\"port\":3101}"
+            }
+          ],
+          "isError": false
+        },
+        "nextTool": {
+          "type": "tool-result",
+          "toolCallId": "mock-call",
+          "toolName": "get_sku",
+          "output": {
+            "type": "content",
+            "value": [
+              {
+                "type": "text",
+                "text": "{\"sku\":\"CUP-001\",\"title\":\"德化白瓷杯\",\"price\":88,\"port\":3101}"
+              }
+            ]
+          }
+        },
+        "text": "已查询德化白瓷杯。"
+      }
+    },
+    "H6": {
+      "conclusion": "支持",
+      "evidence": {
+        "status": 200,
+        "ack": {
+          "jsonrpc": "2.0",
+          "method": "notifications/subscriptions/acknowledged",
+          "params": {
+            "notifications": {
+              "toolsListChanged": true
+            },
+            "_meta": {
+              "io.modelcontextprotocol/subscriptionId": 119
+            }
+          }
+        },
+        "localEvent": {
+          "jsonrpc": "2.0",
+          "method": "notifications/tools/list_changed",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/subscriptionId": 119
+            }
+          }
+        },
+        "localCall": {
+          "status": 200,
+          "allow": null,
+          "body": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"port\":3101}"
+                }
+              ],
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "dehua-ceramics",
+                  "version": "1.0.0"
+                }
+              }
+            },
+            "jsonrpc": "2.0",
+            "id": 120
+          }
+        },
+        "remoteCall": {
+          "status": 200,
+          "allow": null,
+          "body": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"port\":3102}"
+                }
+              ],
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "dehua-ceramics",
+                  "version": "1.0.0"
+                }
+              }
+            },
+            "jsonrpc": "2.0",
+            "id": 121
+          }
+        },
+        "remoteEvent": null,
+        "waitMs": 2000
+      }
+    },
+    "H7": {
+      "conclusion": "支持",
+      "evidence": {
+        "progress": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "failure": {
+          "type": "SdkError",
+          "message": "AbortError: This operation was aborted"
+        },
+        "afterAbort": 0,
+        "cancelledPosts": 0,
+        "abortedAt": 1795655032483,
+        "server": {
+          "at": 1795655032485,
+          "progress": 5,
+          "cancelled": true
+        },
+        "deltaMs": 2,
+        "wire": [
+          {
+            "proxy": 3100,
+            "sequence": 39,
+            "instance": 3102,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "server/discover",
+            "nameHeader": null,
+            "requestSession": false,
+            "responseSession": false,
+            "method": "server/discover",
+            "id": "server-discover-probe-1",
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          },
+          {
+            "proxy": 3100,
+            "sequence": 40,
+            "instance": 3101,
+            "http": "POST",
+            "protocol": "2026-07-28",
+            "methodHeader": "tools/call",
+            "nameHeader": "slow_export",
+            "requestSession": false,
+            "responseSession": false,
+            "method": "tools/call",
+            "id": 0,
+            "hasMeta": true,
+            "hasResponses": false,
+            "hasState": false,
+            "status": 200
+          }
+        ]
+      }
+    }
+  }
+}
