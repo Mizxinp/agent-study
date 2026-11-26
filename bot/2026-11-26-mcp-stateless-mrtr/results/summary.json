@@ -602,7 +602,7 @@
       }
     },
     "H5": {
-      "conclusion": "支持",
+      "conclusion": "部分支持",
       "evidence": {
         "price": {
           "applied": true,
@@ -781,9 +781,9 @@
         },
         "afterAbort": 0,
         "cancelledPosts": 0,
-        "abortedAt": 1795655032483,
+        "abortedAt": 1795655853057,
         "server": {
-          "at": 1795655032485,
+          "at": 1795655853059,
           "progress": 5,
           "cancelled": true
         },

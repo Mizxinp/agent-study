@@ -8,6 +8,16 @@ const item = (supported: boolean, evidence: unknown) => ({
 });
 
 const { H1, H2, H3, H4, H5, H6, H7 } = run;
+const h5PriceAndMock = H5.price.applied && H5.elicitationCount === 1
+  && H5.steps === 2 && JSON.stringify(H5.nextTool).includes('CUP-001');
+const isUnsupportedInput = (error: { type?: string; message?: string } | undefined) =>
+  error?.type === 'MCPClientError' && !!error.message?.includes('Unsupported input request');
+const h5DefaultRejectedByServer = H5.samplingWire[0]?.status === 400
+  && H5.withoutSamplingCapability?.type === 'MCPClientError'
+  && H5.withoutSamplingCapability.message?.includes('do not declare the required capability')
+  && !isUnsupportedInput(H5.withoutSamplingCapability);
+const h5Partial = h5PriceAndMock && h5DefaultRejectedByServer
+  && H5.samplingWire[1]?.status === 200 && isUnsupportedInput(H5.sampling);
 const summary = {
   protocol: '2026-07-28',
   hypotheses: {
@@ -33,9 +43,9 @@ const summary = {
       && H4.argumentsChanged.toolError === 'Price arguments differ from signed state'
       && H4.sameInstance.value?.applied && H4.firstApply.value?.applied
       && H4.secondApply.value?.duplicate && !H4.secondApply.value?.applied, H4),
-    H5: item(H5.price.applied && H5.elicitationCount === 1
-      && H5.sampling.type === 'MCPClientError' && H5.sampling.message.includes('Unsupported input request')
-      && H5.steps === 2 && JSON.stringify(H5.nextTool).includes('CUP-001'), H5),
+    H5: h5Partial
+      ? { conclusion: '部分支持', evidence: H5 }
+      : item(h5PriceAndMock && isUnsupportedInput(H5.withoutSamplingCapability), H5),
     H6: item(H6.localEvent.method === 'notifications/tools/list_changed'
       && H6.ack.params._meta['io.modelcontextprotocol/subscriptionId']
         === H6.localEvent.params._meta['io.modelcontextprotocol/subscriptionId']

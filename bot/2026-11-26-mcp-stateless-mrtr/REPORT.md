@@ -10,9 +10,9 @@
 | H2 · HTTP 校验 | 支持 | 3101 直连时，两种头部不一致均为 HTTP 400 / `-32020`，未知版本为 HTTP 400 / `-32022`，GET 和 DELETE 均为 HTTP 405 / `-32000`，通知为 HTTP 202、空响应体。 |
 | H3 · 默认时代 | 支持 | 官方客户端默认首包 `initialize`，查询成功。官方 auto 和 AI SDK 默认首包均为 `server/discover`。官方 auto 的工具请求同时有 `_meta` 和三项现代镜像头。严格对照组的旧握手得到 400 / `-32022`。 |
 | H4 · 改价往返与有签名状态 | 支持 | 共享密钥时，自动改价两轮为 3102 → 3101，ID 为 0 → 1，均为 HTTP 200，第二轮携带两项续轮字段。详细对照见下。 |
-| H5 · AI SDK 改价、采样拒绝和工具桥接 | 支持；默认能力下的报错文案不支持 | 改价成功，表单处理器调用 1 次。默认能力下采样先被服务端拒绝。显式声明 sampling 后，客户端抛出预期的 `Unsupported input request`。Mock 执行 2 步，第二步接收 `get_sku` 的工具输出。 |
+| H5 · AI SDK 改价、采样拒绝和工具桥接 | 部分支持 | 改价成功，表单处理器调用 1 次。默认能力下，服务端先以 HTTP 400 拒绝 `ask_model`，直连额外观测到 JSON-RPC `-32021`。AI SDK 仅支持表单 elicitation，只有人为声明 sampling 后，客户端才抛出 `MCPClientError: Unsupported input request`。Mock 执行 2 步，第二步接收 `get_sku` 的工具输出。 |
 | H6 · 进程内事件总线 | 支持 | 3101 的订阅返回 HTTP 200，收到 3101 发布的 `notifications/tools/list_changed`。通知和订阅确认的 `subscriptionId` 均为 119。3102 发布后等待 2 秒，收到 0 条通知。 |
-| H7 · 关闭 SSE 取消请求 | 支持 | `slow_export` 由 3101 处理，HTTP 200。客户端在进度 5 中止，服务端在 2 ms 后观察到取消并停在进度 5。观察 2.8 秒，后续进度 0 条，`notifications/cancelled` POST 0 条。 |
+| H7 · 关闭 SSE 取消请求 | 支持 | `slow_export` 由 3101 处理，HTTP 200。客户端在进度 5 中止。服务端停在进度 5，等待 2.8 秒后仍未跑完。客户端后续进度回调 0 次，`notifications/cancelled` POST 0 条。 |
 
 H2 的响应体片段如下。
 
@@ -35,7 +35,7 @@ H4 使用原始 HTTP 请求手动完成负向对照。
 | c · 每个进程独立密钥 | 3112 → 3111 的续轮为 HTTP 200 / `-32602`。中间插入一次查询使两轮均落在 3112 后，HTTP 200 且 `applied: true`。 |
 | d · 相同状态重放 | 两次合法续轮均落在 3101，HTTP 200。第一次 `applied: true`，第二次验签仍通过且返回 `duplicate: true, applied: false`。去重由业务 Map 执行。 |
 
-H5b 默认能力的 `ask_model` 请求收到 HTTP 400，声明 sampling 的对照请求收到 HTTP 200。默认能力下，`MCPClientError` 的消息为 `Cannot request input 'sample' (sampling/createMessage): the request's client capabilities do not declare the required capability`。声明 sampling 后仍使用同一 AI SDK HTTP 客户端实现，错误变为 `MCPClientError: Unsupported input request: sampling/createMessage. Only form elicitation is supported.`。H5c 的第二步模型输入含工具结果 `CUP-001`、德化白瓷杯、价格 88、处理端口 3101，最终文本为「已查询德化白瓷杯。」。
+H5b 默认能力下，服务端先以 HTTP 400 拒绝 `ask_model`。已提交的代理样本和本地完整代理日志均记录 HTTP 400，未保存响应体。本地 `run.json` 和生成的 `summary.json` 保存了客户端错误文案。默认能力下，`MCPClientError` 的消息为 `Cannot request input 'sample' (sampling/createMessage): the request's client capabilities do not declare the required capability`。对测试后的生产构建发起一次直连请求，仅声明表单 elicitation，响应体中的 JSON-RPC `error.code` 实测为 `-32021`，HTTP 状态为 400，与 ai-expert 的验收意见一致。对照请求人为声明 sampling 后收到 HTTP 200，随后同一 AI SDK HTTP 客户端抛出 `MCPClientError: Unsupported input request: sampling/createMessage. Only form elicitation is supported.`。该声明仅用于验证客户端拒绝分支，AI SDK 实际只支持表单 elicitation。H5c 的第二步模型输入含工具结果 `CUP-001`、德化白瓷杯、价格 88、处理端口 3101，最终文本为「已查询德化白瓷杯。」。
 
 代理样本摘录，用 `hasState` 和 `hasResponses` 记录字段是否存在，会话头也只记录是否存在。
 
@@ -53,7 +53,6 @@ H5b 默认能力的 `ask_model` 请求收到 HTTP 400，声明 sampling 的对�
 实测使用 Node.js **24.22.1** 和 pnpm **10.34.6**。在本目录执行以下命令。
 
 ```sh
-pnpm install
 pnpm install --frozen-lockfile
 pnpm test
 pnpm typecheck
@@ -61,7 +60,7 @@ NEXT_TELEMETRY_DISABLED=1 pnpm build
 pnpm analyze
 ```
 
-六条命令均退出 0。测试自动构建并启动两组生产实例，7 项测试应通过，随后关闭代理与子进程。主组在 3101 和 3102，代理在 3100。对照组在 3111 和 3112，代理在 3110，同时启用独立密钥和旧协议拒绝。端口占用时，global setup 会报告具体的回环地址及端口。分析脚本打印 H1–H7 表格，更新两个结果文件。首页在构建时读取 `results/summary.json`。要在首页查看刚生成的新结果，分析后再构建一次。
+五条命令均退出 0。测试自动构建并启动两组生产实例，7 项测试应通过，随后关闭代理与子进程。主组在 3101 和 3102，代理在 3100。对照组在 3111 和 3112，代理在 3110，同时启用独立密钥和旧协议拒绝。端口占用时，global setup 会报告具体的回环地址及端口。分析脚本打印 H1–H7 表格，更新两个结果文件。首页在构建时读取 `results/summary.json`。要在首页查看刚生成的新结果，分析后再构建一次。
 
 依赖安装可访问 registry。测试阶段所有 HTTP 请求走本机回环，模型使用 `ai/test` mock。主组已注入 32 字节随机密钥，由测试运行时生成。对照密钥由各进程自行生成。完整代理记录和取消诊断留在本地，提交仅含筛选出的协议字段与测量结果。
 
@@ -96,8 +95,8 @@ pnpm analyze
 
 - 官方客户端固定版本的实际选项是 `versionNegotiation: { mode: { pin: '2026-07-28' } }`，连接时会探测一次。表单使用 `inputRequired.elicit`；采样使用 `inputRequests` 里的 `sampling/createMessage`。
 - H4b 的参数摘要由业务 handler 拒绝，HTTP 200 并返回工具级错误。codec 前置验证失败才产生 JSON-RPC `-32602`。短 TTL 仅由测试 SKU `CUP-TTL` 选择，普通签发保留 600 秒。
-- H5b 额外使用声明 sampling 的客户端，经过服务端能力检查后测得客户端拒绝的预期文案。默认能力的实测错误另行保留。
+- H5 部分支持。默认能力路径先触发服务端的能力检查。任务书预期的客户端拒绝文案只在对照组人为声明 sampling 后出现。验收意见中的 JSON-RPC `-32021` 由额外直连观测确认，代理日志仅记录该请求的 HTTP 400。
 
 ## 未解决的问题
 
-`x-demo-user` 仅为 demo 主体，生产身份必须来自已验证的 token。价格和幂等表位于进程内，多实例需要共享持久存储与原子条件写入。`InMemoryServerEventBus` 在多实例下需要由外部 pub/sub 连接各进程。状态密钥轮换、跨进程去重、长时间订阅重连与真实宿主兼容性均未在本实验验证。H7 的毫秒差为同一台机器上的一次测量。
+`x-demo-user` 仅为 demo 主体，生产身份必须来自已验证的 token。价格和幂等表位于进程内，多实例需要共享持久存储与原子条件写入。`InMemoryServerEventBus` 在多实例下需要由外部 pub/sub 连接各进程。状态密钥轮换、跨进程去重、长时间订阅重连与真实宿主兼容性均未在本实验验证。H7 的主要证据是服务端停在进度 5，等待 2.8 秒后仍未完成。SDK 取消时会移除进度处理器，因此后续进度回调必然为 0 次，无法单独证明服务端已停止。客户端中止到服务端观察到取消的 2 ms 来自同一台机器上的两次 `Date.now()` 读数，仅表示时间量级。
