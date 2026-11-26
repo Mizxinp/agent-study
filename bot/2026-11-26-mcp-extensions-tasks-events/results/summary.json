@@ -1,6 +1,30 @@
 {
   "hypotheses": [
     {
+      "id": "H0-capabilities",
+      "conclusion": "支持",
+      "metrics": {
+        "port": 3201,
+        "http": 400,
+        "rpcError": -32602
+      }
+    },
+    {
+      "id": "H0-version",
+      "conclusion": "支持",
+      "metrics": {
+        "port": 3201,
+        "http": 400,
+        "rpcError": -32022,
+        "data": {
+          "supported": [
+            "2026-07-28"
+          ],
+          "requested": "1900-01-01"
+        }
+      }
+    },
+    {
       "id": "H1a",
       "conclusion": "支持",
       "metrics": {
@@ -21,7 +45,7 @@
         },
         "rejected": {
           "port": 3201,
-          "http": 200,
+          "http": 400,
           "rpcError": -32021
         },
         "requiredCapabilities": {
@@ -40,10 +64,12 @@
         "resultType": "task",
         "handle": {
           "resultType": "task",
-          "taskId": "71f2e03d-02cf-41f1-8efe-1ea5cca45db2",
+          "taskId": "118b15e0-477a-43d5-acaa-6ab7c500df7c",
           "status": "working",
           "ttlMs": 60000,
-          "pollIntervalMs": 200
+          "pollIntervalMs": 200,
+          "createdAt": "2026-11-26T13:29:19.303Z",
+          "lastUpdatedAt": "2026-11-26T13:29:19.303Z"
         }
       }
     },
@@ -58,8 +84,53 @@
         },
         "omitted": {
           "port": 3201,
-          "http": 200,
+          "http": 400,
           "rpcError": -32021
+        }
+      }
+    },
+    {
+      "id": "H1d-get",
+      "conclusion": "支持",
+      "metrics": {
+        "method": "tasks/get",
+        "port": 3201,
+        "http": 400,
+        "rpcError": -32021,
+        "requiredCapabilities": {
+          "extensions": {
+            "io.modelcontextprotocol/tasks": {}
+          }
+        }
+      }
+    },
+    {
+      "id": "H1d-update",
+      "conclusion": "支持",
+      "metrics": {
+        "method": "tasks/update",
+        "port": 3201,
+        "http": 400,
+        "rpcError": -32021,
+        "requiredCapabilities": {
+          "extensions": {
+            "io.modelcontextprotocol/tasks": {}
+          }
+        }
+      }
+    },
+    {
+      "id": "H1d-cancel",
+      "conclusion": "支持",
+      "metrics": {
+        "method": "tasks/cancel",
+        "port": 3201,
+        "http": 400,
+        "rpcError": -32021,
+        "requiredCapabilities": {
+          "extensions": {
+            "io.modelcontextprotocol/tasks": {}
+          }
         }
       }
     },
@@ -70,7 +141,9 @@
         "first": {
           "port": 3202,
           "http": 200,
-          "resultType": "complete"
+          "resultType": "complete",
+          "createdAt": "2026-11-26T13:29:19.303Z",
+          "lastUpdatedAt": "2026-11-26T13:29:19.303Z"
         },
         "ports": [
           3202,
@@ -86,7 +159,7 @@
           3202
         ],
         "polls": 11,
-        "elapsedMs": 2099,
+        "elapsedMs": 2102,
         "status": "completed",
         "result": {
           "resultType": "complete",
@@ -124,7 +197,7 @@
       "metrics": {
         "tool": {
           "polls": 8,
-          "elapsedMs": 1452,
+          "elapsedMs": 1449,
           "status": "completed",
           "result": {
             "resultType": "complete",
@@ -157,15 +230,16 @@
         },
         "early": {
           "polls": 2,
-          "elapsedMs": 207,
+          "elapsedMs": 209,
           "status": "cancelled"
         },
+        "lateBeforeAck": "completed",
         "lateAck": {
           "resultType": "complete"
         },
         "late": {
           "polls": 1,
-          "elapsedMs": 4,
+          "elapsedMs": 3,
           "status": "completed",
           "result": {
             "resultType": "complete",
@@ -219,7 +293,7 @@
       "conclusion": "支持",
       "metrics": {
         "wire": {
-          "at": 1795698943451,
+          "at": 1795699763803,
           "port": "3201",
           "kind": "rpc",
           "headers": {
@@ -234,12 +308,15 @@
           "name": "export_assets",
           "extensions": [],
           "bodyVersion": "2026-07-28",
-          "status": 200,
+          "status": 400,
           "errorCode": -32021
         },
         "error": {
           "name": "MCPClientError",
-          "message": "Tasks capability required"
+          "className": "MCPClientError",
+          "message": "Tasks capability required",
+          "code": -32021,
+          "statusCode": 400
         }
       }
     },
@@ -248,7 +325,7 @@
       "conclusion": "支持",
       "metrics": {
         "wire": {
-          "at": 1795698943462,
+          "at": 1795699763818,
           "port": "3201",
           "kind": "rpc",
           "headers": {
@@ -270,6 +347,7 @@
         },
         "error": {
           "name": "MCPClientError",
+          "className": "MCPClientError",
           "message": "Failed to process server response"
         }
       }
@@ -317,6 +395,7 @@
             "count": 0,
             "error": {
               "name": "MCPClientError",
+              "className": "MCPClientError",
               "message": "Server does not support events"
             }
           },
@@ -340,18 +419,21 @@
         "stock": {
           "error": {
             "name": "MCPClientError",
+            "className": "MCPClientError",
             "message": "MCP event stock.low does not support webhook delivery"
           }
         },
         "mode": {
           "error": {
             "name": "MCPClientError",
+            "className": "MCPClientError",
             "message": "Only webhook event delivery is supported"
           }
         },
         "hostname": {
           "error": {
             "name": "MCPClientError",
+            "className": "MCPClientError",
             "message": "MCP event callback URLs must use HTTPS without credentials or fragments"
           }
         }
@@ -362,6 +444,8 @@
       "conclusion": "支持",
       "metrics": {
         "verification": true,
+        "verificationId": "msg_verification_AzhqHxAM0pvle7FMgI2GQKwzeE3e03M3",
+        "webhookId": "3qPJPl3g5XvgBeVPf7AyW-QIZ-XmlVi1",
         "order": true,
         "store": [
           "pending",
@@ -376,7 +460,7 @@
         ],
         "onEvent": 1,
         "data": {
-          "orderId": "DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8",
+          "orderId": "DH-93e9c4f7-9bdb-48e4-a981-1f238818b8fd",
           "shopId": "dehua-01",
           "amount": 128
         }
@@ -402,8 +486,10 @@
           503,
           204
         ],
+        "webhookId": "e7xS8N41_rNgtXOz7F2uhzINnSlQdeCE",
+        "verificationId": "msg_verification_3_ub1O09o27ErcI76VRa5lM_Fp8BH-Qa",
         "onEvent": 1,
-        "retryMs": 216,
+        "retryMs": 222,
         "cursor": [
           "1",
           "2"
@@ -420,7 +506,7 @@
         ],
         "onEvent": 2,
         "business": 1,
-        "webhookId": "35c35d288802fd05d4ddc51d5391b413259d3f26530497a18facb87838e34d95.6297234c-33c0-4314-bfed-35b065861b37"
+        "webhookId": "3qPJPl3g5XvgBeVPf7AyW-QIZ-XmlVi1"
       }
     },
     {
@@ -441,14 +527,14 @@
               "toolCallId": "fixture-call",
               "toolName": "get_order",
               "input": {
-                "orderId": "DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8"
+                "orderId": "DH-93e9c4f7-9bdb-48e4-a981-1f238818b8fd"
               },
               "output": {
                 "resultType": "complete",
                 "content": [
                   {
                     "type": "text",
-                    "text": "{\"orderId\":\"DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8\",\"state\":\"paid\",\"amount\":128,\"port\":\"3201\"}"
+                    "text": "{\"orderId\":\"DH-93e9c4f7-9bdb-48e4-a981-1f238818b8fd\",\"state\":\"paid\",\"amount\":128,\"port\":\"3201\"}"
                   }
                 ],
                 "isError": false
@@ -468,8 +554,33 @@
       "conclusion": "支持",
       "metrics": {
         "status": 410,
-        "expiry": "2026-11-26T13:15:42.874Z",
+        "expiry": "2026-11-26T13:29:23.241Z",
         "onEvent": 0
+      }
+    },
+    {
+      "id": "H4i-unsupported",
+      "conclusion": "支持",
+      "metrics": {
+        "port": 3201,
+        "http": 200,
+        "rpcError": -32026,
+        "data": {
+          "feature": "deliveryMode",
+          "value": "webhook"
+        }
+      }
+    },
+    {
+      "id": "H4i-callback",
+      "conclusion": "支持",
+      "metrics": {
+        "port": 3201,
+        "http": 200,
+        "rpcError": -32027,
+        "data": {
+          "reason": "challenge_failed"
+        }
       }
     }
   ]

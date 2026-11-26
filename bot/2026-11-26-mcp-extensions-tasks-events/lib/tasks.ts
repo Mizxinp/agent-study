@@ -72,14 +72,18 @@ function advance(id: string) {
   }, 100).unref();
 }
 
-export async function exportAssets(count: unknown, negotiated: boolean, shortFixture: boolean) {
+export function requireTasks(extensions: Record<string, unknown>) {
+  if (!Object.hasOwn(extensions, TASKS)) {
+    throw new RpcError(-32021, 'Tasks capability required', { requiredCapabilities: { extensions: { [TASKS]: {} } } }, 400);
+  }
+}
+
+export async function exportAssets(count: unknown, extensions: Record<string, unknown>, shortFixture: boolean) {
   if (typeof count !== 'number' || !Number.isSafeInteger(count) || count < 1) {
     throw new RpcError(-32602, 'Expected positive integer count');
   }
   if (count <= 5 && !(shortFixture && count === 2)) return tool({ exported: count });
-  if (!negotiated) {
-    throw new RpcError(-32021, 'Tasks capability required', { requiredCapabilities: { extensions: { [TASKS]: {} } } });
-  }
+  requireTasks(extensions);
   const taskId = randomUUID();
   const now = new Date().toISOString();
   const task: Task = {
@@ -88,7 +92,8 @@ export async function exportAssets(count: unknown, negotiated: boolean, shortFix
   };
   await mutate(taskId, () => ({ task, result: undefined }));
   advance(taskId);
-  return { resultType: 'task', taskId, status: task.status, ttlMs: task.ttlMs, pollIntervalMs: task.pollIntervalMs };
+  return { resultType: 'task', taskId, status: task.status, ttlMs: task.ttlMs, pollIntervalMs: task.pollIntervalMs,
+    createdAt: task.createdAt, lastUpdatedAt: task.lastUpdatedAt };
 }
 
 export function getTask(id: string) {

@@ -1,4 +1,4 @@
-import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { setTimeout } from 'node:timers/promises';
 import { change, read, wire } from './storage';
 import { complete, RpcError, stringParam } from './protocol';
@@ -19,6 +19,10 @@ const state = () => read('.data/events.json', initial());
 const mutate = <T>(fn: (data: State) => T) => change('events', initial(), fn);
 type Params = Record<string, unknown>;
 type Message = { id: string; payload: object };
+const randomMessageId = () => randomBytes(24).toString('base64url');
+const callbackError = (reason: 'connection_refused' | 'timeout' | 'tls_error' | 'challenge_failed') =>
+  new RpcError(-32027, 'Callback verification failed', { reason });
+
 type Variant = 'replay' | 'signature' | 'timestamp' | 'subscription' | 'expired';
 
 function argument(name: string, args: unknown) {
@@ -45,7 +49,8 @@ function secretBytes(secret: string) {
 async function deliver(sub: Subscription, message: Message, variant?: Variant) {
   const url = new URL(sub.url);
   // The fixture has no external callback egress, including redirects.
-  if (!['127.0.0.1', '[::1]'].includes(url.hostname)) throw new RpcError(-32027, 'Demo callback must stay on loopback');
+  if (!['127.0.0.1', '[::1]'].includes(url.hostname)) throw callbackError('connection_refused');
+  const verification = 'challenge' in message.payload;
   const body = JSON.stringify(message.payload);
   const timestamp = Math.floor(Date.now() / 1000) - (variant === 'timestamp' ? 360 : 0);
   const signature = createHmac('sha256', secretBytes(sub.secret))
@@ -57,8 +62,17 @@ async function deliver(sub: Subscription, message: Message, variant?: Variant) {
       'webhook-signature': 'v1,' + (variant === 'signature' ? Buffer.alloc(32).toString('base64') : signature),
       'X-MCP-Subscription-Id': variant === 'subscription' ? randomUUID() : sub.id,
     },
-  }).catch(() => new Response(null, { status: 503 }));
-  wire({ kind: 'delivery', status: response.status, messageId: message.id, verification: 'challenge' in message.payload, variant });
+  }).catch((error: Error & { cause?: { code?: string } }) => {
+    if (verification) {
+      const code = error.cause?.code ?? '';
+      if (error.name === 'TimeoutError' || code.endsWith('_TIMEOUT')) throw callbackError('timeout');
+      if (/TLS|SSL|CERT/.test(code)) throw callbackError('tls_error');
+      throw callbackError('connection_refused');
+    }
+    return new Response(null, { status: 503 });
+  });
+  wire({ kind: 'delivery', status: response.status, messageId: message.id,
+    subscriptionId: sub.id, eventId: 'eventId' in message.payload ? message.payload.eventId : undefined, verification, variant });
   return response;
 }
 
@@ -86,13 +100,12 @@ async function createEvent(shopId: string) {
     return { event, subscriptions };
   });
 }
-const messageFor = (sub: Subscription, event: Event) => ({ id: sub.id + '.' + event.eventId, payload: event });
 
 function queuedMessage(sub: Subscription, event: Event) {
   const pending = state().subscriptions[sub.id]?.pending ?? [];
   const previous = pending.filter(position => position < Number(event.cursor));
   const cursor = previous.length ? String(Math.min(...previous) - 1) : event.cursor;
-  return messageFor(sub, { ...event, cursor });
+  return { id: randomMessageId(), payload: { ...event, cursor } };
 }
 
 async function finishDelivery(sub: Subscription, event: Event, message: Message, prior?: number) {
@@ -106,20 +119,25 @@ async function finishDelivery(sub: Subscription, event: Event, message: Message,
 
 export async function createOrder(shopId: string) {
   const { event, subscriptions } = await createEvent(shopId);
-  const deliveries = await Promise.all(subscriptions.map(async sub => ({
-    id: sub.id, statuses: await finishDelivery(sub, event, queuedMessage(sub, event)),
-  })));
+  const deliveries = await Promise.all(subscriptions.map(async sub => {
+    const message = queuedMessage(sub, event);
+    return { id: sub.id, webhookId: message.id, statuses: await finishDelivery(sub, event, message) };
+  }));
   return { event, deliveries };
 }
 
-export async function debugDelivery(id: string, eventId: string, variant: Variant) {
+export async function debugDelivery(id: string, eventId: string, variant: Variant, replayId?: unknown) {
   const data = state();
   const sub = data.subscriptions[id];
   const event = data.events.find(item => item.eventId === eventId);
   if (!sub || !event || event.name !== sub.name || event.data.shopId !== sub.argument) {
     throw new RpcError(-32023, 'Missing fixture event or subscription');
   }
-  return { status: (await deliver(sub, messageFor(sub, event), variant)).status };
+  const webhookId = variant === 'replay' ? stringParam(replayId) : randomMessageId();
+  if (!/^[A-Za-z0-9_-]+$/.test(webhookId) || webhookId.includes(eventId)) {
+    throw new RpcError(-32602, 'Invalid fixture webhook ID');
+  }
+  return { status: (await deliver(sub, { id: webhookId, payload: event }, variant)).status };
 }
 
 export async function eventsRpc(method: string, params: Params) {
@@ -155,7 +173,9 @@ export async function eventsRpc(method: string, params: Params) {
     });
     return complete({});
   }
-  if (name !== 'order.created' || delivery?.mode !== 'webhook') throw new RpcError(-32026, 'Unsupported delivery');
+  if (name !== 'order.created' || delivery?.mode !== 'webhook') {
+    throw new RpcError(-32026, 'Unsupported delivery', { feature: 'deliveryMode', value: stringParam(delivery?.mode) });
+  }
   let url: URL;
   try { url = new URL(rawUrl); } catch { throw new RpcError(-32602, 'Invalid callback URL'); }
   const localHttp = /^http:\/\/(127\.0\.0\.1|\[::1\])(?=[:/]|$)/.test(rawUrl);
@@ -169,13 +189,14 @@ export async function eventsRpc(method: string, params: Params) {
   const id = subscriptionId(name, filter, url.href);
   const sub: Subscription = { id, name, argument: filter, url: url.href, secret, pending: [], refreshBefore: new Date(Date.now() + Math.min(ttl, 60000)).toISOString() };
   const challenge = randomUUID();
-  const verified = await deliver(sub, { id: randomUUID(), payload: { type: 'verification', challenge } });
+  const messageId = 'msg_verification_' + randomMessageId();
+  const verified = await deliver(sub, { id: messageId, payload: { type: 'verification', challenge } });
   const echo: unknown = await verified.json().then(value => value?.challenge).catch(() => undefined);
   const expected = Buffer.from(challenge);
   const received = Buffer.from(typeof echo === 'string' ? echo : '');
   const matched = verified.ok && expected.length === received.length && timingSafeEqual(expected, received);
-  wire({ kind: 'verification', matched });
-  if (!matched) throw new RpcError(-32027, 'Callback verification failed');
+  wire({ kind: 'verification', matched, messageId, subscriptionId: sub.id });
+  if (!matched) throw callbackError('challenge_failed');
 
   const snapshot = await mutate(data => {
     const position = cursorIndex(params.cursor, data.events.length);

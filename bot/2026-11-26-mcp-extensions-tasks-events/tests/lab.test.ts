@@ -1,5 +1,5 @@
-import { createMCPClient } from '@ai-sdk/mcp';
-import { randomUUID } from 'node:crypto';
+import { createMCPClient, MCPClientError } from '@ai-sdk/mcp';
+import { randomBytes, randomUUID } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { setTimeout } from 'node:timers/promises';
 import { expect, test } from 'vitest';
@@ -14,11 +14,12 @@ const observations: Record<string, unknown> = read('results/run.json', {});
 const taskExtension = { [TASKS]: {} };
 
 async function rpc(method: string, params: Record<string, unknown> = {}, options: {
-  port?: number; tasks?: boolean; headers?: Record<string, string | null>;
+  port?: number; tasks?: boolean; omitCapabilities?: boolean; version?: string; headers?: Record<string, string | null>;
 } = {}) {
   const port = options.port ?? 3201;
   const id = randomUUID();
-  const headers = new Headers({ 'content-type': 'application/json', 'MCP-Protocol-Version': VERSION, 'Mcp-Method': method });
+  const version = options.version ?? VERSION;
+  const headers = new Headers({ 'content-type': 'application/json', 'MCP-Protocol-Version': version, 'Mcp-Method': method });
   const name = params.taskId ?? params.name;
   if (typeof name === 'string') headers.set('Mcp-Name', name);
   for (const [key, value] of Object.entries(options.headers ?? {})) {
@@ -28,7 +29,10 @@ async function rpc(method: string, params: Record<string, unknown> = {}, options
   const response = await fetch(url(port), {
     method: 'POST', headers, signal: AbortSignal.timeout(8000),
     body: JSON.stringify({ jsonrpc: '2.0', id, method, params: {
-      ...params, _meta: { [VERSION_KEY]: VERSION, [CAPS_KEY]: { extensions: options.tasks ? taskExtension : {} } },
+      ...params, _meta: {
+        [VERSION_KEY]: version,
+        ...(options.omitCapabilities ? {} : { [CAPS_KEY]: { extensions: options.tasks ? taskExtension : {} } }),
+      },
     } }),
   });
   return { port, status: response.status, body: await response.json() };
@@ -55,8 +59,9 @@ async function poll(created: Awaited<ReturnType<typeof rpc>>) {
 async function cancellation(count: number, wait: number) {
   const created = await exportAssets(count, true, count === 2);
   await setTimeout(wait);
+  const before = count === 2 ? await poll(created) : undefined;
   const ack = await rpc('tasks/cancel', { taskId: created.body.result?.taskId }, { port: 3202, tasks: true });
-  return { created, ack, lifecycle: await poll(created) };
+  return { created, before, ack, lifecycle: await poll(created) };
 }
 function onEventCount(id: string) {
   return readFileSync('results/wire-3201.jsonl', 'utf8').trim().split('\n')
@@ -66,7 +71,11 @@ async function capture<T>(operation: () => Promise<T>) {
   try { return { value: await operation() }; }
   catch (error) {
     const err = error as Error;
-    return { error: { name: err.name, message: err.message } };
+    return { error: {
+      name: err.name, className: err.constructor.name, message: err.message,
+      code: MCPClientError.isInstance(err) ? err.code : undefined,
+      statusCode: MCPClientError.isInstance(err) ? err.statusCode : undefined,
+    } };
   }
 }
 
@@ -93,12 +102,17 @@ test('记录预注册实验 ' + phase, async () => {
         observations.H2f = { created, owner: await get(created.body.result.taskId, 3201), other: await get(created.body.result.taskId, 3202) };
       }
     } else {
+      observations['H0-capabilities'] = await rpc('tools/list', {}, { omitCapabilities: true });
+      observations['H0-version'] = await rpc('tools/list', {}, { version: '1900-01-01' });
       observations.H1a = [await exportAssets(3, false), await exportAssets(20, false)];
       const created = await exportAssets(20);
       observations.H1b = created;
       observations.H2a = await poll(created);
       observations.H1c = [await exportAssets(20), await exportAssets(20, false)];
       const taskId = created.body.result.taskId;
+      for (const method of ['get', 'update', 'cancel']) {
+        observations['H1d-' + method] = await rpc('tasks/' + method, { taskId, inputResponses: {} });
+      }
       observations.H2b = await Promise.all([null, 'mismatch'].map(name =>
         rpc('tasks/get', { taskId }, { tasks: true, headers: { 'Mcp-Name': name } })));
       observations.H2c = { tool: await poll(await exportAssets(13)), internal: await poll(await exportAssets(99)) };
@@ -113,13 +127,21 @@ test('记录预注册实验 ' + phase, async () => {
         mode: await capture(() => client.experimental_events.subscribe({ name: 'order.created', delivery: { ...delivery, mode: 'poll' as 'webhook' } })),
         hostname: await capture(() => client.experimental_events.subscribe({ name: 'order.created', delivery: { ...delivery, url: delivery.url.replace('127.0.0.1', 'localhost') } })),
       };
+      const secret = 'whsec_' + randomBytes(24).toString('base64');
+      observations['H4i-unsupported'] = await rpc('events/subscribe', {
+        name: 'stock.low', arguments: { sku: 'a' }, delivery: { ...delivery, secret },
+      });
+      observations['H4i-callback'] = await rpc('events/subscribe', {
+        name: 'order.created', arguments: { shopId: 'verification-failure' }, delivery: { ...delivery, secret },
+      });
       const subscribe = (shopId: string) => client.experimental_events.subscribe({ name: 'order.created', arguments: { shopId }, delivery });
       const sub = await subscribe('dehua-01');
       const order = resultContent(await rpc('tools/call', { name: 'create_order', arguments: { shopId: 'dehua-01' } }, { port: 3202 }));
       const active = await store.getById(sub.id);
       observations.H4c = { subscription: sub, order, onEvent: onEventCount(sub.id), active: { status: active?.status, cursor: active?.cursor } };
-      const debug = async (variant: string) => (await rpc('demo/deliver', {
-        subscriptionId: sub.id, eventId: order.event.eventId, variant,
+      const webhookId = order.deliveries.find((item: { id: string }) => item.id === sub.id)?.webhookId;
+      const debug = async (variant: string, replayId?: string) => (await rpc('demo/deliver', {
+        subscriptionId: sub.id, eventId: order.event.eventId, variant, webhookId: replayId,
       }, { port: 3202 })).body.result?.status;
       const beforeRejections = onEventCount(sub.id);
       const rejected = {
@@ -134,7 +156,7 @@ test('记录预注册实验 ' + phase, async () => {
         raceRecord = await store.getById(race.id);
       }
       observations.H4e = { id: race.id, initial: race.cursor, final: (await store.getById(race.id))?.cursor };
-      observations.H4f = { replay: await debug('replay'), eventId: order.event.eventId, id: sub.id };
+      observations.H4f = { replay: await debug('replay', webhookId), webhookId, eventId: order.event.eventId, id: sub.id };
       const expiry = new Date(Date.now() - 1000).toISOString();
       await store.update(active!.key, { refreshBefore: expiry });
       const callsBeforeExpiry = onEventCount(sub.id);
