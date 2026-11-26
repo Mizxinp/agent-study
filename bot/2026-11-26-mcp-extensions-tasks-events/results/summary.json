@@ -1,0 +1,476 @@
+{
+  "hypotheses": [
+    {
+      "id": "H1a",
+      "conclusion": "支持",
+      "metrics": {
+        "sync": {
+          "resultType": "complete",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"exported\":3}"
+            }
+          ],
+          "isError": false
+        },
+        "syncResponse": {
+          "port": 3201,
+          "http": 200,
+          "resultType": "complete"
+        },
+        "rejected": {
+          "port": 3201,
+          "http": 200,
+          "rpcError": -32021
+        },
+        "requiredCapabilities": {
+          "extensions": {
+            "io.modelcontextprotocol/tasks": {}
+          }
+        }
+      }
+    },
+    {
+      "id": "H1b",
+      "conclusion": "支持",
+      "metrics": {
+        "port": 3201,
+        "http": 200,
+        "resultType": "task",
+        "handle": {
+          "resultType": "task",
+          "taskId": "71f2e03d-02cf-41f1-8efe-1ea5cca45db2",
+          "status": "working",
+          "ttlMs": 60000,
+          "pollIntervalMs": 200
+        }
+      }
+    },
+    {
+      "id": "H1c",
+      "conclusion": "支持",
+      "metrics": {
+        "declared": {
+          "port": 3201,
+          "http": 200,
+          "resultType": "task"
+        },
+        "omitted": {
+          "port": 3201,
+          "http": 200,
+          "rpcError": -32021
+        }
+      }
+    },
+    {
+      "id": "H2a",
+      "conclusion": "支持",
+      "metrics": {
+        "first": {
+          "port": 3202,
+          "http": 200,
+          "resultType": "complete"
+        },
+        "ports": [
+          3202,
+          3201,
+          3202,
+          3201,
+          3202,
+          3201,
+          3202,
+          3201,
+          3202,
+          3201,
+          3202
+        ],
+        "polls": 11,
+        "elapsedMs": 2099,
+        "status": "completed",
+        "result": {
+          "resultType": "complete",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"exported\":20}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "id": "H2b",
+      "conclusion": "支持",
+      "metrics": {
+        "replies": [
+          {
+            "port": 3201,
+            "http": 400,
+            "rpcError": -32020
+          },
+          {
+            "port": 3201,
+            "http": 400,
+            "rpcError": -32020
+          }
+        ]
+      }
+    },
+    {
+      "id": "H2c",
+      "conclusion": "支持",
+      "metrics": {
+        "tool": {
+          "polls": 8,
+          "elapsedMs": 1452,
+          "status": "completed",
+          "result": {
+            "resultType": "complete",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"exported\":13}"
+              }
+            ],
+            "isError": true
+          }
+        },
+        "internal": {
+          "polls": 3,
+          "elapsedMs": 415,
+          "status": "failed",
+          "error": {
+            "code": -32603,
+            "message": "Fixture worker error"
+          }
+        }
+      }
+    },
+    {
+      "id": "H2d",
+      "conclusion": "支持",
+      "metrics": {
+        "earlyAck": {
+          "resultType": "complete"
+        },
+        "early": {
+          "polls": 2,
+          "elapsedMs": 207,
+          "status": "cancelled"
+        },
+        "lateAck": {
+          "resultType": "complete"
+        },
+        "late": {
+          "polls": 1,
+          "elapsedMs": 4,
+          "status": "completed",
+          "result": {
+            "resultType": "complete",
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"exported\":2}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "id": "H2e",
+      "conclusion": "支持",
+      "metrics": {
+        "replies": [
+          {
+            "port": 3201,
+            "http": 200,
+            "rpcError": -32602
+          },
+          {
+            "port": 3201,
+            "http": 200,
+            "rpcError": -32601
+          }
+        ]
+      }
+    },
+    {
+      "id": "H2f",
+      "conclusion": "支持",
+      "metrics": {
+        "owner": {
+          "port": 3201,
+          "http": 200,
+          "resultType": "complete"
+        },
+        "other": {
+          "port": 3202,
+          "http": 200,
+          "rpcError": -32602
+        }
+      }
+    },
+    {
+      "id": "H3a",
+      "conclusion": "支持",
+      "metrics": {
+        "wire": {
+          "at": 1795698943451,
+          "port": "3201",
+          "kind": "rpc",
+          "headers": {
+            "version": "2026-07-28",
+            "method": "tools/call",
+            "name": "export_assets"
+          },
+          "eventsCap": "extensions",
+          "taskStore": "file",
+          "method": "tools/call",
+          "id": 1,
+          "name": "export_assets",
+          "extensions": [],
+          "bodyVersion": "2026-07-28",
+          "status": 200,
+          "errorCode": -32021
+        },
+        "error": {
+          "name": "MCPClientError",
+          "message": "Tasks capability required"
+        }
+      }
+    },
+    {
+      "id": "H3b",
+      "conclusion": "支持",
+      "metrics": {
+        "wire": {
+          "at": 1795698943462,
+          "port": "3201",
+          "kind": "rpc",
+          "headers": {
+            "version": "2026-07-28",
+            "method": "tools/call",
+            "name": "export_assets"
+          },
+          "eventsCap": "extensions",
+          "taskStore": "file",
+          "method": "tools/call",
+          "id": 1,
+          "name": "export_assets",
+          "extensions": [
+            "io.modelcontextprotocol/tasks"
+          ],
+          "bodyVersion": "2026-07-28",
+          "status": 200,
+          "resultType": "task"
+        },
+        "error": {
+          "name": "MCPClientError",
+          "message": "Failed to process server response"
+        }
+      }
+    },
+    {
+      "id": "H3c",
+      "conclusion": "支持",
+      "metrics": {
+        "steps": 2,
+        "text": "处理完成",
+        "toolResults": [
+          {
+            "type": "tool-result",
+            "toolCallId": "fixture-call",
+            "toolName": "export_assets",
+            "input": {
+              "count": 3
+            },
+            "output": {
+              "resultType": "complete",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"exported\":3}"
+                }
+              ],
+              "isError": false
+            },
+            "dynamic": true,
+            "toolMetadata": {
+              "clientName": "ai-sdk-mcp-client",
+              "toolName": "export_assets"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "H4a",
+      "conclusion": "支持",
+      "metrics": {
+        "modes": [
+          {
+            "mode": "none",
+            "count": 0,
+            "error": {
+              "name": "MCPClientError",
+              "message": "Server does not support events"
+            }
+          },
+          {
+            "mode": "legacy",
+            "count": 1,
+            "events": 2
+          },
+          {
+            "mode": "extensions",
+            "count": 4,
+            "events": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "H4b",
+      "conclusion": "支持",
+      "metrics": {
+        "stock": {
+          "error": {
+            "name": "MCPClientError",
+            "message": "MCP event stock.low does not support webhook delivery"
+          }
+        },
+        "mode": {
+          "error": {
+            "name": "MCPClientError",
+            "message": "Only webhook event delivery is supported"
+          }
+        },
+        "hostname": {
+          "error": {
+            "name": "MCPClientError",
+            "message": "MCP event callback URLs must use HTTPS without credentials or fragments"
+          }
+        }
+      }
+    },
+    {
+      "id": "H4c",
+      "conclusion": "支持",
+      "metrics": {
+        "verification": true,
+        "order": true,
+        "store": [
+          "pending",
+          "active"
+        ],
+        "cursor": [
+          "0",
+          "1"
+        ],
+        "statuses": [
+          204
+        ],
+        "onEvent": 1,
+        "data": {
+          "orderId": "DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8",
+          "shopId": "dehua-01",
+          "amount": 128
+        }
+      }
+    },
+    {
+      "id": "H4d",
+      "conclusion": "支持",
+      "metrics": {
+        "statuses": [
+          401,
+          401,
+          401
+        ],
+        "onEvent": 0
+      }
+    },
+    {
+      "id": "H4e",
+      "conclusion": "支持",
+      "metrics": {
+        "statuses": [
+          503,
+          204
+        ],
+        "onEvent": 1,
+        "retryMs": 216,
+        "cursor": [
+          "1",
+          "2"
+        ]
+      }
+    },
+    {
+      "id": "H4f",
+      "conclusion": "支持",
+      "metrics": {
+        "statuses": [
+          204,
+          204
+        ],
+        "onEvent": 2,
+        "business": 1,
+        "webhookId": "35c35d288802fd05d4ddc51d5391b413259d3f26530497a18facb87838e34d95.6297234c-33c0-4314-bfed-35b065861b37"
+      }
+    },
+    {
+      "id": "H4g",
+      "conclusion": "支持",
+      "metrics": {
+        "payloadFields": [
+          "orderId",
+          "shopId",
+          "amount"
+        ],
+        "agent": {
+          "steps": 2,
+          "text": "处理完成",
+          "toolResults": [
+            {
+              "type": "tool-result",
+              "toolCallId": "fixture-call",
+              "toolName": "get_order",
+              "input": {
+                "orderId": "DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8"
+              },
+              "output": {
+                "resultType": "complete",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "{\"orderId\":\"DH-c5a0ad15-67e2-4c14-b8a4-60c56f1771d8\",\"state\":\"paid\",\"amount\":128,\"port\":\"3201\"}"
+                  }
+                ],
+                "isError": false
+              },
+              "dynamic": true,
+              "toolMetadata": {
+                "clientName": "ai-sdk-mcp-client",
+                "toolName": "get_order"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "H4h",
+      "conclusion": "支持",
+      "metrics": {
+        "status": 410,
+        "expiry": "2026-11-26T13:15:42.874Z",
+        "onEvent": 0
+      }
+    }
+  ]
+}

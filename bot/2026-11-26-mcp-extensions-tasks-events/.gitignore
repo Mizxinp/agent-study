@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.data/
+.env*
+*.tsbuildinfo
+next-env.d.ts
+results/wire-*.jsonl
+!results/wire-log.sample.jsonl
+results/run.json
