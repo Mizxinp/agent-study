@@ -1,0 +1,265 @@
+[
+  {
+    "index": 0,
+    "streamed": false,
+    "request": {
+      "systemInstructions": "你是德化陶瓷店的分流客服。",
+      "overridePromptModel": true,
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "查订单 ORD-1001 并告知可否退款"
+        }
+      ],
+      "modelSettings": {},
+      "_internal": {
+        "tracingParent": null,
+        "toolNameCollisionPolicy": "warn"
+      },
+      "tools": [],
+      "toolsExplicitlyProvided": true,
+      "outputType": "text",
+      "handoffs": [
+        {
+          "toolName": "transfer_to_order_agent",
+          "toolDescription": "Handoff to the Order agent agent to handle the request. ",
+          "inputJsonSchema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          },
+          "strictJsonSchema": true
+        },
+        {
+          "toolName": "transfer_to_refund_agent",
+          "toolDescription": "Handoff to the Refund agent agent to handle the request. ",
+          "inputJsonSchema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          },
+          "strictJsonSchema": true
+        },
+        {
+          "toolName": "transfer_to_product_agent",
+          "toolDescription": "Handoff to the Product agent agent to handle the request. ",
+          "inputJsonSchema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          },
+          "strictJsonSchema": true
+        }
+      ],
+      "tracing": true
+    }
+  },
+  {
+    "index": 0,
+    "streamed": false,
+    "request": {
+      "systemInstructions": "你负责处理德化陶瓷店退款。",
+      "overridePromptModel": true,
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "查订单 ORD-1001 并告知可否退款"
+        },
+        {
+          "type": "function_call",
+          "name": "transfer_to_refund_agent",
+          "callId": "transfer_to_refund_agent",
+          "id": "transfer_to_refund_agent",
+          "status": "completed",
+          "arguments": "{}"
+        },
+        {
+          "type": "function_call_result",
+          "name": "transfer_to_refund_agent",
+          "callId": "transfer_to_refund_agent",
+          "status": "completed",
+          "output": {
+            "type": "text",
+            "text": "{\"assistant\":\"Refund agent\"}"
+          }
+        }
+      ],
+      "modelSettings": {},
+      "_internal": {
+        "tracingParent": null,
+        "toolNameCollisionPolicy": "warn"
+      },
+      "tools": [
+        {
+          "type": "function",
+          "name": "issue_refund",
+          "description": "发起退款",
+          "parameters": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "orderId",
+              "amount"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true,
+          "deferLoading": false
+        }
+      ],
+      "toolsExplicitlyProvided": true,
+      "outputType": "text",
+      "handoffs": [],
+      "tracing": true
+    }
+  },
+  {
+    "index": 0,
+    "streamed": false,
+    "request": {
+      "systemInstructions": "你负责综合德化陶瓷店专家的答复。",
+      "overridePromptModel": true,
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "我要退款"
+        }
+      ],
+      "modelSettings": {},
+      "_internal": {
+        "tracingParent": null,
+        "toolNameCollisionPolicy": "warn"
+      },
+      "tools": [
+        {
+          "type": "function",
+          "name": "order_expert",
+          "description": "",
+          "parameters": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "input"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true,
+          "deferLoading": false
+        },
+        {
+          "type": "function",
+          "name": "refund_expert",
+          "description": "",
+          "parameters": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "input"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true,
+          "deferLoading": false
+        },
+        {
+          "type": "function",
+          "name": "product_expert",
+          "description": "",
+          "parameters": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "input"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true,
+          "deferLoading": false
+        }
+      ],
+      "toolsExplicitlyProvided": true,
+      "outputType": "text",
+      "handoffs": [],
+      "tracing": true
+    }
+  },
+  {
+    "index": 0,
+    "streamed": false,
+    "request": {
+      "systemInstructions": "你负责处理德化陶瓷店退款。",
+      "overridePromptModel": true,
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "为 ORD-1001 退款 100 元"
+        }
+      ],
+      "modelSettings": {},
+      "_internal": {
+        "tracingParent": null,
+        "toolNameCollisionPolicy": "warn"
+      },
+      "tools": [
+        {
+          "type": "function",
+          "name": "issue_refund",
+          "description": "发起退款",
+          "parameters": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "orderId",
+              "amount"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true,
+          "deferLoading": false
+        }
+      ],
+      "toolsExplicitlyProvided": true,
+      "outputType": "text",
+      "handoffs": [],
+      "tracing": true
+    }
+  }
+]

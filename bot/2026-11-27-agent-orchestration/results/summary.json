@@ -1,0 +1,570 @@
+[
+  {
+    "id": "H1a",
+    "conclusion": "支持",
+    "data": {
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "alsoTool": false
+    }
+  },
+  {
+    "id": "H1b",
+    "conclusion": "支持",
+    "data": {
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "查订单 ORD-1001 并告知可否退款"
+        },
+        {
+          "type": "function_call",
+          "name": "transfer_to_refund_agent",
+          "callId": "transfer_to_refund_agent",
+          "id": "transfer_to_refund_agent",
+          "status": "completed",
+          "arguments": "{}"
+        },
+        {
+          "type": "function_call_result",
+          "name": "transfer_to_refund_agent",
+          "callId": "transfer_to_refund_agent",
+          "status": "completed",
+          "output": {
+            "type": "text",
+            "text": "{\"assistant\":\"Refund agent\"}"
+          }
+        }
+      ],
+      "outputText": "{\"assistant\":\"Refund agent\"}",
+      "instructions": "你负责处理德化陶瓷店退款。"
+    }
+  },
+  {
+    "id": "H1c",
+    "conclusion": "支持",
+    "data": {
+      "calls": 2,
+      "events": 1,
+      "target": "Refund agent",
+      "finalOutput": "请问您要退哪件陶瓷？",
+      "sameAgent": true
+    }
+  },
+  {
+    "id": "H1d",
+    "conclusion": "记录",
+    "data": {
+      "phase": "运行",
+      "error": null,
+      "executions": 0,
+      "target": "Refund agent"
+    }
+  },
+  {
+    "id": "H2a",
+    "conclusion": "支持",
+    "data": {
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": "查订单 ORD-1001 并告知可否退款"
+        }
+      ],
+      "items": 1,
+      "orders": 1,
+      "beforeFilterTypes": [
+        "message",
+        "reasoning",
+        "function_call",
+        "function_call_result"
+      ]
+    }
+  },
+  {
+    "id": "H2b",
+    "conclusion": "支持",
+    "data": {
+      "input": [
+        {
+          "type": "message",
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "查订单 ORD-1001 并告知可否退款"
+            }
+          ]
+        },
+        {
+          "type": "message",
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "摘要：顾客希望退款。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "H2c.previousResponseId",
+    "conclusion": "支持",
+    "data": {
+      "error": {
+        "errorClass": "UserError",
+        "message": "Handoff input filters cannot be used with conversationId or previousResponseId because server-managed history cannot be filtered locally. Use explicit client-managed history or a Session without either continuation option."
+      },
+      "calls": 0
+    }
+  },
+  {
+    "id": "H2c.conversationId",
+    "conclusion": "支持",
+    "data": {
+      "error": {
+        "errorClass": "UserError",
+        "message": "Handoff input filters cannot be used with conversationId or previousResponseId because server-managed history cannot be filtered locally. Use explicit client-managed history or a Session without either continuation option."
+      },
+      "calls": 0
+    }
+  },
+  {
+    "id": "H3",
+    "conclusion": "支持",
+    "data": {
+      "target": "Refund agent",
+      "productCalls": 0,
+      "handoffItems": 1,
+      "secondInHistory": false,
+      "warnings": []
+    }
+  },
+  {
+    "id": "H4a",
+    "conclusion": "支持",
+    "data": {
+      "interruptions": 1,
+      "target": "Triage agent",
+      "refundCalls": 0,
+      "orders": 0
+    }
+  },
+  {
+    "id": "H4b",
+    "conclusion": "支持",
+    "data": {
+      "target": "Refund agent",
+      "refundCalls": 1,
+      "triageCalls": 1,
+      "orders": 1
+    }
+  },
+  {
+    "id": "H4c",
+    "conclusion": "记录",
+    "data": {
+      "target": "Refund agent",
+      "orders": 0,
+      "refundSawMessage": true
+    }
+  },
+  {
+    "id": "H5a",
+    "conclusion": "支持",
+    "data": {
+      "handoff": 3,
+      "asTool": 4,
+      "workflow": 3
+    }
+  },
+  {
+    "id": "H5b",
+    "conclusion": "支持",
+    "data": {
+      "restart": 3,
+      "activeAgent": 2,
+      "asTool": 4
+    }
+  },
+  {
+    "id": "H5c",
+    "conclusion": "支持",
+    "data": {
+      "elapsedMs": 105,
+      "calls": 5,
+      "handoffCalls": 2,
+      "otherHandoffExperts": 0
+    }
+  },
+  {
+    "id": "H5d",
+    "conclusion": "支持",
+    "data": {
+      "isolated": "[{\"type\":\"message\",\"role\":\"user\",\"content\":\"查订单 ORD-1001 并告知可否退款\"}]",
+      "isolatedChars": 67,
+      "inheritedChars": 829,
+      "inherited": "[{\"type\":\"message\",\"role\":\"user\",\"content\":[{\"type\":\"input_text\",\"text\":\"历史订单一\"}]},{\"type\":\"message\",\"role\":\"assistant\",\"status\":\"completed\",\"content\":[{\"type\":\"output_text\",\"text\":\"历史回复一\"}]},{\"type\":\"message\",\"role\":\"user\",\"content\":[{\"type\":\"input_text\",\"text\":\"历史订单二\"}]},{\"type\":\"message\",\"role\":\"assistant\",\"status\":\"completed\",\"content\":[{\"type\":\"output_text\",\"text\":\"历史回复二\"}]},{\"type\":\"message\",\"role\":\"user\",\"content\":[{\"type\":\"input_text\",\"text\":\"查订单 ORD-1001 并告知可否退款\"}]},{\"type\":\"function_call\",\"name\":\"transfer_to_order_agent\",\"callId\":\"transfer_to_order_agent\",\"id\":\"transfer_to_order_agent\",\"status\":\"completed\",\"arguments\":\"{}\"},{\"type\":\"function_call_result\",\"name\":\"transfer_to_order_agent\",\"callId\":\"transfer_to_order_agent\",\"status\":\"completed\",\"output\":{\"type\":\"text\",\"text\":\"{\\\"assistant\\\":\\\"Order agent\\\"}\"}}]"
+    }
+  },
+  {
+    "id": "H6a",
+    "conclusion": "支持",
+    "data": {
+      "interruptions": 1,
+      "agent": "Refund agent",
+      "rawItem": {
+        "type": "function_call",
+        "name": "issue_refund",
+        "callId": "issue_refund",
+        "id": "issue_refund",
+        "status": "completed",
+        "arguments": "{\"orderId\":\"ORD-1001\",\"amount\":100}"
+      },
+      "ledgerRows": 0
+    }
+  },
+  {
+    "id": "H6b",
+    "conclusion": "不支持",
+    "data": {
+      "schema": "1.23",
+      "bytes": 7817
+    }
+  },
+  {
+    "id": "H6c",
+    "conclusion": "支持",
+    "data": {
+      "exitCode": 0,
+      "child": {
+        "managerCalls": 1,
+        "refundCalls": 1,
+        "finalOutput": "退款流程已结束",
+        "interruptions": 0
+      },
+      "managerCalls": 2,
+      "refundCalls": 2,
+      "ledgerRows": 1
+    }
+  },
+  {
+    "id": "H6d",
+    "conclusion": "不支持",
+    "data": {
+      "error": null,
+      "ledgerRows": 0,
+      "remaining": 0,
+      "finalOutput": "退款流程已结束"
+    }
+  },
+  {
+    "id": "H6e",
+    "conclusion": "支持",
+    "data": {
+      "ledgerRows": 0,
+      "sawMessage": true,
+      "message": "店长未批准退款"
+    }
+  },
+  {
+    "id": "H6f",
+    "conclusion": "支持",
+    "data": {
+      "ledgerRows": 2
+    }
+  },
+  {
+    "id": "H7a",
+    "conclusion": "SDK 检出",
+    "data": {
+      "error": null,
+      "remaining": 0,
+      "executed": false,
+      "amounts": [],
+      "modified": 1
+    }
+  },
+  {
+    "id": "H7b",
+    "conclusion": "未检出",
+    "data": {
+      "error": null,
+      "remaining": 0,
+      "executed": true,
+      "amounts": [
+        9999
+      ],
+      "modified": 8
+    }
+  },
+  {
+    "id": "H7c",
+    "conclusion": "SDK 检出",
+    "data": {
+      "error": {
+        "errorClass": "UserError",
+        "message": "RunState contains a per-call function approval without its canonical invocation binding."
+      },
+      "executed": false,
+      "amounts": []
+    }
+  },
+  {
+    "id": "H8a",
+    "conclusion": "支持",
+    "data": {
+      "requests": 1,
+      "stoppedBy": "approval",
+      "ledgerRows": 0
+    }
+  },
+  {
+    "id": "H8b",
+    "conclusion": "支持",
+    "data": {
+      "ledgerRows": 1,
+      "historyShape": [
+        {
+          "role": "assistant",
+          "types": [
+            "tool-call",
+            "tool-approval-request"
+          ]
+        },
+        {
+          "role": "tool",
+          "types": [
+            "tool-approval-response"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "H8c.unsigned",
+    "conclusion": "记录",
+    "data": {
+      "error": null,
+      "amounts": [
+        9999
+      ]
+    }
+  },
+  {
+    "id": "H8c.signed",
+    "conclusion": "支持",
+    "data": {
+      "error": {
+        "errorClass": "InvalidToolApprovalSignatureError",
+        "message": "Tool approval signature verification failed for approval \"aitxt-Ctivh2sUZxXB6vmoUqh1RzOX\" (tool call \"issue_refund\"): invalid signature"
+      },
+      "ledgerRows": 0
+    }
+  },
+  {
+    "id": "H8d",
+    "conclusion": "支持",
+    "data": {
+      "ledgerRows": 2
+    }
+  },
+  {
+    "id": "H9a",
+    "conclusion": "支持",
+    "data": {
+      "childSteps": 3,
+      "parentSteps": 2,
+      "totalCalls": 5,
+      "withSummaryChars": 313,
+      "withoutExtractorChars": 1174,
+      "summaryVisible": true,
+      "detailsVisible": false,
+      "controlDetailsVisible": true
+    }
+  },
+  {
+    "id": "H9b.default",
+    "conclusion": "支持",
+    "data": {
+      "steps": 20,
+      "stoppedBy": "stop-condition",
+      "finishReason": "tool-calls",
+      "warnings": [
+        "AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.",
+        "AI SDK Warning (mock-provider / mock-model-id): The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+      ]
+    }
+  },
+  {
+    "id": "H9b.bounded",
+    "conclusion": "支持",
+    "data": {
+      "steps": 3,
+      "stoppedBy": "stop-condition",
+      "finishReason": "tool-calls"
+    }
+  },
+  {
+    "id": "H9b.natural",
+    "conclusion": "支持",
+    "data": {
+      "steps": 1,
+      "stoppedBy": "model",
+      "finishReason": "stop"
+    }
+  },
+  {
+    "id": "H9b.approval",
+    "conclusion": "支持",
+    "data": {
+      "steps": 1,
+      "stoppedBy": "approval",
+      "finishReason": "tool-calls"
+    }
+  },
+  {
+    "id": "H9b.external",
+    "conclusion": "支持",
+    "data": {
+      "steps": 1,
+      "stoppedBy": "tool-without-execute",
+      "finishReason": "tool-calls"
+    }
+  },
+  {
+    "id": "H9c",
+    "conclusion": "记录",
+    "data": {
+      "childStoppedBy": "approval",
+      "childApprovalRequests": 1,
+      "error": null,
+      "parentCalls": 2,
+      "content": [
+        [
+          {
+            "type": "tool-call",
+            "toolCallId": "research",
+            "toolName": "research",
+            "input": {}
+          },
+          {
+            "type": "tool-result",
+            "toolCallId": "research",
+            "toolName": "research",
+            "input": {},
+            "output": "",
+            "dynamic": false
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "结束"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": "H9d",
+    "conclusion": "支持",
+    "data": {
+      "forwarded": {
+        "childCalls": 1,
+        "completedSteps": 0,
+        "childError": {
+          "errorClass": "DOMException",
+          "message": "This operation was aborted"
+        },
+        "parentError": {
+          "errorClass": "DOMException",
+          "message": "This operation was aborted"
+        }
+      },
+      "omitted": {
+        "childCalls": 3,
+        "completedSteps": 3,
+        "childError": null,
+        "parentError": {
+          "errorClass": "DOMException",
+          "message": "This operation was aborted"
+        }
+      }
+    }
+  },
+  {
+    "id": "H10.chat",
+    "conclusion": "支持",
+    "data": {
+      "status": 200,
+      "keys": [
+        "runId",
+        "approvals"
+      ],
+      "approvals": 1,
+      "toolName": "issue_refund",
+      "argsSummary": "{\"orderId\":\"ORD-1001\",\"amount\":100}",
+      "ledgerRows": 0
+    }
+  },
+  {
+    "id": "H10.identity",
+    "conclusion": "支持",
+    "data": {
+      "otherUser": 403,
+      "unrelatedDecision": 404
+    }
+  },
+  {
+    "id": "H10.approve",
+    "conclusion": "支持",
+    "data": {
+      "final": {
+        "finalOutput": "退款已批准"
+      },
+      "ledgerRows": 1,
+      "amount": 100,
+      "clientStateWasIgnored": true
+    }
+  },
+  {
+    "id": "H10.replay",
+    "conclusion": "支持",
+    "data": {
+      "concurrentStatuses": [
+        200,
+        409
+      ],
+      "replayStatus": 409,
+      "ledgerRows": 1
+    }
+  },
+  {
+    "id": "H10.reject",
+    "conclusion": "支持",
+    "data": {
+      "status": 200,
+      "final": {
+        "finalOutput": "退款未批准"
+      },
+      "ledgerRows": 1
+    }
+  },
+  {
+    "id": "H10.build",
+    "conclusion": "支持",
+    "data": {
+      "exitCode": 0
+    }
+  }
+]
