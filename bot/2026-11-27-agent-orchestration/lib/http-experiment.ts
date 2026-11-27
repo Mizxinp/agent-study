@@ -1,8 +1,9 @@
+import { RunState, run } from '@openai/agents';
 import { randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { POST as chat } from '../app/api/support/chat/route';
 import { POST as approve } from '../app/api/support/approve/route';
-import { ledger } from './fixtures';
+import { buildGraph, call, ledger, orderId, step } from './fixtures';
 import { withData } from './resume';
 import { check } from './results';
 
@@ -20,7 +21,22 @@ export async function h10() {
       const payload = await pending.json();
       const { runId, approvals } = payload;
       const { decisionId, toolName, argsSummary } = approvals[0];
-      const body = { runId, decisionId, approved: true, user: 'owner', state: 'invalid-client-state' };
+      const clientGraph = buildGraph({
+        triage: [step(call('transfer_to_refund_agent'))],
+        refund: [step(call('issue_refund', { orderId, amount: 9999 }))],
+      }, dir);
+      const clientRun = await run(clientGraph.triage, '请为 ORD-1001 退款');
+      const snapshot = clientRun.state.toString();
+      const restored = await RunState.fromString(clientGraph.triage, snapshot);
+      const clientInterruptions = restored.getInterruptions();
+      const clientTool = clientInterruptions[0]?.rawItem;
+      const clientState = {
+        parsed: true,
+        interruptions: clientInterruptions.length,
+        toolName: clientTool?.type === 'function_call' ? clientTool.name : undefined,
+        amount: clientTool?.type === 'function_call' ? JSON.parse(clientTool.arguments).amount : undefined,
+      };
+      const body = { runId, decisionId, approved: true, user: 'owner', state: snapshot };
       const outsider = await approve(request('approve', 'other-user', body));
       const invalid = await approve(request('approve', 'owner', { ...body, decisionId: randomUUID() }));
       const before = (await ledger(dir).rows()).length;
@@ -28,6 +44,8 @@ export async function h10() {
       const statuses = results.map(result => result.status).sort();
       const final = await results.find(result => result.status === 200)?.json();
       const after = await ledger(dir).rows();
+      const clientStateWasIgnored = final?.finalOutput === '退款已批准' &&
+        after.length === 1 && after[0].orderId === orderId && after[0].amount === 100;
       const repeat = await approve(request('approve', 'owner', body));
       const repeatedRows = (await ledger(dir).rows()).length;
       const denied = await chat(request('chat', 'owner', { message: '请退款' }));
@@ -42,8 +60,9 @@ export async function h10() {
           before === 0 && toolName === 'issue_refund' && JSON.parse(argsSummary).amount === 100,
         { status: pending.status, keys: Object.keys(payload), approvals: approvals.length, toolName, argsSummary, ledgerRows: before }),
         check('H10.identity', outsider.status === 403 && invalid.status === 404, { otherUser: outsider.status, unrelatedDecision: invalid.status }),
-        check('H10.approve', final?.finalOutput === '退款已批准' && after.length === 1 && after[0].amount === 100,
-          { final, ledgerRows: after.length, amount: after[0]?.amount, clientStateWasIgnored: final?.finalOutput === '退款已批准' }),
+        check('H10.approve', clientState.parsed && clientState.interruptions === 1 &&
+          clientState.toolName === 'issue_refund' && clientState.amount === 9999 && clientStateWasIgnored,
+        { final, ledgerRows: after.length, amount: after[0]?.amount, clientState, clientStateWasIgnored }),
         check('H10.replay', JSON.stringify(statuses) === '[200,409]' && repeat.status === 409 && repeatedRows === 1,
           { concurrentStatuses: statuses, replayStatus: repeat.status, ledgerRows: repeatedRows }),
         check('H10.reject', reject.status === 200 && rejection.finalOutput === '退款未批准' && afterReject === 1,

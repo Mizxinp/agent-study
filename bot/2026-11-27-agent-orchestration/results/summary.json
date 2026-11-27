@@ -200,7 +200,7 @@
     "id": "H5c",
     "conclusion": "支持",
     "data": {
-      "elapsedMs": 105,
+      "elapsedMs": 104,
       "calls": 5,
       "handoffCalls": 2,
       "otherHandoffExperts": 0
@@ -263,7 +263,12 @@
     "data": {
       "error": null,
       "ledgerRows": 0,
+      "refundCalls": 0,
+      "restoredInterruptionAgents": [
+        "Manager agent"
+      ],
       "remaining": 0,
+      "interruptionAgents": [],
       "finalOutput": "退款流程已结束"
     }
   },
@@ -366,7 +371,7 @@
     "data": {
       "error": {
         "errorClass": "InvalidToolApprovalSignatureError",
-        "message": "Tool approval signature verification failed for approval \"aitxt-Ctivh2sUZxXB6vmoUqh1RzOX\" (tool call \"issue_refund\"): invalid signature"
+        "message": "Tool approval signature verification failed for approval \"aitxt-uTgsHESPbZsOJM60VJ7xXSGQ\" (tool call \"issue_refund\"): invalid signature"
       },
       "ledgerRows": 0
     }
@@ -534,6 +539,12 @@
       },
       "ledgerRows": 1,
       "amount": 100,
+      "clientState": {
+        "parsed": true,
+        "interruptions": 1,
+        "toolName": "issue_refund",
+        "amount": 9999
+      },
       "clientStateWasIgnored": true
     }
   },

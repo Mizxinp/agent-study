@@ -14,7 +14,7 @@ P0 覆盖 H1–H6、H8、H9a、H9b。P1 覆盖 H7、H9c、H9d、H10，全部完�
 
 | 子项 | 结论 | 实测 |
 | --- | --- | --- |
-| H1a | 支持 | `request.handoffs` 含退款转接，严格 schema 为空对象且 `additionalProperties: false`。`request.tools` 无该项。 |
+| H1a | 支持 | `request.handoffs` 含退款转接，严格 schema 为空对象且 `additionalProperties: false`。`request.tools` 无该项，判据要求 `alsoTool: false`。 |
 | H1b | 支持 | Refund 收到自己的指令和 3 项输入（用户消息、转接调用、结果），结果文本为 `{"assistant":"Refund agent"}`。 |
 | H1c | 支持 | 模型共调用 2 次，Runner 触发 1 次 `agent_handoff`，`lastAgent` 与 `activeAgent` 为同一个 Refund，终答「请问您要退哪件陶瓷？」。 |
 | H1d | 记录 | 同名函数工具构造和运行均未报错，函数执行 0 次，转接至 Refund。 |
@@ -27,12 +27,12 @@ P0 覆盖 H1–H6、H8、H9a、H9b。P1 覆盖 H7、H9c、H9d、H10，全部完�
 | H4c | 记录 | 拒绝后查订单 0 次，仍转 Refund，Refund 看到「店长未批准」。 |
 | H5a | 支持 | 代码路由 3 次、handoff 3 次、as-tool 4 次。 |
 | H5b | 支持 | 第二轮从 Triage 重新进入 3 次，从上轮 `activeAgent` 开始 2 次，as-tool 4 次。 |
-| H5c | 支持 | 3 个延迟 100 ms 的子 agent 并发，总耗时 105 ms，共 5 次模型调用。三个 handoff 仅转一个，共 2 次模型调用，另两专家均为 0。 |
+| H5c | 支持 | 3 个延迟 100 ms 的子 agent 并发，总耗时 104 ms，共 5 次模型调用。三个 handoff 仅转一个，共 2 次模型调用，另两专家均为 0。 |
 | H5d | 支持 | 子 agent 输入 67 个 JSON 字符，只含工具传入的任务。handoff 输入 829 个字符，包含两轮历史。 |
 | H6a | 支持 | 中断 1 个，Refund 的 `issue_refund`，callId 同工具名，参数为 ORD-1001 和 100，账本 0 行。 |
 | H6b | 不支持 | 快照写出 `1.23`，7817 字节。预注册期望 `1.24`。 |
 | H6c | 支持 | 子进程退出 0，恢复阶段 Manager、Refund 各调用 1 次，两进程合计各 2 次，账本 1 行，最终无中断。 |
-| H6d | 不支持 | 更名图恢复未抛错，账本 0 行，剩余中断 0，脚本 Manager 仍输出「退款流程已结束」。预注册期望显式报错。 |
+| H6d | 不支持 | 更名图反序列化后，原属 `Refund agent` 的 1 个中断转到 `Manager agent` 名下。批准并继续运行后，退款被静默丢弃。Refund 模型调用 0 次，账本 0 行，剩余中断 0 个，无所属 agent。未抛错，脚本 Manager 仍输出「退款流程已结束」。预注册期望显式报错。 |
 | H6e | 支持 | 拒绝后账本 0 行，子模型看到了「店长未批准退款」。 |
 | H6f | 支持 | 同一服务端测试快照批准并恢复两次，账本 2 行。 |
 | H7a | SDK 检出 | 仅待审批项参数变化，无异常、无剩余中断、工具未执行、账本 0 行。 |
@@ -53,7 +53,7 @@ P0 覆盖 H1–H6、H8、H9a、H9b。P1 覆盖 H7、H9c、H9d、H10，全部完�
 | H9d | 支持 | 转发父信号时子模型启动 1 次、完成 0 步，父子均抛 `DOMException`。不转发时父抛同样的异常，子模型完成 3 步。 |
 | H10.chat | 支持 | 200，返回 `runId` 与 1 条 `approvals`，账本 0 行。 |
 | H10.identity | 支持 | 非所有者 403，即使 body 写入所有者。无关 decisionId 为 404。 |
-| H10.approve | 支持 | 正常批准返回「退款已批准」，忽略客户端夹带的 state，账本 1 行，金额 100。 |
+| H10.approve | 支持 | 客户端夹带 SDK 生成的快照，本地 `RunState.fromString` 解析成功，恢复 1 个金额为 9999 的 `issue_refund` 待审批项。服务端忽略夹带的快照，批准后返回「退款已批准」，账本仅 1 行，金额 100。 |
 | H10.replay | 支持 | 并发两次响应 200 和 409，之后重复请求 409，账本仍 1 行。 |
 | H10.reject | 支持 | 200，返回「退款未批准」，账本仍 1 行。 |
 | H10.build | 支持 | Next 构建退出 0。 |

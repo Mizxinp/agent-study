@@ -46,13 +46,16 @@ export async function h6(trace: unknown[] = []) {
     const managerCalls = graph.models.manager.calls.length + (childData.managerCalls ?? 0);
     const refundCalls = graph.models.refund.calls.length + (childData.refundCalls ?? 0);
     const wrong = finishNested(join(dir, 'wrong'), true);
-    let wrongInterruptions: number | undefined;
+    let restoredInterruptionAgents: string[] | undefined;
+    let wrongInterruptionAgents: string[] | undefined;
     let wrongOutput: unknown;
     const wrongError = await capture(async () => {
       const state = await RunState.fromString(wrong.manager, snapshot);
-      state.approve(state.getInterruptions()[0]);
+      const restoredInterruptions = state.getInterruptions();
+      restoredInterruptionAgents = restoredInterruptions.map(({ agent }) => agent.name);
+      state.approve(restoredInterruptions[0]);
       const resumed = await run(wrong.manager, state);
-      wrongInterruptions = resumed.interruptions.length;
+      wrongInterruptionAgents = resumed.interruptions.map(({ agent }) => agent.name);
       wrongOutput = resumed.finalOutput;
     });
     const wrongRows = (await wrong.book.rows()).length;
@@ -76,7 +79,11 @@ export async function h6(trace: unknown[] = []) {
       check('H6b', schema === '1.24', { schema, bytes: Buffer.byteLength(snapshot) }),
       check('H6c', child.status === 0 && after === 1 && managerCalls === 2 && refundCalls === 2 && childData.interruptions === 0 && childData.finalOutput === '退款流程已结束',
         { exitCode: child.status, child: childData, managerCalls, refundCalls, ledgerRows: after }),
-      check('H6d', wrongError !== null && wrongRows === 0, { error: wrongError, ledgerRows: wrongRows, remaining: wrongInterruptions, finalOutput: wrongOutput }),
+      check('H6d', wrongError !== null && wrongRows === 0, {
+        error: wrongError, ledgerRows: wrongRows, refundCalls: wrong.models.refund.calls.length,
+        restoredInterruptionAgents, remaining: wrongInterruptionAgents?.length,
+        interruptionAgents: wrongInterruptionAgents, finalOutput: wrongOutput,
+      }),
       check('H6e', deniedRows === 0 && sawMessage, { ledgerRows: deniedRows, sawMessage, message: rejection }),
       check('H6f', replayRows === 2, { ledgerRows: replayRows }),
     ];

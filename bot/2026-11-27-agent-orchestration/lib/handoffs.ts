@@ -24,7 +24,7 @@ export async function h1(trace: unknown[] = []) {
   trace.push(...graph.models.triage.calls, ...graph.models.refund.calls);
   const { request } = graph.models.triage.calls[0];
   const transfer = request.handoffs.find(item => item.toolName === toRefund.name);
-  const alsoTool = request.tools?.some(item => item.name === toRefund.name);
+  const alsoTool = (request.tools ?? []).some(item => item.name === toRefund.name);
   const refundRequest = graph.models.refund.calls[0].request;
   const input = inputItems(refundRequest.input);
   const output = input.find(item => item.type === 'function_call_result');
@@ -43,7 +43,7 @@ export async function h1(trace: unknown[] = []) {
     target = (await run(agent, question)).lastAgent?.name;
   });
   return [
-    check('H1a', transfer?.strictJsonSchema === true, { strict: transfer?.strictJsonSchema, schema: transfer?.inputJsonSchema, alsoTool }),
+    check('H1a', transfer?.strictJsonSchema === true && alsoTool === false, { strict: transfer?.strictJsonSchema, schema: transfer?.inputJsonSchema, alsoTool }),
     check('H1b', refundRequest.systemInstructions === instructions.refund && json(input).includes(question) &&
       input.some(item => item.type === 'function_call' && item.name === toRefund.name) &&
       outputText === '{"assistant":"Refund agent"}',

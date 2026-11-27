@@ -9,5 +9,8 @@ test('H6', async () => {
     expect(result.conclusion, JSON.stringify(result)).toBe(result.id === 'H6b' || result.id === 'H6d' ? '不支持' : '支持');
   }
   expect(results.find(row => row.id === 'H6b')?.data).toMatchObject({ schema: '1.23' });
-  expect(results.find(row => row.id === 'H6d')?.data).toMatchObject({ ledgerRows: 0, error: null, remaining: 0 });
+  expect(results.find(row => row.id === 'H6d')?.data).toMatchObject({
+    ledgerRows: 0, error: null, refundCalls: 0, restoredInterruptionAgents: ['Manager agent'],
+    remaining: 0, interruptionAgents: [],
+  });
 });
