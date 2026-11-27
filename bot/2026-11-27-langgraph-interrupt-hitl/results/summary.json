@@ -1,0 +1,287 @@
+{
+  "version": "1.7.4",
+  "dependencies": {
+    "core": "1.3.4",
+    "checkpoint": "1.2.2"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "conclusion": "支持",
+      "observed": {
+        "invoke": {
+          "name": "GraphValueError",
+          "message": "No checkpointer set\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langgraph/MISSING_CHECKPOINTER/\n",
+          "lc_error_code": "MISSING_CHECKPOINTER"
+        },
+        "resume": {
+          "name": "Error",
+          "message": "Cannot use Command(resume=...) without checkpointer"
+        }
+      }
+    },
+    {
+      "id": "H2",
+      "conclusion": "支持",
+      "observed": {
+        "initial": {
+          "before": 1,
+          "after": 0,
+          "ledger": 0,
+          "pending": 1
+        },
+        "resumed": {
+          "before": 2,
+          "after": 1,
+          "ledger": 1,
+          "status": "approved"
+        }
+      }
+    },
+    {
+      "id": "H3",
+      "conclusion": "支持",
+      "observed": {
+        "swallowed": {
+          "completed": true,
+          "caught": "GraphInterrupt",
+          "pending": 0
+        },
+        "rethrown": {
+          "completed": false,
+          "caught": "GraphInterrupt",
+          "pending": 1
+        }
+      }
+    },
+    {
+      "id": "H4",
+      "conclusion": "支持",
+      "observed": {
+        "ordered": {
+          "prompts": [
+            "name",
+            "amount"
+          ],
+          "binding": {
+            "name": "小林",
+            "amount": 100
+          },
+          "pending": []
+        },
+        "swapped": {
+          "prompts": [
+            "name",
+            "amount"
+          ],
+          "binding": {
+            "amount": "小林",
+            "name": 100
+          },
+          "pending": []
+        }
+      }
+    },
+    {
+      "id": "H5a",
+      "conclusion": "支持",
+      "observed": {
+        "initial": [
+          "left",
+          "right"
+        ],
+        "binding": {
+          "left": "L",
+          "right": "R"
+        },
+        "pending": []
+      }
+    },
+    {
+      "id": "H5b",
+      "conclusion": "记录",
+      "observed": {
+        "initial": [
+          "left",
+          "right"
+        ],
+        "binding": {
+          "left": "single",
+          "right": "single"
+        },
+        "pending": []
+      }
+    },
+    {
+      "id": "H5c",
+      "conclusion": "支持",
+      "observed": {
+        "initial": [
+          "left",
+          "right"
+        ],
+        "pending": [
+          "left",
+          "right"
+        ],
+        "error": {
+          "name": "UnknownInterruptError",
+          "message": "When there are multiple pending interrupts, you must specify the interrupt id when resuming."
+        }
+      }
+    },
+    {
+      "id": "H6a",
+      "conclusion": "支持",
+      "observed": {
+        "schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "approved": {
+              "type": "boolean"
+            },
+            "note": {
+              "default": "",
+              "type": "string",
+              "maxLength": 500
+            }
+          },
+          "required": [
+            "approved",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "invalid": {
+          "name": "$ZodError",
+          "message": "[\n  {\n    \"expected\": \"boolean\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"approved\"\n    ],\n    \"message\": \"Invalid input: expected boolean, received string\"\n  }\n]",
+          "issues": [
+            {
+              "expected": "boolean",
+              "code": "invalid_type",
+              "path": [
+                "approved"
+              ],
+              "message": "Invalid input: expected boolean, received string"
+            }
+          ]
+        },
+        "answer": {
+          "approved": true,
+          "note": ""
+        }
+      }
+    },
+    {
+      "id": "H6b",
+      "conclusion": "支持",
+      "observed": {
+        "expectedSchema": {
+          "type": "boolean"
+        },
+        "schema": {
+          "type": "boolean"
+        },
+        "answer": "yes"
+      }
+    },
+    {
+      "id": "H7",
+      "conclusion": "支持",
+      "observed": {
+        "error": {
+          "name": "$ZodError",
+          "message": "[\n  {\n    \"expected\": \"boolean\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"approved\"\n    ],\n    \"message\": \"Invalid input: expected boolean, received string\"\n  }\n]",
+          "issues": [
+            {
+              "expected": "boolean",
+              "code": "invalid_type",
+              "path": [
+                "approved"
+              ],
+              "message": "Invalid input: expected boolean, received string"
+            }
+          ]
+        },
+        "failed": [
+          "check"
+        ],
+        "afterInvalid": 1,
+        "afterRetry": 1,
+        "binding": {
+          "check": {
+            "approved": true,
+            "note": ""
+          },
+          "send": 1
+        }
+      }
+    },
+    {
+      "id": "H8",
+      "conclusion": "支持",
+      "observed": {
+        "initialPending": 1,
+        "wrong": {
+          "result": {}
+        },
+        "right": "accepted"
+      }
+    },
+    {
+      "id": "H9",
+      "conclusion": "记录",
+      "observed": {
+        "before": 1,
+        "after": 1,
+        "status": 409,
+        "body": {
+          "error": "审批已消费"
+        }
+      }
+    },
+    {
+      "id": "H10",
+      "conclusion": "支持",
+      "observed": {
+        "start": 200,
+        "publicKeys": [
+          "__interrupt__",
+          "decisionId",
+          "refund"
+        ],
+        "interruptKeys": [
+          "response_schema",
+          "value"
+        ],
+        "ownerMismatch": 403,
+        "unknown": 404,
+        "statuses": [
+          200,
+          409
+        ],
+        "rows": 1,
+        "amounts": [
+          100
+        ],
+        "rejection": {
+          "http": 200,
+          "status": "rejected",
+          "rows": 1
+        }
+      }
+    }
+  ],
+  "h11": {
+    "id": "H11",
+    "conclusion": "相同",
+    "version": "1.7.5",
+    "dependencies": {
+      "core": "1.3.4",
+      "checkpoint": "1.2.3"
+    },
+    "missing": [],
+    "differences": []
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "version": "1.7.5",
+  "dependencies": {
+    "core": "1.3.4",
+    "checkpoint": "1.2.3"
+  },
+  "observations": {
+    "H1": {
+      "invoke": {
+        "name": "GraphValueError",
+        "message": "No checkpointer set\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langgraph/MISSING_CHECKPOINTER/\n",
+        "lc_error_code": "MISSING_CHECKPOINTER"
+      },
+      "resume": {
+        "name": "Error",
+        "message": "Cannot use Command(resume=...) without checkpointer"
+      }
+    },
+    "H2": {
+      "initial": {
+        "before": 1,
+        "after": 0,
+        "ledger": 0,
+        "pending": 1
+      },
+      "resumed": {
+        "before": 2,
+        "after": 1,
+        "ledger": 1,
+        "status": "approved"
+      }
+    },
+    "H3": {
+      "swallowed": {
+        "completed": true,
+        "caught": "GraphInterrupt",
+        "pending": 0
+      },
+      "rethrown": {
+        "completed": false,
+        "caught": "GraphInterrupt",
+        "pending": 1
+      }
+    },
+    "H4": {
+      "ordered": {
+        "prompts": [
+          "name",
+          "amount"
+        ],
+        "binding": {
+          "name": "小林",
+          "amount": 100
+        },
+        "pending": []
+      },
+      "swapped": {
+        "prompts": [
+          "name",
+          "amount"
+        ],
+        "binding": {
+          "amount": "小林",
+          "name": 100
+        },
+        "pending": []
+      }
+    },
+    "H5a": {
+      "initial": [
+        "left",
+        "right"
+      ],
+      "binding": {
+        "left": "L",
+        "right": "R"
+      },
+      "pending": []
+    },
+    "H5b": {
+      "initial": [
+        "left",
+        "right"
+      ],
+      "binding": {
+        "left": "single",
+        "right": "single"
+      },
+      "pending": []
+    },
+    "H5c": {
+      "initial": [
+        "left",
+        "right"
+      ],
+      "pending": [
+        "left",
+        "right"
+      ],
+      "error": {
+        "name": "UnknownInterruptError",
+        "message": "When there are multiple pending interrupts, you must specify the interrupt id when resuming."
+      }
+    },
+    "H6a": {
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "approved": {
+            "type": "boolean"
+          },
+          "note": {
+            "default": "",
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "approved",
+          "note"
+        ],
+        "additionalProperties": false
+      },
+      "invalid": {
+        "name": "$ZodError",
+        "message": "[\n  {\n    \"expected\": \"boolean\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"approved\"\n    ],\n    \"message\": \"Invalid input: expected boolean, received string\"\n  }\n]",
+        "issues": [
+          {
+            "expected": "boolean",
+            "code": "invalid_type",
+            "path": [
+              "approved"
+            ],
+            "message": "Invalid input: expected boolean, received string"
+          }
+        ]
+      },
+      "answer": {
+        "approved": true,
+        "note": ""
+      }
+    },
+    "H6b": {
+      "expectedSchema": {
+        "type": "boolean"
+      },
+      "schema": {
+        "type": "boolean"
+      },
+      "answer": "yes"
+    },
+    "H7": {
+      "error": {
+        "name": "$ZodError",
+        "message": "[\n  {\n    \"expected\": \"boolean\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"approved\"\n    ],\n    \"message\": \"Invalid input: expected boolean, received string\"\n  }\n]",
+        "issues": [
+          {
+            "expected": "boolean",
+            "code": "invalid_type",
+            "path": [
+              "approved"
+            ],
+            "message": "Invalid input: expected boolean, received string"
+          }
+        ]
+      },
+      "failed": [
+        "check"
+      ],
+      "afterInvalid": 1,
+      "afterRetry": 1,
+      "binding": {
+        "check": {
+          "approved": true,
+          "note": ""
+        },
+        "send": 1
+      }
+    },
+    "H8": {
+      "initialPending": 1,
+      "wrong": {
+        "result": {}
+      },
+      "right": "accepted"
+    },
+    "H9": {
+      "before": 1,
+      "after": 1,
+      "status": 409,
+      "body": {
+        "error": "审批已消费"
+      }
+    },
+    "H10": {
+      "start": 200,
+      "publicKeys": [
+        "__interrupt__",
+        "decisionId",
+        "refund"
+      ],
+      "interruptKeys": [
+        "response_schema",
+        "value"
+      ],
+      "ownerMismatch": 403,
+      "unknown": 404,
+      "statuses": [
+        200,
+        409
+      ],
+      "rows": 1,
+      "amounts": [
+        100
+      ],
+      "rejection": {
+        "http": 200,
+        "status": "rejected",
+        "rows": 1
+      }
+    }
+  }
+}
