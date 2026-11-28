@@ -1,0 +1,1494 @@
+{
+  "loop-generate-limit": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [
+      "The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+    ],
+    "steps": 20
+  },
+  "loop-generate-natural": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "stop"
+      }
+    ],
+    "warnings": [],
+    "steps": 20
+  },
+  "bare-generate": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai/7.0.184",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [],
+    "steps": 1
+  },
+  "loop-stream-limit": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [
+      "The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+    ],
+    "steps": 20
+  },
+  "loop-stream-natural": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/tool-loop",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "stop"
+      }
+    ],
+    "warnings": [],
+    "steps": 20
+  },
+  "bare-stream": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": null,
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [],
+    "steps": 1
+  },
+  "workflow-generate": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [
+      "AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.",
+      "AI SDK Warning (fixture / offline-loop): The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+    ],
+    "observedSteps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "stopWhenPresent": true,
+    "steps": 20,
+    "aborted": false
+  },
+  "workflow-stream": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 21,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 22,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 23,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 24,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 25,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "alpha",
+          "beta"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [],
+    "observedSteps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "stopWhenPresent": false,
+    "steps": 25,
+    "aborted": true
+  },
+  "workflow-reordered": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 2,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 3,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 4,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 5,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 6,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 7,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 8,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 9,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 10,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 11,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 12,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 13,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 14,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 15,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 16,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 17,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 18,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 19,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      },
+      {
+        "step": 20,
+        "userAgent": "ai-sdk-agent/workflow",
+        "toolOrder": [
+          "beta",
+          "alpha"
+        ],
+        "finishReason": "tool-calls"
+      }
+    ],
+    "warnings": [
+      "AI SDK Warning (fixture / offline-loop): The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+    ],
+    "observedSteps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "stopWhenPresent": true,
+    "preparedOrder": [
+      "beta",
+      "alpha"
+    ],
+    "steps": 20,
+    "aborted": false
+  },
+  "approval-tool-loop": {
+    "calls": [
+      {
+        "step": 1,
+        "userAgent": "ai-sdk-agent/tool-loop ai/7.0.184",
+        "toolOrder": [],
+        "finishReason": "stop"
+      }
+    ],
+    "warnings": [],
+    "steps": 1
+  },
+  "interfaces": {
+    "calls": [],
+    "warnings": [],
+    "typeDiagnostics": [
+      "tests/interfaces.negative.ts(13,31): error TS2741: Property 'version' is missing in type 'WorkflowAgent<ToolSet, Context, any, any>' but required in type 'Agent<never, {}, Context, never>'.",
+      "tests/interfaces.negative.ts(14,28): error TS2322: Type 'string' is not assignable to type 'WorkflowToolApprovalSecret'."
+    ]
+  },
+  "approval-workflow": {
+    "calls": [],
+    "warnings": [],
+    "constructed": true
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "H1": {
+    "conclusion": "支持",
+    "steps": [
+      20,
+      20
+    ],
+    "warnings": [
+      [
+        "The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+      ],
+      [
+        "The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+      ]
+    ],
+    "naturalSteps": [
+      20,
+      20
+    ],
+    "naturalWarnings": [
+      [],
+      []
+    ]
+  },
+  "H2": {
+    "conclusion": "支持",
+    "steps": [
+      1,
+      1
+    ]
+  },
+  "H3": {
+    "conclusion": "支持",
+    "steps": [
+      20,
+      25
+    ],
+    "streamObservedSteps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "streamAborted": true,
+    "warnings": [
+      [
+        "AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.",
+        "AI SDK Warning (fixture / offline-loop): The tool loop stopped because it reached the default stopWhen condition, isStepCount(20). To allow more steps, set stopWhen to isStepCount(...) with a higher limit or provide a custom stop condition. Learn more: https://ai-sdk.dev/docs/agents/loop-control"
+      ],
+      []
+    ],
+    "errors": [
+      null,
+      null
+    ],
+    "preparedStopWhen": [
+      true,
+      false
+    ]
+  },
+  "H4": {
+    "conclusion": "支持",
+    "diagnostic": "tests/interfaces.negative.ts(13,31): error TS2741: Property 'version' is missing in type 'WorkflowAgent<ToolSet, Context, any, any>' but required in type 'Agent<never, {}, Context, never>'."
+  },
+  "H5": {
+    "conclusion": "支持",
+    "toolLoopConclusion": "支持",
+    "toolLoop": [
+      [
+        "ai-sdk-agent/tool-loop ai/7.0.184"
+      ],
+      [
+        "ai-sdk-agent/tool-loop"
+      ]
+    ],
+    "workflow": [
+      [
+        "ai-sdk-agent/workflow"
+      ],
+      [
+        "ai-sdk-agent/workflow"
+      ]
+    ]
+  },
+  "H6": {
+    "conclusion": "支持",
+    "defaultOrder": [
+      "alpha",
+      "beta"
+    ],
+    "modelOrder": [
+      "beta",
+      "alpha"
+    ],
+    "preparedOrder": [
+      "beta",
+      "alpha"
+    ],
+    "error": null
+  },
+  "H7": {
+    "conclusion": "支持",
+    "toolLoopSteps": 1,
+    "workflowConstructed": true,
+    "diagnostic": "tests/interfaces.negative.ts(14,28): error TS2322: Type 'string' is not assignable to type 'WorkflowToolApprovalSecret'."
+  }
+}
